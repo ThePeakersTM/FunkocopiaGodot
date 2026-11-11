@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="tutorial.png">
+    <SubTexture name="TutorialBackground0000" x="1" y="1" width="384" height="216" />
+
+    <SubTexture name="Page0000"   x="1"   y="218" width="162" height="197" />
+    <SubTexture name="PagePS0000" x="1"   y="614" width="162" height="197" />
+    <SubTexture name="PageXB0000" x="164" y="614" width="162" height="197" />
+    <SubTexture name="Page0001"   x="164" y="218" width="162" height="197" />
+    <SubTexture name="Page0002"   x="327" y="218" width="162" height="197" />
+    <SubTexture name="Page0003"   x="1"   y="416" width="162" height="197" />
+    <SubTexture name="Page0004"   x="164" y="416" width="162" height="197" />
+
+    <SubTexture name="PageCorner00000" x="386" y="1"   width="38" height="38" />
+    <SubTexture name="PageCorner10000" x="425" y="1"   width="38" height="38" />
+    <SubTexture name="PageCorner00001" x="386" y="40"  width="38" height="38" />
+    <SubTexture name="PageCorner10001" x="425" y="40"  width="38" height="38" />
+    <SubTexture name="PageCorner00002" x="386" y="79"  width="38" height="38" />
+    <SubTexture name="PageCorner10002" x="425" y="79"  width="38" height="38" />
+    <SubTexture name="PageCorner00003" x="386" y="118" width="38" height="38" />
+    <SubTexture name="PageCorner10003" x="425" y="118" width="38" height="38" />
+    <SubTexture name="PageCorner00004" x="386" y="157" width="38" height="38" />
+    <SubTexture name="PageCorner10004" x="425" y="157" width="38" height="38" />
+</TextureAtlas>

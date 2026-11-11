@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://c3m2t5lm0nnk0"]
+
+[ext_resource type="Script" uid="uid://daag7fboy2b1p" path="res://resources/lol/boob_exception_handler.gd" id="1_b5ot3"]
+[ext_resource type="AudioStream" uid="uid://cwqt1o8ist30q" path="res://assets/sounds/screm.wav" id="2_uw62m"]
+
+[node name="BoobExceptionHandler" type="Node" unique_id=1810268299]
+process_mode = 3
+script = ExtResource("1_b5ot3")
+
+[node name="Screm" type="AudioStreamPlayer" parent="." unique_id=447160092]
+stream = ExtResource("2_uw62m")

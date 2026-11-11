@@ -1,0 +1,227 @@
+[gd_scene format=3 uid="uid://dcwbov7sklcwb"]
+
+[ext_resource type="Texture2D" uid="uid://bbjlbrge6and0" path="res://assets/tutorial.png" id="1_2oago"]
+[ext_resource type="Script" uid="uid://b5smxe11cvws7" path="res://resources/scenes/game/tutorial.gd" id="2_4lqoq"]
+[ext_resource type="SpriteFrames" uid="uid://ck30wnc0kykle" path="res://assets/tutorial.res" id="3_owbgf"]
+[ext_resource type="AudioStream" uid="uid://tspi3qlhqdvo" path="res://assets/sounds/page_flip.ogg" id="4_7b1gh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nv3l3"]
+atlas = ExtResource("1_2oago")
+region = Rect2(1, 1, 384, 216)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sqt1a"]
+atlas = ExtResource("1_2oago")
+region = Rect2(1, 218, 162, 197)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tgr5x"]
+atlas = ExtResource("1_2oago")
+region = Rect2(164, 218, 162, 197)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_drw54"]
+atlas = ExtResource("1_2oago")
+region = Rect2(327, 218, 162, 197)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0drv1"]
+atlas = ExtResource("1_2oago")
+region = Rect2(1, 416, 162, 197)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gwiih"]
+atlas = ExtResource("1_2oago")
+region = Rect2(164, 416, 162, 197)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7dsyw"]
+atlas = ExtResource("1_2oago")
+region = Rect2(386, 1, 38, 38)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qy78b"]
+atlas = ExtResource("1_2oago")
+region = Rect2(386, 40, 38, 38)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jss0a"]
+atlas = ExtResource("1_2oago")
+region = Rect2(386, 79, 38, 38)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h5y4g"]
+atlas = ExtResource("1_2oago")
+region = Rect2(386, 118, 38, 38)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t7wfn"]
+atlas = ExtResource("1_2oago")
+region = Rect2(386, 157, 38, 38)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b3osv"]
+atlas = ExtResource("1_2oago")
+region = Rect2(425, 1, 38, 38)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d0j1x"]
+atlas = ExtResource("1_2oago")
+region = Rect2(425, 40, 38, 38)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ymrv1"]
+atlas = ExtResource("1_2oago")
+region = Rect2(425, 79, 38, 38)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hwsse"]
+atlas = ExtResource("1_2oago")
+region = Rect2(425, 118, 38, 38)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bn6cm"]
+atlas = ExtResource("1_2oago")
+region = Rect2(425, 157, 38, 38)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7vhq7"]
+atlas = ExtResource("1_2oago")
+region = Rect2(1, 614, 162, 197)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_omwmt"]
+atlas = ExtResource("1_2oago")
+region = Rect2(164, 614, 162, 197)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q8ort"]
+atlas = ExtResource("1_2oago")
+region = Rect2(1, 1, 384, 216)
+filter_clip = true
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_owbgf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sqt1a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tgr5x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_drw54")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0drv1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gwiih")
+}],
+"loop": 0,
+"name": &"Page",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7dsyw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qy78b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jss0a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h5y4g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t7wfn")
+}],
+"loop": 0,
+"name": &"PageCorner",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b3osv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d0j1x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ymrv1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hwsse")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bn6cm")
+}],
+"loop": 0,
+"name": &"PageCornerHover",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7vhq7")
+}],
+"loop": 0,
+"name": &"PagePS",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_omwmt")
+}],
+"loop": 0,
+"name": &"PageXB",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q8ort")
+}],
+"loop": 0,
+"name": &"TutorialBackground",
+"speed": 0.0
+}]
+
+[node name="Tutorial" type="Sprite2D" unique_id=544280653]
+texture_filter = 1
+scale = Vector2(5, 5)
+texture = SubResource("AtlasTexture_nv3l3")
+centered = false
+script = ExtResource("2_4lqoq")
+
+[node name="Page" type="AnimatedSprite2D" parent="." unique_id=1175263026]
+position = Vector2(106, 7)
+sprite_frames = ExtResource("3_owbgf")
+animation = &"Page"
+centered = false
+
+[node name="PageCorner" type="AnimatedSprite2D" parent="." unique_id=1997380176]
+position = Vector2(230, 166)
+sprite_frames = SubResource("SpriteFrames_owbgf")
+animation = &"PageCorner"
+centered = false
+
+[node name="Button" type="Button" parent="PageCorner" unique_id=1595872414]
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+action_mode = 0
+
+[node name="PageFlip" type="AudioStreamPlayer" parent="." unique_id=2044385880]
+stream = ExtResource("4_7b1gh")
+
+[node name="Leave" type="Button" parent="." unique_id=1288636254]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = 279.0
+offset_top = 79.0
+offset_right = 334.0
+offset_bottom = 126.0
+mouse_default_cursor_shape = 2

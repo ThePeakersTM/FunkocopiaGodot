@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TextureAtlas imagePath="1.png">
+    <SubTexture name="Room0000" x="5" y="5" width="384" height="216" />
+    <SubTexture name="CalendarOverlay0000" x="394" y="5" width="384" height="216" />
+    <SubTexture name="ClockeyOverlay0000"  x="783" y="5" width="384" height="216" />
+    <SubTexture name="ClockeyBlink0000" x="5"   y="313" width="50" height="17" />
+    <SubTexture name="ClockeyBlink0001" x="5"   y="313" width="50" height="17" />
+    <SubTexture name="ClockeyBlink0002" x="5"   y="313" width="50" height="17" />
+    <SubTexture name="ClockeyBlink0003" x="5"   y="313" width="50" height="17" />
+    <SubTexture name="ClockeyBlink0004" x="5"   y="313" width="50" height="17" />
+    <SubTexture name="ClockeyBlink0005" x="5"   y="313" width="50" height="17" />
+    <SubTexture name="ClockeyBlink0006" x="5"   y="313" width="50" height="17" />
+    <SubTexture name="ClockeyBlink0007" x="5"   y="313" width="50" height="17" />
+    <SubTexture name="ClockeyBlink0008" x="5"   y="313" width="50" height="17" />
+    <SubTexture name="ClockeyBlink0009" x="5"   y="313" width="50" height="17" />
+    <SubTexture name="ClockeyBlink0010" x="5"   y="313" width="50" height="17" />
+    <SubTexture name="ClockeyBlink0011" x="5"   y="313" width="50" height="17" />
+    <SubTexture name="ClockeyBlink0012" x="5"   y="313" width="50" height="17" />
+    <SubTexture name="ClockeyBlink0013" x="5"   y="313" width="50" height="17" />
+    <SubTexture name="ClockeyBlink0014" x="5"   y="313" width="50" height="17" />
+    <SubTexture name="ClockeyBlink0015" x="5"   y="313" width="50" height="17" />
+    <SubTexture name="ClockeyBlink0016" x="5"   y="313" width="50" height="17" />
+    <SubTexture name="ClockeyBlink0017" x="5"   y="313" width="50" height="17" />
+    <SubTexture name="ClockeyBlink0018" x="5"   y="313" width="50" height="17" />
+    <SubTexture name="ClockeyBlink0019" x="5"   y="313" width="50" height="17" />
+    <SubTexture name="ClockeyBlink0020" x="5"   y="313" width="50" height="17" />
+    <SubTexture name="ClockeyBlink0021" x="5"   y="313" width="50" height="17" />
+    <SubTexture name="ClockeyBlink0022" x="5"   y="313" width="50" height="17" />
+    <SubTexture name="ClockeyBlink0023" x="5"   y="313" width="50" height="17" />
+    <SubTexture name="ClockeyBlink0024" x="5"   y="313" width="50" height="17" />
+    <SubTexture name="ClockeyBlink0025" x="5"   y="313" width="50" height="17" />
+    <SubTexture name="ClockeyBlink0026" x="5"   y="313" width="50" height="17" />
+    <SubTexture name="ClockeyBlink0027" x="5"   y="313" width="50" height="17" />
+    <SubTexture name="ClockeyBlink0028" x="5"   y="313" width="50" height="17" />
+    <SubTexture name="ClockeyBlink0029" x="5"   y="313" width="50" height="17" />
+    <SubTexture name="ClockeyBlink0030" x="5"   y="313" width="50" height="17" />
+    <SubTexture name="ClockeyBlink0031" x="5"   y="313" width="50" height="17" />
+    <SubTexture name="ClockeyBlink0032" x="5"   y="313" width="50" height="17" />
+    <SubTexture name="ClockeyBlink0033" x="5"   y="313" width="50" height="17" />
+    <SubTexture name="ClockeyBlink0034" x="5"   y="313" width="50" height="17" />
+    <SubTexture name="ClockeyBlink0035" x="5"   y="313" width="50" height="17" />
+    <SubTexture name="ClockeyBlink0036" x="5"   y="313" width="50" height="17" />
+    <SubTexture name="ClockeyBlink0037" x="5"   y="313" width="50" height="17" />
+    <SubTexture name="ClockeyBlink0038" x="5"   y="313" width="50" height="17" />
+    <SubTexture name="ClockeyBlink0039" x="5"   y="313" width="50" height="17" />
+    <SubTexture name="ClockeyBlink0040" x="5"   y="313" width="50" height="17" />
+    <SubTexture name="ClockeyBlink0041" x="5"   y="313" width="50" height="17" />
+    <SubTexture name="ClockeyBlink0042" x="5"   y="313" width="50" height="17" />
+    <SubTexture name="ClockeyBlink0043" x="5"   y="313" width="50" height="17" />
+    <SubTexture name="ClockeyBlink0044" x="5"   y="313" width="50" height="17" />
+    <SubTexture name="ClockeyBlink0045" x="5"   y="313" width="50" height="17" />
+    <SubTexture name="ClockeyBlink0046" x="5"   y="313" width="50" height="17" />
+    <SubTexture name="ClockeyBlink0047" x="5"   y="313" width="50" height="17" />
+    <SubTexture name="ClockeyBlink0048" x="5"   y="313" width="50" height="17" />
+    <SubTexture name="ClockeyBlink0049" x="5"   y="313" width="50" height="17" />
+    <SubTexture name="ClockeyBlink0050" x="5"   y="313" width="50" height="17" />
+    <SubTexture name="ClockeyBlink0051" x="60"  y="313" width="50" height="17" />
+    <SubTexture name="ClockeyBlink0052" x="115" y="313" width="50" height="17" />
+    <SubTexture name="ClockeyBlink0053" x="60"  y="313" width="50" height="17" />
+    <SubTexture name="Chair0000"                  x="5" y="226" width="78" height="82" />
+    <SubTexture name="UnPlug0000"                 x="88" y="226" width="82" height="62" />
+    <SubTexture name="ClockeyWallRightNormal0000" x="175" y="226" width="32" height="33" />
+    <SubTexture name="ClockeyWallRightBlink0000"  x="286" y="264" width="32" height="33" />
+    <SubTexture name="ClockeyWallRightBlink0001"  x="249" y="264" width="32" height="33" />
+    <SubTexture name="ClockeyWallRightBlink0002"  x="249" y="264" width="32" height="33" />
+    <SubTexture name="ClockeyWallRightTalk0000"   x="407" y="264" width="32" height="33" />
+    <SubTexture name="ClockeyWallRightTalk0001"   x="444" y="264" width="32" height="33" />
+    <SubTexture name="ClockeyWallRightTalk0002"   x="481" y="264" width="32" height="33" />
+    <SubTexture name="ClockeyWallRightTalk0003"   x="518" y="264" width="32" height="33" />
+    <SubTexture name="ClockeyWallFrontNormal0000" x="323" y="264" width="32" height="33" />
+    <SubTexture name="ClockeyWallFrontBlink0000"  x="286" y="264" width="32" height="33" />
+    <SubTexture name="ClockeyWallFrontBlink0001"  x="360" y="264" width="32" height="33" />
+    <SubTexture name="ClockeyWallFrontBlink0002"  x="360" y="264" width="32" height="33" />
+    <SubTexture name="ClockeyWallFrontTalk0000"   x="407" y="302" width="32" height="33" />
+    <SubTexture name="ClockeyWallFrontTalk0001"   x="444" y="302" width="32" height="33" />
+    <SubTexture name="ClockeyWallFrontTalk0002"   x="481" y="302" width="32" height="33" />
+    <SubTexture name="ClockeyWallFrontTalk0003"   x="518" y="302" width="32" height="33" />
+    <SubTexture name="ClockeyWallLeftNormal0000"  x="175" y="264" width="32" height="33" />
+    <SubTexture name="ClockeyWallLeftBlink0000"   x="286" y="264" width="32" height="33" />
+    <SubTexture name="ClockeyWallLeftBlink0001"   x="212" y="264" width="32" height="33" />
+    <SubTexture name="ClockeyWallLeftBlink0002"   x="212" y="264" width="32" height="33" />
+    <SubTexture name="ClockeyWallLeftTalk0000"    x="407" y="340" width="32" height="33" />
+    <SubTexture name="ClockeyWallLeftTalk0001"    x="444" y="340" width="32" height="33" />
+    <SubTexture name="ClockeyWallLeftTalk0002"    x="481" y="340" width="32" height="33" />
+    <SubTexture name="ClockeyWallLeftTalk0003"    x="518" y="340" width="32" height="33" />
+    <SubTexture name="SoccerBall0000"             x="212" y="226" width="32" height="32" />
+    <SubTexture name="DoorAppear0000" x="5"   y="335" width="38" height="50"/>
+    <SubTexture name="DoorAppear0001" x="48"  y="335" width="38" height="50"/>
+    <SubTexture name="DoorAppear0002" x="91"  y="335" width="38" height="50"/>
+    <SubTexture name="DoorAppear0003" x="134" y="335" width="38" height="50"/>
+    <SubTexture name="DoorAppear0004" x="177" y="335" width="38" height="50"/>
+    <SubTexture name="DoorAppear0005" x="220" y="335" width="38" height="50"/>
+    <SubTexture name="DoorAppear0006" x="263" y="335" width="38" height="50"/>
+    <SubTexture name="DoorNormal0000" x="263" y="335" width="38" height="50"/>
+    <SubTexture name="DoorOpen0000"   x="5"   y="390" width="38" height="50"/>
+    <SubTexture name="DoorOpen0001"   x="48"  y="390" width="38" height="50"/>
+    <SubTexture name="DoorOpen0002"   x="91"  y="390" width="38" height="50"/>
+    <SubTexture name="DoorOpen0003"   x="134" y="390" width="38" height="50"/>
+    <SubTexture name="DoorOpen0004"   x="177" y="390" width="38" height="50"/>
+    <SubTexture name="DoorOpen0005"   x="220" y="390" width="38" height="50"/>
+    <SubTexture name="DoorOpen0006"   x="263" y="390" width="38" height="50"/>
+    <SubTexture name="DoorOpen0007"   x="306" y="390" width="38" height="50"/>
+    <SubTexture name="DoorOpen0008"   x="349" y="390" width="38" height="50"/>
+    <SubTexture name="DoorOpen0009"   x="392" y="390" width="38" height="50"/>
+    <SubTexture name="LilDoor0000" x="5"   y="478" width="21" height="43" />
+    <SubTexture name="LilDoor0001" x="31"  y="478" width="21" height="43" />
+    <SubTexture name="LilDoor0002" x="57"  y="478" width="21" height="43" />
+    <SubTexture name="LilDoor0003" x="83"  y="478" width="21" height="43" />
+    <SubTexture name="LilDoor0004" x="109" y="478" width="21" height="43" />
+    <SubTexture name="LilDoor0005" x="135" y="478" width="21" height="43" />
+    <SubTexture name="LilDoor0006" x="161" y="478" width="21" height="43" />
+    <SubTexture name="LilDoor0007" x="187" y="478" width="21" height="43" />
+    <SubTexture name="DartCakeIdle0000" x="5"    y="651" width="384" height="216" />
+    <SubTexture name="DartCakeAnim0000" x="5"    y="651" width="384" height="216" />
+    <SubTexture name="DartCakeAnim0001" x="394"  y="651" width="384" height="216" />
+    <SubTexture name="DartCakeAnim0002" x="783"  y="651" width="384" height="216" />
+    <SubTexture name="DartCakeAnim0003" x="1172" y="651" width="384" height="216" />
+    <SubTexture name="DartCakeAnim0004" x="1561" y="651" width="384" height="216" />
+    <SubTexture name="DartCakeAnim0005" x="1950" y="651" width="384" height="216" />
+    <SubTexture name="DartCakeAnim0006" x="2339" y="651" width="384" height="216" />
+    <SubTexture name="DartCakeAnim0007" x="2728" y="651" width="384" height="216" />
+    <SubTexture name="DartCakeAnim0008" x="3117" y="651" width="384" height="216" />
+    <SubTexture name="DartCakeAnim0009" x="3506" y="651" width="384" height="216" />
+    <SubTexture name="DartCakeAnim0010" x="3895" y="651" width="384" height="216" />
+    <SubTexture name="DartCakeAnim0011" x="4284" y="651" width="384" height="216" />
+    <SubTexture name="DartCakeAnim0012" x="4673" y="651" width="384" height="216" />
+    <SubTexture name="DartCakeAnim0013" x="5062" y="651" width="384" height="216" />
+    <SubTexture name="DartCakeAnim0014" x="5451" y="651" width="384" height="216" />
+    <SubTexture name="DartCakeAnim0015" x="5"    y="872" width="384" height="216" />
+    <SubTexture name="DartCakeAnim0016" x="394"  y="872" width="384" height="216" />
+    <SubTexture name="DartCakeAnim0017" x="783"  y="872" width="384" height="216" />
+    <SubTexture name="DartCakeAnim0018" x="1172" y="872" width="384" height="216" />
+    <SubTexture name="DartCakeAnim0019" x="1561" y="872" width="384" height="216" />
+    <SubTexture name="DartCakeAnim0020" x="1950" y="872" width="384" height="216" />
+    <SubTexture name="DartCakeAnim0021" x="2339" y="872" width="384" height="216" />
+    <SubTexture name="DartCakeAnim0022" x="2728" y="872" width="384" height="216" />
+    <SubTexture name="FihIdle0000" x="5"    y="1093" width="384" height="216" />
+    <SubTexture name="FihAnim0000" x="5"    y="1093" width="384" height="216" />
+    <SubTexture name="FihAnim0001" x="394"  y="1093" width="384" height="216" />
+    <SubTexture name="FihAnim0002" x="783"  y="1093" width="384" height="216" />
+    <SubTexture name="FihAnim0003" x="1172" y="1093" width="384" height="216" />
+    <SubTexture name="FihAnim0004" x="1561" y="1093" width="384" height="216" />
+    <SubTexture name="FihAnim0005" x="1950" y="1093" width="384" height="216" />
+    <SubTexture name="FihAnim0006" x="2339" y="1093" width="384" height="216" />
+    <SubTexture name="FihAnim0007" x="2728" y="1093" width="384" height="216" />
+    <SubTexture name="OutletBirthdayIdle0000" x="5"    y="1314" width="384" height="216" />
+    <SubTexture name="OutletBirthdayAnim0000" x="5"    y="1314" width="384" height="216" />
+    <SubTexture name="OutletBirthdayAnim0001" x="394"  y="1314" width="384" height="216" />
+    <SubTexture name="OutletBirthdayAnim0002" x="783"  y="1314" width="384" height="216" />
+    <SubTexture name="OutletBirthdayAnim0003" x="1172" y="1314" width="384" height="216" />
+    <SubTexture name="OutletBirthdayAnim0004" x="1561" y="1314" width="384" height="216" />
+    <SubTexture name="OutletBirthdayAnim0005" x="1950" y="1314" width="384" height="216" />
+    <SubTexture name="OutletBirthdayAnim0006" x="2339" y="1314" width="384" height="216" />
+    <SubTexture name="OutletBirthdayAnim0007" x="2728" y="1314" width="384" height="216" />
+    <SubTexture name="OutletBirthdayAnim0008" x="3117" y="1314" width="384" height="216" />
+    <SubTexture name="OutletBirthdayAnim0009" x="3506" y="1314" width="384" height="216" />
+    <SubTexture name="OutletBirthdayAnim0010" x="3895" y="1314" width="384" height="216" />
+    <SubTexture name="OutletBirthdayAnim0011" x="4284" y="1314" width="384" height="216" />
+    <SubTexture name="OutletBirthdayAnim0012" x="4673" y="1314" width="384" height="216" />
+    <SubTexture name="OutletBirthdayAnim0013" x="5062" y="1314" width="384" height="216" />
+    <SubTexture name="OutletBirthdayAnim0014" x="5451" y="1314" width="384" height="216" />
+    <SubTexture name="ComputerOn0000" x="213" y="478" width="24" height="24"/>
+    <SubTexture name="ComputerOn0001" x="242" y="478" width="24" height="24"/>
+    <SubTexture name="Empty0000" x="90" y="725" width="1" height="1" />
+</TextureAtlas>

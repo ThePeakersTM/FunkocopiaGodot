@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://m842bdxjxj68"]
+
+[ext_resource type="PackedScene" uid="uid://y76lcasxgmhn" path="res://resources/scenes/game/top_down_character.tscn" id="1_4urv7"]
+[ext_resource type="SpriteFrames" uid="uid://d3geu2qi6sf7u" path="res://assets/rooms/characters/bfellow.res" id="2_f1ic4"]
+[ext_resource type="Script" uid="uid://cx058myu53nwt" path="res://resources/scenes/game/bfellow.gd" id="2_hsrot"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4urv7"]
+size = Vector2(20, 10)
+
+[node name="Bfellow" unique_id=665496451 node_paths=PackedStringArray("anim_sprite") instance=ExtResource("1_4urv7")]
+script = ExtResource("2_hsrot")
+anim_sprite = NodePath("Sprite")
+anim_prefix = "Bfellow"
+anim_animation_names = Dictionary[String, String]({
+"get_up": "Tutorial",
+"plug": "ConnectPlug"
+})
+
+[node name="Sprite" type="AnimatedSprite2D" parent="." index="0" unique_id=572894081]
+scale = Vector2(0.9999998, 0.9999998)
+sprite_frames = ExtResource("2_f1ic4")
+animation = &"BfellowTutorial"
+centered = false
+offset = Vector2(-32, -32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1" unique_id=1549465818]
+position = Vector2(-1, 27)
+scale = Vector2(0.99999976, 0.99999976)
+shape = SubResource("RectangleShape2D_4urv7")

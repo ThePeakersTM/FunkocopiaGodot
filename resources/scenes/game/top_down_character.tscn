@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://y76lcasxgmhn"]
+
+[ext_resource type="Script" uid="uid://dy4lvnca7cj34" path="res://resources/scenes/game/top_down_character.gd" id="1_gk0ws"]
+
+[node name="TopDownCharacter" type="CharacterBody2D" unique_id=665496451]
+texture_filter = 1
+scale = Vector2(5, 5)
+script = ExtResource("1_gk0ws")

@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://btfrdeshe5j1s"]
+
+[ext_resource type="Script" uid="uid://bepoo65rm8pg4" path="res://resources/transition/baldi_transition.gd" id="1_7kqel"]
+[ext_resource type="Shader" uid="uid://phgxcldlfe1g" path="res://resources/transition/baldi_transition.gdshader" id="2_l5ju8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sggrp"]
+shader = ExtResource("2_l5ju8")
+shader_parameter/progress = 0.0
+shader_parameter/softness = 0.04
+shader_parameter/image_size = Vector2i(1920, 1080)
+shader_parameter/scale = 5.0
+
+[node name="BaldiTransition" type="CanvasLayer" unique_id=1298575256 node_paths=PackedStringArray("overlay")]
+script = ExtResource("1_7kqel")
+overlay = NodePath("TextureRect")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=965328037]
+material = SubResource("ShaderMaterial_sggrp")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

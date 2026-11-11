@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://cc6tobsyo76ml"]
+
+[ext_resource type="Script" uid="uid://cfxl5flkyly0b" path="res://resources/scenes/game/game_state.gd" id="1_ag7y0"]
+[ext_resource type="PackedScene" uid="uid://m842bdxjxj68" path="res://resources/scenes/game/bfellow.tscn" id="1_gw86c"]
+[ext_resource type="PackedScene" uid="uid://dcwbov7sklcwb" path="res://resources/scenes/game/tutorial.tscn" id="2_3q08y"]
+[ext_resource type="Script" uid="uid://b46bxpgl1tinw" path="res://resources/scenes/game/game_camera.gd" id="2_nv3l3"]
+[ext_resource type="PackedScene" uid="uid://dk1sh7lht76k8" path="res://resources/scenes/game/rooms/mellow_room.tscn" id="2_x2kks"]
+
+[node name="GameState" type="Node2D" unique_id=616932619]
+script = ExtResource("1_ag7y0")
+
+[node name="Room" parent="." unique_id=1200955835 node_paths=PackedStringArray("player") instance=ExtResource("2_x2kks")]
+player = NodePath("../Bfellow")
+
+[node name="Bfellow" parent="." unique_id=665496451 instance=ExtResource("1_gw86c")]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1175322989]
+scale = Vector2(0.9999999, 0.9999999)
+anchor_mode = 0
+script = ExtResource("2_nv3l3")
+
+[node name="UI" type="Control" parent="Camera2D" unique_id=308874459]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Tutorial" parent="Camera2D/UI" unique_id=544280653 instance=ExtResource("2_3q08y")]
+visible = false

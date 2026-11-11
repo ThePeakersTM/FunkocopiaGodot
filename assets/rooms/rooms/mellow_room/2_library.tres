@@ -1,0 +1,150 @@
+[gd_resource type="AnimationLibrary" format=3 uid="uid://cmdtqp3qebndp"]
+
+[sub_resource type="Animation" id="Animation_oycyk"]
+length = inf
+step = inf
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(0),
+"update": 0,
+"values": ["GFSpinnyBlink"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(inf, nan),
+"transitions": PackedFloat32Array(0, 0),
+"update": 0,
+"values": [1, 0]
+}
+
+[sub_resource type="Animation" id="Animation_swbbd"]
+length = inf
+step = inf
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(0),
+"update": 0,
+"values": ["GFSpinnyIdle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(nan),
+"transitions": PackedFloat32Array(0),
+"update": 0,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_jjljs"]
+length = inf
+step = inf
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(0),
+"update": 0,
+"values": ["GFSpinnySpin"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(inf, nan),
+"transitions": PackedFloat32Array(0, 0),
+"update": 0,
+"values": [11, 0]
+}
+
+[sub_resource type="Animation" id="Animation_yolaf"]
+length = inf
+step = inf
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(0),
+"update": 0,
+"values": ["TalkingLampAnim"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(inf, nan),
+"transitions": PackedFloat32Array(0, 0),
+"update": 0,
+"values": [9, 0]
+}
+
+[sub_resource type="Animation" id="Animation_o0d2v"]
+length = inf
+step = inf
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(0),
+"update": 0,
+"values": ["TalkingLampIdle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(nan),
+"transitions": PackedFloat32Array(0),
+"update": 0,
+"values": [0]
+}
+
+[resource]
+_data = {
+&"GFSpinnyBlink": SubResource("Animation_oycyk"),
+&"GFSpinnyIdle": SubResource("Animation_swbbd"),
+&"GFSpinnySpin": SubResource("Animation_jjljs"),
+&"TalkingLampAnim": SubResource("Animation_yolaf"),
+&"TalkingLampIdle": SubResource("Animation_o0d2v")
+}
