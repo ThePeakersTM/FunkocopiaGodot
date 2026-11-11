@@ -175,6 +175,11 @@ func _process(delta: float) -> void:
 
 	if not Options.native_cursor:
 		_set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	
+	if Input.is_action_just_pressed("right_click"):
+		if can_change_cursor:
+			current_mode = next_mode(current_mode)
+	
 	var cam := view.get_camera_2d()
 	if cam == null: return
 	
