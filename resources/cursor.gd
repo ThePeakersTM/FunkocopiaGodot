@@ -1,5 +1,38 @@
 extends Node
 
+enum Mode {
+	NONE,
+	OBSERVE,
+	INTERACT,
+	SPEAK
+}
+
+const NONE     := Mode.NONE
+const OBSERVE  := Mode.OBSERVE
+const INTERACT := Mode.INTERACT
+const SPEAK    := Mode.SPEAK
+
+func mode_to_string(mode: Mode) -> String:
+	match mode:
+		OBSERVE:  return "observe"
+		INTERACT: return "interact"
+		SPEAK:    return "speak"
+		_:        return "none"
+
+func string_to_mode(string: String) -> Mode:
+	match string:
+		"observe":  return OBSERVE
+		"interact": return INTERACT
+		"speak":    return SPEAK
+		_:          return NONE
+
+func next_mode(mode: Mode) -> Mode:
+	match mode:
+		OBSERVE:  return INTERACT
+		INTERACT: return SPEAK
+		SPEAK:    return OBSERVE
+		_:        return OBSERVE
+
 const CURSOR_SPEED := 1100.0
 var virtual_pos := Vector2.ZERO
 
@@ -9,13 +42,25 @@ const TRIGGER_RELEASE := 0.3
 var newCursor: Sprite2D = null
 var newCursorPos: Vector2i = Vector2i(0, 0)
 
-var textureMap: Dictionary[String, Texture2D] = {
-	"normal":    load("res://assets/cursor/normal.png"),
-	"clickable": load("res://assets/cursor/clickable.png"),
-	"observe":   load("res://assets/cursor/observe.png"),
-	"interact":  load("res://assets/cursor/interact.png"),
-	"speak":     load("res://assets/cursor/speak.png")
+var textureMap: Dictionary[String, String] = {
+	"normal":    "normal.png",
+	"clickable": "clickable.png",
+	"observe":   "observe.png",
+	"interact":  "interact.png",
+	"speak":     "speak.png"
 }
+
+var can_change_cursor := false
+var current_mode := NONE
+var _cached_textures: Dictionary[String, Texture2D] = {}
+
+func get_cached_texture(path: String) -> Texture2D:
+	if _cached_textures.has(path):
+		return _cached_textures[path]
+	else:
+		var texture = load("res://assets/cursor/" + path)
+		_cached_textures[path] = texture
+		return texture
 
 func _ready() -> void:
 	if not Options.native_cursor:
@@ -23,7 +68,7 @@ func _ready() -> void:
 	
 	newCursor = Sprite2D.new()
 	newCursor.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
-	newCursor.texture = textureMap["normal"]
+	newCursor.texture = get_cached_texture(textureMap["normal"])
 	newCursor.z_index = 4096
 	newCursor.scale = Vector2(7.5, 7.5)
 	newCursor.centered = false
@@ -133,15 +178,17 @@ func _process(delta: float) -> void:
 	var cam := view.get_camera_2d()
 	if cam == null: return
 	
-	newCursor.texture = textureMap[
+	newCursor.texture = get_cached_texture(textureMap[
 		"clickable" if DisplayServer.cursor_get_shape() == DisplayServer.CURSOR_POINTING_HAND else
 		"normal"
-	]
+	])
 	
 	if cam == null: return
 	newCursorPos = view.get_mouse_position().snapped(
 		newCursor.scale
-	) + cam.position + Vector2(960, 540)
+	) + cam.position
+	if cam.anchor_mode == Camera2D.AnchorMode.ANCHOR_MODE_DRAG_CENTER:
+		newCursorPos -= Vector2i(960, 540)
 	if newCursor != null:
 		if newCursor.position != null:
 			newCursor.position.x = newCursorPos.x
