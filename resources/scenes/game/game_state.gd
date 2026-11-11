@@ -13,15 +13,14 @@ func _ready() -> void:
 		load_room()
 
 func post_load_room() -> void:
+	print("Successfully loaded room with name \"" + room.title + "\".")
 	if room.has_node("PlayerSpawn"):
 		player.set_pos(room.get_node("PlayerSpawn").position)
 	if room.has_node("CameraPosition"):
 		camera.position = room.get_node("CameraPosition").position
 
 func on_hide_ui(id: String) -> void:
-	print("on_hide_ui(" + id + ")")
 	if id == "tutorial":
-		print("on hide ui")
 		player.can_process_data = false
 		player.play("get_up")
 
@@ -33,5 +32,4 @@ func load_room(id: String = "mellow_room") -> void:
 	room.player = player
 	add_child(room)
 	move_child(room, 0)
-	print("Successfully loaded room with name \"" + room.title + "\".")
 	post_load_room()
