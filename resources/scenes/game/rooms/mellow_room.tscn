@@ -951,7 +951,7 @@ centered = false
 position = Vector2(950, 225)
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_pyajk")
-animation = &"right_talk"
+animation = &"right_idle"
 centered = false
 
 [node name="GFChair" type="AnimatedSprite2D" parent="." index="6" unique_id=1652378349]

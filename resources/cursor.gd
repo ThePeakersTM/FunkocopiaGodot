@@ -40,6 +40,7 @@ const TRIGGER_PRESS := 0.5
 const TRIGGER_RELEASE := 0.3
 
 var newCursor: Sprite2D = null
+var newCursor_native: Sprite2D = null
 var newCursorPos: Vector2i = Vector2i(0, 0)
 
 var textureMap: Dictionary[String, String] = {
@@ -70,9 +71,19 @@ func _ready() -> void:
 	newCursor.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 	newCursor.texture = get_cached_texture(textureMap["normal"])
 	newCursor.z_index = 4096
-	newCursor.scale = Vector2(7.5, 7.5)
+	newCursor.scale = Vector2(5, 5)
 	newCursor.centered = false
-	if not Options.native_cursor:
+	
+	newCursor_native = Sprite2D.new()
+	newCursor_native.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+	newCursor_native.texture = get_cached_texture("native/" + textureMap["normal"])
+	newCursor_native.z_index = 4096
+	newCursor_native.scale = Vector2(5, 5)
+	newCursor_native.centered = false
+	
+	if Options.native_cursor:
+		add_child(newCursor_native)
+	else:
 		add_child(newCursor)
 
 static func pixelate_movement(pos: Vector2, factor: Vector2) -> Vector2i:
@@ -183,10 +194,18 @@ func _process(delta: float) -> void:
 	var cam := view.get_camera_2d()
 	if cam == null: return
 	
-	newCursor.texture = get_cached_texture(textureMap[
-		"clickable" if DisplayServer.cursor_get_shape() == DisplayServer.CURSOR_POINTING_HAND else
-		"normal"
-	])
+	var tp := ""
+	
+	if can_change_cursor:
+		tp = textureMap[mode_to_string(current_mode)]
+	else:
+		tp = textureMap[
+			"clickable" if DisplayServer.cursor_get_shape() == DisplayServer.CURSOR_POINTING_HAND else
+			"normal"
+		]
+	
+	newCursor.texture = get_cached_texture(tp)
+	newCursor_native.texture = get_cached_texture("native/" + tp)
 	
 	if cam == null: return
 	newCursorPos = view.get_mouse_position().snapped(
@@ -195,6 +214,8 @@ func _process(delta: float) -> void:
 	if cam.anchor_mode == Camera2D.AnchorMode.ANCHOR_MODE_DRAG_CENTER:
 		newCursorPos -= Vector2i(960, 540)
 	if newCursor != null:
-		if newCursor.position != null:
-			newCursor.position.x = newCursorPos.x
-			newCursor.position.y = newCursorPos.y
+		newCursor.position.x = newCursorPos.x
+		newCursor.position.y = newCursorPos.y
+	if newCursor_native != null:
+		newCursor_native.position.x = newCursorPos.x
+		newCursor_native.position.y = newCursorPos.y
