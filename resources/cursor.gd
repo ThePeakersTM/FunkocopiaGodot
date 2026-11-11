@@ -1,13 +1,13 @@
 extends Node
 
 enum Mode {
-	NONE,
+	NORMAL,
 	OBSERVE,
 	INTERACT,
 	SPEAK
 }
 
-const NONE     := Mode.NONE
+const NORMAL   := Mode.NORMAL
 const OBSERVE  := Mode.OBSERVE
 const INTERACT := Mode.INTERACT
 const SPEAK    := Mode.SPEAK
@@ -17,14 +17,14 @@ func mode_to_string(mode: Mode) -> String:
 		OBSERVE:  return "observe"
 		INTERACT: return "interact"
 		SPEAK:    return "speak"
-		_:        return "none"
+		_:        return "normal"
 
 func string_to_mode(string: String) -> Mode:
 	match string:
 		"observe":  return OBSERVE
 		"interact": return INTERACT
 		"speak":    return SPEAK
-		_:          return NONE
+		_:          return NORMAL
 
 func next_mode(mode: Mode) -> Mode:
 	match mode:
@@ -52,7 +52,7 @@ var textureMap: Dictionary[String, String] = {
 }
 
 var can_change_cursor := false
-var current_mode := NONE
+var current_mode := NORMAL
 var _cached_textures: Dictionary[String, Texture2D] = {}
 
 func get_cached_texture(path: String) -> Texture2D:
