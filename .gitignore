@@ -2,5 +2,8 @@
 .godot/
 /android/
 
+.git/
+.idea/
+
 # Linux
 *.directory
