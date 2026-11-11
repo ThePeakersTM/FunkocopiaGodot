@@ -6,6 +6,8 @@ extends Node2D
 var room: Room = null
 
 func _ready() -> void:
+	Cursor.can_change_cursor = true
+	
 	if get_child(0) is Room:
 		room = get_child(0) as Room
 		post_load_room()
