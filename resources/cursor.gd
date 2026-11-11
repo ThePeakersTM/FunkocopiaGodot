@@ -12,6 +12,9 @@ const OBSERVE  := Mode.OBSERVE
 const INTERACT := Mode.INTERACT
 const SPEAK    := Mode.SPEAK
 
+const ALL    := [NORMAL, OBSERVE, INTERACT, SPEAK]
+const ALL_FUNCTIONAL := [OBSERVE, INTERACT, SPEAK]
+
 func mode_to_string(mode: Mode) -> String:
 	match mode:
 		OBSERVE:  return "observe"
