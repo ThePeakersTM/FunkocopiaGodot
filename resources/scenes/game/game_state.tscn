@@ -9,8 +9,22 @@
 [node name="GameState" type="Node2D" unique_id=616932619]
 script = ExtResource("1_ag7y0")
 
-[node name="Room" parent="." unique_id=1200955835 node_paths=PackedStringArray("player") instance=ExtResource("2_x2kks")]
-player = NodePath("../Bfellow")
+[node name="Room" parent="." unique_id=1200955835 instance=ExtResource("2_x2kks")]
+player = Object(CharacterBody2D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"oversampling_with_scale":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":1,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, 0),"rotation":0.0,"scale":Vector2(5, 5),"skew":0.0,"disable_mode":0,"collision_layer":1,"collision_mask":1,"collision_priority":1.0,"input_pickable":false,"motion_mode":0,"up_direction":Vector2(0, -1),"velocity":Vector2(0, 0),"slide_on_ceiling":true,"max_slides":4,"wall_min_slide_angle":0.2617994,"floor_stop_on_slope":true,"floor_constant_speed":false,"floor_block_on_wall":true,"floor_max_angle":0.7853982,"floor_snap_length":1.0,"platform_on_leave":0,"platform_floor_layers":4294967295,"platform_wall_layers":0,"safe_margin":0.08,"script":Resource("res://resources/scenes/game/bfellow.gd"),"anim_sprite":Object(AnimatedSprite2D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"oversampling_with_scale":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, 0),"rotation":0.0,"scale":Vector2(0.9999998, 0.9999998),"skew":0.0,"sprite_frames":Resource("res://assets/rooms/characters/bfellow.res"),"animation":&"BfellowTutorial","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":false,"offset":Vector2(-32, -32),"flip_h":false,"flip_v":false,"script":null)
+,"anim_prefix":"Bfellow","anim_for_dir_anims":Array[String](["Idle", "Walk", "Talk", "Blink"]),"anim_direction_names":Dictionary[Vector2i, String]({
+Vector2i(-1, -1): "UL",
+Vector2i(-1, 0): "LL",
+Vector2i(-1, 1): "DL",
+Vector2i(0, -1): "UU",
+Vector2i(0, 1): "DD",
+Vector2i(1, -1): "UR",
+Vector2i(1, 0): "RR",
+Vector2i(1, 1): "DR"
+}),"anim_animation_names":Dictionary[String, String]({
+"get_up": "Tutorial",
+"plug": "ConnectPlug"
+}),"anim_facing_direction":"DD")
+
 
 [node name="Bfellow" parent="." unique_id=665496451 instance=ExtResource("1_gw86c")]
 

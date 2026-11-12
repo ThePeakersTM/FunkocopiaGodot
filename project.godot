@@ -34,6 +34,7 @@ Cursor="*uid://dhvjhvjwnku84"
 BoobExceptionHandler="*uid://c3m2t5lm0nnk0"
 BaldiTransition="*uid://btfrdeshe5j1s"
 RoomRegistry="*uid://w43wwyvauc5e"
+CheatCodes="*uid://dccmnkiquhs6r"
 
 [display]
 
@@ -62,6 +63,11 @@ left_click={
 right_click={
 "deadzone": 0.2,
 "events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":2,"position":Vector2(248, 18),"global_position":Vector2(257, 66),"factor":1.0,"button_index":2,"canceled":false,"pressed":true,"double_click":false,"script":null)
+]
+}
+cheat_codes={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":59,"key_label":0,"unicode":59,"location":0,"echo":false,"script":null)
 ]
 }
 

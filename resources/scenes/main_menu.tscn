@@ -160,6 +160,7 @@ offset_right = -192.0
 offset_bottom = -108.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="PaperPart" type="Control" parent="FullRect" unique_id=2044284675]
 anchors_preset = 0
@@ -167,6 +168,7 @@ offset_left = 8.0
 offset_top = 8.0
 offset_right = 172.0
 offset_bottom = 210.0
+mouse_filter = 2
 
 [node name="NewButton" type="TextureButton" parent="FullRect/PaperPart" unique_id=1679452116]
 layout_mode = 0

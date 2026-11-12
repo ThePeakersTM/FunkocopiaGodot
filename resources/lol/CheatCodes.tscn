@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://dccmnkiquhs6r"]
+
+[ext_resource type="Script" uid="uid://73o0auoqiuy2" path="res://resources/lol/cheat_codes.gd" id="1_qvhsh"]
+[ext_resource type="Theme" uid="uid://bb1yexfh7xfc0" path="res://resources/themes/funkin.tres" id="2_6ac2b"]
+[ext_resource type="FontFile" uid="uid://dnn4b8ikrsd55" path="res://resources/fonts/fnt_vcr.ttf" id="3_ebty1"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_6ac2b"]
+font = ExtResource("3_ebty1")
+font_size = 40
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[node name="CheatCodes" type="Node" unique_id=747930548]
+script = ExtResource("1_qvhsh")
+
+[node name="Control" type="Control" parent="." unique_id=987332765]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="LineEdit" type="LineEdit" parent="Control" unique_id=1533508268]
+z_index = 4000
+layout_mode = 0
+offset_left = 15.0
+offset_top = 15.0
+offset_right = 327.0
+offset_bottom = 68.0
+theme = ExtResource("2_6ac2b")
+theme_override_font_sizes/font_size = 32
+placeholder_text = "Type in a command"
+expand_to_text_length = true
+
+[node name="Message" type="Label" parent="Control" unique_id=794833399]
+modulate = Color(1, 1, 1, 0.49803922)
+z_index = 4000
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -50.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = 46.0
+grow_horizontal = 0
+theme = ExtResource("2_6ac2b")
+label_settings = SubResource("LabelSettings_6ac2b")
+horizontal_alignment = 2
+
+[connection signal="text_changed" from="Control/LineEdit" to="." method="_on_line_edit_text_changed"]
