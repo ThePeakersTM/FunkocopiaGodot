@@ -7,6 +7,7 @@ extends Node
 
 const COMMANDS: Array = [
 	"michael",
+	"unmichael",
 ]
 
 func _ready() -> void:
@@ -46,8 +47,15 @@ func implement_user_command(command: String) -> void:
 				command_failed = true
 			else:
 				var player = get_node("/root/GameState/Bfellow")
-				player.moonwalk = not player.moonwalk
-				message.text = ("Activating" if player.moonwalk else "Disabling") + " moonwalking."
+				player.moonwalk = true
+				message.text = "Activating moonwalking."
+		"unmichael":
+			if not has_node("/root/GameState"):
+				command_failed = true
+			else:
+				var player = get_node("/root/GameState/Bfellow")
+				player.moonwalk = false
+				message.text = "Disabling moonwalking."
 	if command_failed:
 		message.modulate = Color(1, 0, 0, 0.5)
 		message.text = "Failed to run command \"" + command + "\""
