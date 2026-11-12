@@ -20,9 +20,13 @@ extends Room
 @onready var computer_screen_interaction := $ComputerScreen/Control
 
 @onready var clockey := $Clockey
+@onready var clockey_interaction := $Clockey/Control
 
 @onready var plug := $Plug
 @onready var plug_interaction := $Plug/Control
+
+@onready var vent_door := $LilDoor
+@onready var vent_door_interaction := $LilDoor/Control
 
 var touching_boobs := false
 
@@ -30,8 +34,10 @@ var touching_dart_cake := false
 var touching_fih := false
 var touching_outlet := false
 
+var touching_clockey := false
 var touching_plug := false
 var touching_computer_screen := false
+var touching_vent_door := false
 
 var blink_timer := 25
 
@@ -60,6 +66,12 @@ func _ready() -> void:
 	plug.self_modulate = Color.WHITE
 	plug_interaction.mouse_entered.connect(func(): touching_plug = true )
 	plug_interaction.mouse_exited.connect( func(): touching_plug = false)
+	
+	clockey_interaction.mouse_entered.connect(func(): touching_clockey = true )
+	clockey_interaction.mouse_exited.connect( func(): touching_clockey = false)
+	
+	vent_door_interaction.mouse_entered.connect(func(): touching_vent_door = true )
+	vent_door_interaction.mouse_exited.connect( func(): touching_vent_door = false)
 
 var plug_connected := false
 
@@ -72,6 +84,10 @@ func _process(_delta: float) -> void:
 		[                     Cursor.MODE_INTERACT,               Cursor.MODE_NORMAL])
 	set_mouse_mode(plug_interaction,
 		[Cursor.MODE_OBSERVE, Cursor.MODE_INTERACT                                  ])
+	set_mouse_mode(clockey_interaction,
+		[Cursor.MODE_OBSERVE, Cursor.MODE_INTERACT                                  ])
+	set_mouse_mode(vent_door_interaction,
+		[Cursor.MODE_OBSERVE, Cursor.MODE_INTERACT])
 	if player.position.y <= 595:
 		var y_factor = (player.position.y - 315) / 280
 		var thing = round(((y_factor * 1.5) + 3.5) * 5) / 5

@@ -1001,6 +1001,12 @@ sprite_frames = SubResource("SpriteFrames_pyajk")
 animation = &"right_idle"
 centered = false
 
+[node name="Control" type="Control" parent="Clockey" index="0" unique_id=1681579004]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
 [node name="GFChair" type="AnimatedSprite2D" parent="." index="7" unique_id=1652378349]
 position = Vector2(1000, 515)
 scale = Vector2(5, 5)
@@ -1023,6 +1029,12 @@ scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_n3ks6")
 animation = &"LilDoor"
 centered = false
+
+[node name="Control" type="Control" parent="LilDoor" index="0" unique_id=1719902466]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="FunnyThings" type="Node2D" parent="." index="9" unique_id=1768371818]
 
