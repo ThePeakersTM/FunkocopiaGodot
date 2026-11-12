@@ -965,7 +965,15 @@ scale = Vector2(5, 5)
 texture = SubResource("AtlasTexture_dh8s6")
 centered = false
 
-[node name="ComputerScreen" type="AnimatedSprite2D" parent="." index="4" unique_id=1605778361]
+[node name="Calendar" type="Control" parent="." index="4" unique_id=1159812034]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1160.0
+offset_top = 120.0
+offset_right = 1300.0
+offset_bottom = 325.0
+
+[node name="ComputerScreen" type="AnimatedSprite2D" parent="." index="5" unique_id=1605778361]
 self_modulate = Color(1, 1, 1, 0)
 position = Vector2(1135, 400)
 scale = Vector2(5, 5)
@@ -980,7 +988,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Plug" type="Sprite2D" parent="." index="5" unique_id=1216313038]
+[node name="Plug" type="Sprite2D" parent="." index="6" unique_id=1216313038]
 position = Vector2(940, 535)
 scale = Vector2(5, 5)
 texture = SubResource("AtlasTexture_t5jfb")
@@ -994,7 +1002,7 @@ offset_top = 23.0
 offset_right = 71.0
 offset_bottom = 58.0
 
-[node name="Clockey" type="AnimatedSprite2D" parent="." index="6" unique_id=1766173608]
+[node name="Clockey" type="AnimatedSprite2D" parent="." index="7" unique_id=1766173608]
 position = Vector2(950, 225)
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_pyajk")
@@ -1007,7 +1015,7 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="GFChair" type="AnimatedSprite2D" parent="." index="7" unique_id=1652378349]
+[node name="GFChair" type="AnimatedSprite2D" parent="." index="8" unique_id=1652378349]
 position = Vector2(1000, 515)
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_xun36")
@@ -1023,7 +1031,7 @@ offset_right = 148.0
 offset_bottom = 48.0
 mouse_default_cursor_shape = 8
 
-[node name="LilDoor" type="AnimatedSprite2D" parent="." index="8" unique_id=1771755188]
+[node name="LilDoor" type="AnimatedSprite2D" parent="." index="9" unique_id=1771755188]
 position = Vector2(1525, 240)
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_n3ks6")
@@ -1032,11 +1040,13 @@ centered = false
 
 [node name="Control" type="Control" parent="LilDoor" index="0" unique_id=1719902466]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="FunnyThings" type="Node2D" parent="." index="9" unique_id=1768371818]
+[node name="FunnyThings" type="Node2D" parent="." index="10" unique_id=1768371818]
 
 [node name="Fih" type="AnimatedSprite2D" parent="FunnyThings" index="0" unique_id=1095524271]
 scale = Vector2(5, 5)

@@ -28,6 +28,8 @@ extends Room
 @onready var vent_door := $LilDoor
 @onready var vent_door_interaction := $LilDoor/Control
 
+@onready var calendar_interaction := $Calendar
+
 var touching_boobs := false
 
 var touching_dart_cake := false
@@ -38,6 +40,7 @@ var touching_clockey := false
 var touching_plug := false
 var touching_computer_screen := false
 var touching_vent_door := false
+var touching_calendar := false
 
 var blink_timer := 25
 
@@ -72,6 +75,9 @@ func _ready() -> void:
 	
 	vent_door_interaction.mouse_entered.connect(func(): touching_vent_door = true )
 	vent_door_interaction.mouse_exited.connect( func(): touching_vent_door = false)
+	
+	calendar_interaction.mouse_entered.connect(func(): touching_calendar = true )
+	calendar_interaction.mouse_exited.connect( func(): touching_calendar = false)
 
 var plug_connected := false
 
@@ -87,7 +93,9 @@ func _process(_delta: float) -> void:
 	set_mouse_mode(clockey_interaction,
 		[Cursor.MODE_OBSERVE, Cursor.MODE_INTERACT                                  ])
 	set_mouse_mode(vent_door_interaction,
-		[Cursor.MODE_OBSERVE, Cursor.MODE_INTERACT])
+		[Cursor.MODE_OBSERVE, Cursor.MODE_INTERACT                                  ])
+	set_mouse_mode(calendar_interaction,
+		[Cursor.MODE_OBSERVE, Cursor.MODE_INTERACT, Cursor.MODE_SPEAK               ])
 	if player.position.y <= 595:
 		var y_factor = (player.position.y - 315) / 280
 		var thing = round(((y_factor * 1.5) + 3.5) * 5) / 5
