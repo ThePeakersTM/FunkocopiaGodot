@@ -44,6 +44,8 @@ var anim_animation := ""
 
 var moving := false
 
+var moonwalk := false
+
 #region warnings
 var _pushed_null_sprite_warning = false
 var _pushed_anim_warnings: Array[String] = []
@@ -86,7 +88,10 @@ func play(animation: StringName, speed: float = 1.0):
 	anim_sprite.play(animToPlay, speed)
 
 func calculate_normals() -> void:
-	var normal = Vector2i(velocity.sign())
+	var vel = velocity.sign()
+	if moonwalk:
+		vel *= Vector2(-1, -1)
+	var normal = Vector2i(vel)
 	if normal == Vector2i.ZERO:
 		moving = false
 		return

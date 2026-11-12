@@ -29,9 +29,6 @@ func _ready() -> void:
 	leave.pressed.connect(func():
 		get_parent().get_parent().on_hide_ui("tutorial")
 		hide()
-		get_tree().create_timer(0.5).timeout.connect(func():
-			queue_free()
-		)
 	)
 
 func _process(_delta: float) -> void:

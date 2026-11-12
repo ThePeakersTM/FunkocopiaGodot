@@ -29,6 +29,7 @@ extends Room
 @onready var vent_door_interaction := $LilDoor/Control
 
 @onready var calendar_interaction := $Calendar
+@onready var tutorial_interaction := $Tutorial
 
 var touching_boobs := false
 
@@ -40,6 +41,7 @@ var touching_clockey := false
 var touching_plug := false
 var touching_computer_screen := false
 var touching_vent_door := false
+var touching_tutorial := false
 var touching_calendar := false
 
 var blink_timer := 25
@@ -78,24 +80,33 @@ func _ready() -> void:
 	
 	calendar_interaction.mouse_entered.connect(func(): touching_calendar = true )
 	calendar_interaction.mouse_exited.connect( func(): touching_calendar = false)
+	
+	tutorial_interaction.mouse_entered.connect(func(): touching_tutorial = true )
+	tutorial_interaction.mouse_exited.connect( func(): touching_tutorial = false)
 
 var plug_connected := false
 
 func _process(_delta: float) -> void:
 	blink_timer += 1
 	if camera.in_ui: return
+	set_mouse_mode(
+		boobs_interaction,
+		[Cursor.MODE_INTERACT, Cursor.MODE_NORMAL],
+		Control.CURSOR_FORBIDDEN
+	)
+	
+	set_mouse_mode(tutorial_interaction,
+		[Cursor.MODE_OBSERVE, Cursor.MODE_INTERACT                                  ])
 	set_mouse_mode(computer_screen_interaction,
 		[Cursor.MODE_OBSERVE, Cursor.MODE_INTERACT                                  ])
-	set_mouse_mode(boobs_interaction,
-		[                     Cursor.MODE_INTERACT,               Cursor.MODE_NORMAL])
 	set_mouse_mode(plug_interaction,
 		[Cursor.MODE_OBSERVE, Cursor.MODE_INTERACT                                  ])
 	set_mouse_mode(clockey_interaction,
-		[Cursor.MODE_OBSERVE, Cursor.MODE_INTERACT                                  ])
+		[Cursor.MODE_OBSERVE,                       Cursor.MODE_SPEAK               ])
 	set_mouse_mode(vent_door_interaction,
 		[Cursor.MODE_OBSERVE, Cursor.MODE_INTERACT                                  ])
 	set_mouse_mode(calendar_interaction,
-		[Cursor.MODE_OBSERVE, Cursor.MODE_INTERACT, Cursor.MODE_SPEAK               ])
+		[Cursor.MODE_OBSERVE,                       Cursor.MODE_SPEAK               ])
 	if player.position.y <= 595:
 		var y_factor = (player.position.y - 315) / 280
 		var thing = round(((y_factor * 1.5) + 3.5) * 5) / 5
@@ -130,6 +141,11 @@ func _process(_delta: float) -> void:
 		if Cursor.current_mode == Cursor.MODE_INTERACT:
 			if touching_plug:
 				plug_connected = not plug_connected
+		if Cursor.current_mode == Cursor.MODE_OBSERVE:
+			if touching_calendar:
+				load_overlay("calendar")
+			if touching_tutorial:
+				show_ui("tutorial")
 		if touching_boobs:
 			if Cursor.current_mode in [Cursor.NORMAL, Cursor.INTERACT]:
 				BoobExceptionHandler.exception()

@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://n4m64f2hrv6x"]
+
+[ext_resource type="Script" uid="uid://dgifarbeuugyd" path="res://resources/scenes/game/overlays/overlay.gd" id="1_3qule"]
+[ext_resource type="Texture2D" uid="uid://brlyfmoxf2mm4" path="res://assets/rooms/rooms/mellow_room/1.png" id="1_sxume"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sxume"]
+atlas = ExtResource("1_sxume")
+region = Rect2(394, 5, 384, 216)
+
+[node name="Overlay" type="Sprite2D" unique_id=142591381]
+texture_filter = 1
+scale = Vector2(5, 5)
+texture = SubResource("AtlasTexture_sxume")
+centered = false
+script = ExtResource("1_3qule")
+leave_rect = Rect2i(22, 148, 53, 60)

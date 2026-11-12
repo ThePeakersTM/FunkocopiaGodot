@@ -6,7 +6,13 @@ extends Camera2D
 var in_ui := true
 
 func _ready() -> void:
-	get_node("UI/Tutorial").show()
+	on_show_ui("tutorial")
+
+func on_show_ui(id: String) -> void:
+	if id == "tutorial":
+		get_node("UI/Tutorial").show()
+	get_node("UI").mouse_filter = Control.MOUSE_FILTER_STOP
+	in_ui = true
 
 func on_hide_ui(id: String) -> void:
 	get_parent().on_hide_ui(id)
