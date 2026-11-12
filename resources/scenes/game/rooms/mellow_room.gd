@@ -1,7 +1,7 @@
 extends Room
 
 @onready var gf_chair := $GFChair
-@onready var gf_chair_interaction := $GFChair/Control
+@onready var boobs_interaction := $GFChair/Boobs
 @onready var camera := $"../Camera2D"
 
 @onready var dart_cake := $FunnyThings/DartCake
@@ -16,7 +16,13 @@ extends Room
 @onready var outlet_interaction := $FunnyThings/Outlet/Control
 @onready var outlet_sound := $FunnyThings/Outlet/Sound
 
+@onready var computer_screen := $ComputerScreen
+@onready var computer_screen_interaction := $ComputerScreen/Control
+
 @onready var clockey := $Clockey
+
+@onready var plug := $Plug
+@onready var plug_interaction := $Plug/Control
 
 var touching_boobs := false
 
@@ -24,12 +30,15 @@ var touching_dart_cake := false
 var touching_fih := false
 var touching_outlet := false
 
+var touching_plug := false
+var touching_computer_screen := false
+
 var blink_timer := 25
 
 func _ready() -> void:
 	gf_chair.play("spin")
-	gf_chair_interaction.mouse_entered.connect(func(): touching_boobs = true )
-	gf_chair_interaction.mouse_exited.connect( func(): touching_boobs = false)
+	boobs_interaction.mouse_entered.connect(func(): touching_boobs = true )
+	boobs_interaction.mouse_exited.connect( func(): touching_boobs = false)
 	
 	dart_cake.play("idle")
 	dart_cake_interaction.mouse_entered.connect(func(): touching_dart_cake = true )
@@ -42,10 +51,27 @@ func _ready() -> void:
 	outlet.play("idle")
 	outlet_interaction.mouse_entered.connect(func(): touching_outlet = true )
 	outlet_interaction.mouse_exited.connect( func(): touching_outlet = false)
+	
+	computer_screen.self_modulate = Color.TRANSPARENT
+	computer_screen.play()
+	computer_screen_interaction.mouse_entered.connect(func(): touching_computer_screen = true )
+	computer_screen_interaction.mouse_exited.connect( func(): touching_computer_screen = false)
+	
+	plug.self_modulate = Color.WHITE
+	plug_interaction.mouse_entered.connect(func(): touching_plug = true )
+	plug_interaction.mouse_exited.connect( func(): touching_plug = false)
+
+var plug_connected := false
 
 func _process(_delta: float) -> void:
 	blink_timer += 1
 	if camera.in_ui: return
+	set_mouse_mode(computer_screen_interaction,
+		[Cursor.MODE_OBSERVE, Cursor.MODE_INTERACT                                  ])
+	set_mouse_mode(boobs_interaction,
+		[                     Cursor.MODE_INTERACT,               Cursor.MODE_NORMAL])
+	set_mouse_mode(plug_interaction,
+		[Cursor.MODE_OBSERVE, Cursor.MODE_INTERACT                                  ])
 	if player.position.y <= 595:
 		var y_factor = (player.position.y - 315) / 280
 		var thing = round(((y_factor * 1.5) + 3.5) * 5) / 5
@@ -77,8 +103,12 @@ func _process(_delta: float) -> void:
 	if outlet.animation == "anim" and outlet.frame == 15:
 		outlet.play("idle")
 	if Input.is_action_just_pressed("left_click"):
+		if Cursor.current_mode == Cursor.MODE_INTERACT:
+			if touching_plug:
+				plug_connected = not plug_connected
 		if touching_boobs:
-			BoobExceptionHandler.exception()
+			if Cursor.current_mode in [Cursor.NORMAL, Cursor.INTERACT]:
+				BoobExceptionHandler.exception()
 		if touching_dart_cake:
 			dart_cake.play("anim")
 			dart_cake_sound.play()
@@ -88,3 +118,5 @@ func _process(_delta: float) -> void:
 		if touching_outlet:
 			outlet.play("anim")
 			outlet_sound.play()
+	
+	plug.modulate = Color.TRANSPARENT if plug_connected else Color.WHITE

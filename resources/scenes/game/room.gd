@@ -10,7 +10,7 @@ class_name Room
 @export_group("")
 @export var player: TopDownCharacter2D
 
-func set_mouse_mode(control: Control, valid: Array[Cursor.Mode] = Cursor.ALL_FUNCTIONAL, custom_shape: Control.CursorShape = Control.CURSOR_POINTING_HAND):
+func set_mouse_mode(control: Control, valid: Array[Cursor.Mode] = Cursor.ALL_FUNCTIONAL_MODES, custom_shape: Control.CursorShape = Control.CURSOR_POINTING_HAND):
 	if Cursor.current_mode in valid:
 		control.mouse_default_cursor_shape = custom_shape
 	else:

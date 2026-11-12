@@ -24,6 +24,30 @@ size = Vector2(2080, 80)
 atlas = ExtResource("3_pyajk")
 region = Rect2(5, 5, 384, 216)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_50vqh"]
+atlas = ExtResource("3_pyajk")
+region = Rect2(213, 478, 24, 24)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ahndk"]
+atlas = ExtResource("3_pyajk")
+region = Rect2(242, 478, 24, 24)
+filter_clip = true
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mt8xm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_50vqh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ahndk")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 4.25
+}]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_t5jfb"]
 atlas = ExtResource("3_pyajk")
 region = Rect2(88, 226, 82, 62)
@@ -941,27 +965,50 @@ scale = Vector2(5, 5)
 texture = SubResource("AtlasTexture_dh8s6")
 centered = false
 
-[node name="Plug" type="Sprite2D" parent="." index="4" unique_id=1216313038]
+[node name="ComputerScreen" type="AnimatedSprite2D" parent="." index="4" unique_id=1605778361]
+self_modulate = Color(1, 1, 1, 0)
+position = Vector2(1135, 400)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_mt8xm")
+centered = false
+
+[node name="Control" type="Control" parent="ComputerScreen" index="0" unique_id=519777604]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Plug" type="Sprite2D" parent="." index="5" unique_id=1216313038]
 position = Vector2(940, 535)
 scale = Vector2(5, 5)
 texture = SubResource("AtlasTexture_t5jfb")
 centered = false
 
-[node name="Clockey" type="AnimatedSprite2D" parent="." index="5" unique_id=1766173608]
+[node name="Control" type="Control" parent="Plug" index="0" unique_id=1020210240]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 46.0
+offset_top = 23.0
+offset_right = 71.0
+offset_bottom = 58.0
+
+[node name="Clockey" type="AnimatedSprite2D" parent="." index="6" unique_id=1766173608]
 position = Vector2(950, 225)
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_pyajk")
 animation = &"right_idle"
 centered = false
 
-[node name="GFChair" type="AnimatedSprite2D" parent="." index="6" unique_id=1652378349]
+[node name="GFChair" type="AnimatedSprite2D" parent="." index="7" unique_id=1652378349]
 position = Vector2(1000, 515)
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_xun36")
 animation = &"spin"
 centered = false
 
-[node name="Control" type="Control" parent="GFChair" index="0" unique_id=1751526192]
+[node name="Boobs" type="Control" parent="GFChair" index="0" unique_id=1751526192]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 128.0
@@ -970,14 +1017,14 @@ offset_right = 148.0
 offset_bottom = 48.0
 mouse_default_cursor_shape = 8
 
-[node name="LilDoor" type="AnimatedSprite2D" parent="." index="7" unique_id=1771755188]
+[node name="LilDoor" type="AnimatedSprite2D" parent="." index="8" unique_id=1771755188]
 position = Vector2(1525, 240)
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_n3ks6")
 animation = &"LilDoor"
 centered = false
 
-[node name="FunnyThings" type="Node2D" parent="." index="8" unique_id=1768371818]
+[node name="FunnyThings" type="Node2D" parent="." index="9" unique_id=1768371818]
 
 [node name="Fih" type="AnimatedSprite2D" parent="FunnyThings" index="0" unique_id=1095524271]
 scale = Vector2(5, 5)

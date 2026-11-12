@@ -7,34 +7,33 @@ enum Mode {
 	SPEAK
 }
 
-const NORMAL   := Mode.NORMAL
-const OBSERVE  := Mode.OBSERVE
-const INTERACT := Mode.INTERACT
-const SPEAK    := Mode.SPEAK
+const MODE_NORMAL   := Mode.NORMAL
+const MODE_OBSERVE  := Mode.OBSERVE
+const MODE_INTERACT := Mode.INTERACT
+const MODE_SPEAK    := Mode.SPEAK
 
-const ALL    := [NORMAL, OBSERVE, INTERACT, SPEAK]
-const ALL_FUNCTIONAL := [OBSERVE, INTERACT, SPEAK]
+const ALL_MODES := [MODE_NORMAL, MODE_OBSERVE, MODE_INTERACT, MODE_SPEAK]
+const ALL_FUNCTIONAL_MODES   := [MODE_OBSERVE, MODE_INTERACT, MODE_SPEAK]
 
 func mode_to_string(mode: Mode) -> String:
 	match mode:
-		OBSERVE:  return "observe"
-		INTERACT: return "interact"
-		SPEAK:    return "speak"
+		MODE_OBSERVE:  return "observe"
+		MODE_INTERACT: return "interact"
+		MODE_SPEAK:    return "speak"
 		_:        return "normal"
 
 func string_to_mode(string: String) -> Mode:
 	match string:
-		"observe":  return OBSERVE
-		"interact": return INTERACT
-		"speak":    return SPEAK
-		_:          return NORMAL
+		"observe":  return MODE_OBSERVE
+		"interact": return MODE_INTERACT
+		"speak":    return MODE_SPEAK
+		_:          return MODE_NORMAL
 
 func next_mode(mode: Mode) -> Mode:
 	match mode:
-		OBSERVE:  return INTERACT
-		INTERACT: return SPEAK
-		SPEAK:    return OBSERVE
-		_:        return OBSERVE
+		MODE_OBSERVE:  return MODE_INTERACT
+		MODE_INTERACT: return MODE_SPEAK
+		_:             return MODE_OBSERVE
 
 const CURSOR_SPEED := 1100.0
 var virtual_pos := Vector2.ZERO
@@ -55,7 +54,7 @@ var textureMap: Dictionary[String, String] = {
 }
 
 var can_change_cursor := false
-var current_mode := NORMAL
+var current_mode := MODE_NORMAL
 var _cached_textures: Dictionary[String, Texture2D] = {}
 
 func get_cached_texture(path: String) -> Texture2D:
