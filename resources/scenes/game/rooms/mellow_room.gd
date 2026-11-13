@@ -144,6 +144,8 @@ func _process(_delta: float) -> void:
 		if Cursor.current_mode == Cursor.MODE_OBSERVE:
 			if touching_calendar:
 				load_overlay("calendar")
+			if touching_clockey:
+				load_overlay("clockey")
 			if touching_tutorial:
 				show_ui("tutorial")
 		if touching_boobs:

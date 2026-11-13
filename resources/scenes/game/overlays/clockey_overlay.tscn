@@ -13,3 +13,4 @@ scale = Vector2(5, 5)
 texture = SubResource("AtlasTexture_f6a36")
 centered = false
 script = ExtResource("1_d6voe")
+leave_rect = Rect2i(320, 180, 60, 33)
