@@ -8,6 +8,9 @@ extends Overlay
 @onready var loading_screen := $ScreenElements/LoadingScreen
 @onready var loading_bar := $ScreenElements/LoadingScreen/LoadingBar
 
+@onready var accounts_screen := $ScreenElements/AccountsScreen
+@onready var accounts := $ScreenElements/AccountsScreen/Accounts
+
 var did_play_button_sound := false
 
 var powered_on := false
@@ -36,7 +39,8 @@ func _turn_on() -> void:
 				get_tree().create_timer(1).timeout.connect(func():
 					loading_screen.modulate = Color.TRANSPARENT
 					get_tree().create_timer(0.5).timeout.connect(func():
-						pass
+						accounts_screen.visible = true
+						accounts.play("appear")
 					)
 				)
 			)
@@ -46,9 +50,12 @@ func _turn_on() -> void:
 func _turn_off() -> void:
 	powered_on = false
 	loading_screen.modulate = Color.TRANSPARENT
+	loading_screen.visible = true
+	accounts_screen.visible = false
+	accounts.play("invis")
 
 func _ready() -> void:
-	loading_screen.modulate = Color.TRANSPARENT
+	_turn_off()
 	on_off_button.pressed.connect(func():
 		if _plug_connected():
 			powered_on = not powered_on

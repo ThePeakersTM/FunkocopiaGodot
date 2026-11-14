@@ -29,6 +29,125 @@ region = Rect2(588, 1, 203, 154)
 atlas = ExtResource("1_6sh6b")
 region = Rect2(792, 1, 20, 7)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_5pd38"]
+atlas = ExtResource("1_6sh6b")
+region = Rect2(385, 156, 204, 154)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lkjrp"]
+atlas = ExtResource("1_6sh6b")
+region = Rect2(590, 156, 63, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bq3hn"]
+atlas = ExtResource("1_6sh6b")
+region = Rect2(654, 156, 63, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k46el"]
+atlas = ExtResource("1_6sh6b")
+region = Rect2(718, 156, 63, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4q5rk"]
+atlas = ExtResource("1_6sh6b")
+region = Rect2(718, 156, 63, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qf3v2"]
+atlas = ExtResource("1_6sh6b")
+region = Rect2(654, 156, 63, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ybq2t"]
+atlas = ExtResource("1_6sh6b")
+region = Rect2(590, 156, 63, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3xgcx"]
+atlas = ExtResource("1_6sh6b")
+region = Rect2(590, 217, 63, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_82edm"]
+atlas = ExtResource("1_6sh6b")
+region = Rect2(654, 217, 63, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_igvsd"]
+atlas = ExtResource("1_6sh6b")
+region = Rect2(590, 217, 63, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y4igv"]
+atlas = ExtResource("1_6sh6b")
+region = Rect2(718, 156, 63, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tuov0"]
+atlas = ExtResource("1_6sh6b")
+region = Rect2(718, 156, 63, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f657h"]
+atlas = ExtResource("1_6sh6b")
+region = Rect2(590, 156, 63, 60)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f6a36"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lkjrp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bq3hn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k46el")
+}],
+"loop": 0,
+"name": &"appear",
+"speed": 4.25
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4q5rk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qf3v2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ybq2t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ybq2t")
+}],
+"loop": 0,
+"name": &"disappear",
+"speed": 4.25
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3xgcx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_82edm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_igvsd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y4igv")
+}],
+"loop": 0,
+"name": &"henry",
+"speed": 4.25
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tuov0")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f657h")
+}],
+"loop": 1,
+"name": &"invis",
+"speed": 0.0
+}]
+
 [node name="Overlay" type="Sprite2D" unique_id=135972475]
 texture_filter = 1
 scale = Vector2(5, 5)
@@ -67,6 +186,7 @@ offset_bottom = 180.0
 mouse_filter = 2
 
 [node name="LoadingScreen" type="Sprite2D" parent="ScreenElements" unique_id=131305505]
+visible = false
 z_index = 1
 position = Vector2(-1.0000076, -1.9073486e-06)
 scale = Vector2(0.9999998, 0.9999998)
@@ -78,3 +198,29 @@ z_index = -1
 position = Vector2(45, 104)
 texture = SubResource("AtlasTexture_t5jfb")
 centered = false
+
+[node name="AccountsScreen" type="Sprite2D" parent="ScreenElements" unique_id=757455800]
+position = Vector2(-1, 0)
+texture = SubResource("AtlasTexture_5pd38")
+centered = false
+
+[node name="Accounts" type="AnimatedSprite2D" parent="ScreenElements/AccountsScreen" unique_id=1739665828]
+position = Vector2(107, 51)
+sprite_frames = SubResource("SpriteFrames_f6a36")
+animation = &"idle"
+centered = false
+
+[node name="Bfellow" type="Control" parent="ScreenElements/AccountsScreen/Accounts" unique_id=507765357]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 63.0
+offset_bottom = 23.0
+mouse_default_cursor_shape = 2
+
+[node name="Henry" type="Control" parent="ScreenElements/AccountsScreen/Accounts" unique_id=1375439568]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 37.0
+offset_right = 63.0
+offset_bottom = 60.0
+mouse_default_cursor_shape = 2
