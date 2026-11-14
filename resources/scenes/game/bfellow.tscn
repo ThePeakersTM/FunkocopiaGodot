@@ -20,7 +20,7 @@ anim_animation_names = Dictionary[String, String]({
 position = Vector2(0, -27.000008)
 scale = Vector2(0.9999998, 0.9999998)
 sprite_frames = ExtResource("2_f1ic4")
-animation = &"BfellowTutorial"
+animation = &"BfellowConnectPlug"
 centered = false
 offset = Vector2(-32, -32)
 

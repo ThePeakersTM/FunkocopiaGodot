@@ -41,6 +41,8 @@ class_name TopDownCharacter2D
 ## or by calculating it with the method [method TopDownCharacter2D.calculate_normals].
 @export var anim_facing_direction: String = "DD"
 
+var last_played_backwards := false
+
 #region navigation
 @export_group("Navigation", "navigation_")
 @export var navigation_offset := Vector2.ZERO
@@ -48,6 +50,7 @@ class_name TopDownCharacter2D
 var navigating := false
 var navigation_velocity: Vector2
 var nav_dir_override: String = ""
+var nav_complete: Callable = _on_comp
 #endregion
 
 var anim_animation := ""
@@ -65,7 +68,7 @@ func _get_lfd() -> Array[String]:
 		a.append(i.to_lower())
 	return a
 
-func play(animation: StringName, speed: float = 1.0):
+func play(animation: StringName, speed: float = 1.0, backwards: bool = false):
 	anim_animation = animation
 	var animToPlay = animation
 	if anim_animation_names.has(animation):
@@ -93,7 +96,14 @@ func play(animation: StringName, speed: float = 1.0):
 			_pushed_anim_warnings.append(animToPlay)
 		return
 	
-	anim_sprite.play(animToPlay, speed)
+	anim_sprite.speed_scale = speed
+	
+	last_played_backwards = backwards
+	
+	if backwards:
+		anim_sprite.play_backwards(animToPlay)
+	else:
+		anim_sprite.play(animToPlay, speed)
 
 func calculate_normals() -> void:
 	var vel = velocity.sign()
@@ -112,16 +122,22 @@ func calculate_normals() -> void:
 func _get_navpos(pos: Vector2) -> Vector2:
 	return pos - navigation_offset
 
-func navigate_to(pos: Vector2, direction_override: String = "") -> void:
+func _on_comp() -> void:
+	pass
+
+func navigate_to(pos: Vector2, on_complete: Callable = _on_comp, direction_override: String = "") -> void:
 	if nav.target_position != _get_navpos(pos):
 		nav.target_position = _get_navpos(pos)
 	navigating = true
 	nav_dir_override = direction_override
+	nav_complete = on_complete
 
 func _physics_process(_delta: float) -> void:
 	if navigating:
-		if nav.is_target_reached() or nav.target_position.distance_to(_get_navpos(global_position)) < 5:
+		if nav.is_target_reached() or nav.target_position.distance_to(_get_navpos(global_position)) < 6:
+			global_position = nav.target_position
 			navigating = false
+			nav_complete.call()
 		else:
 			navigation_velocity = to_local(
 				nav.get_next_path_position()

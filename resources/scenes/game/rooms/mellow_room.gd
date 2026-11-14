@@ -140,7 +140,7 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("left_click"):
 		if Cursor.current_mode == Cursor.MODE_INTERACT:
 			if touching_plug:
-				player.navigate_to(plug.position + Vector2(50, 275), "RR")
+				player.navigate_to(plug.global_position + Vector2(102.5, 260), _on_plug, "RR")
 		if Cursor.current_mode == Cursor.MODE_OBSERVE:
 			if touching_calendar:
 				load_overlay("calendar")
@@ -162,3 +162,10 @@ func _process(_delta: float) -> void:
 			outlet_sound.play()
 	
 	plug.modulate = Color.TRANSPARENT if plug_connected else Color.WHITE
+
+func _on_plug() -> void:
+	player.can_process_data = false
+	player.play("plug", 1.0, plug_connected)
+
+func on_plug() -> void:
+	plug_connected = not plug_connected

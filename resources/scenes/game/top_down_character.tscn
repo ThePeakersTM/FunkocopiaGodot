@@ -11,4 +11,3 @@ script = ExtResource("1_gk0ws")
 path_desired_distance = 3.0
 target_desired_distance = 3.0
 path_postprocessing = 1
-debug_enabled = true

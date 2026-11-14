@@ -1,6 +1,7 @@
 extends TopDownCharacter2D
 
-const SPEED = 350
+const DEFAULT_OFFSET := Vector2(0, -27)
+const SPEED := 350
 
 var _true_pos: Vector2 = Vector2.ZERO
 var can_process_data := true
@@ -22,10 +23,21 @@ func _physics_process(delta: float) -> void:
 	
 	if get_parent().get_node("Camera2D").in_ui == true: return
 	if not can_process_data:
+		if anim_animation == "plug":
+			anim_sprite.position = Vector2(-6.5, -20)
+			if anim_sprite.frame == (0 if last_played_backwards else 18):
+				get_parent().room.on_plug()
+				play("idle")
+				can_process_data = true
+				anim_sprite.position = DEFAULT_OFFSET
 		if anim_animation == "get_up" and anim_sprite.frame == 9:
 			play("idle")
 			can_process_data = true
+			anim_sprite.position = DEFAULT_OFFSET
 		return
+	else:
+		anim_sprite.position = DEFAULT_OFFSET
+		
 	
 	position = _true_pos
 	velocity.x = 0
