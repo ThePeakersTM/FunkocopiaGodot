@@ -1,6 +1,7 @@
 extends Sprite2D
 class_name Overlay
 
+@export var custom_id := "overlay"
 @export var leave_rect := Rect2i(0, 0, 20, 20)
 
 var leave_interaction: Control
@@ -20,6 +21,6 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("left_click"):
 		if touching_leave:
-			get_parent().get_parent().on_hide_ui("overlay")
+			get_parent().get_parent().on_hide_ui(custom_id)
 			hide()
 			queue_free()

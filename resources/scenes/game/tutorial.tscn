@@ -192,6 +192,8 @@ scale = Vector2(5, 5)
 texture = SubResource("AtlasTexture_nv3l3")
 centered = false
 script = ExtResource("2_4lqoq")
+custom_id = "tutorial"
+leave_rect = Rect2i(279, 79, 55, 47)
 
 [node name="Page" type="AnimatedSprite2D" parent="." unique_id=1175263026]
 position = Vector2(106, 7)
@@ -217,11 +219,3 @@ action_mode = 0
 
 [node name="PageFlip" type="AudioStreamPlayer" parent="." unique_id=2044385880]
 stream = ExtResource("4_7b1gh")
-
-[node name="Leave" type="Button" parent="." unique_id=1288636254]
-self_modulate = Color(1, 1, 1, 0)
-offset_left = 279.0
-offset_top = 79.0
-offset_right = 334.0
-offset_bottom = 126.0
-mouse_default_cursor_shape = 2

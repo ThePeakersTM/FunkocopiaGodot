@@ -14,11 +14,13 @@ func _ready() -> void:
 		post_load_room()
 	else:
 		load_room()
+	
+	load_overlay("res://resources/scenes/game/tutorial.tscn", true)
 
-func load_overlay(path: String) -> void:
+func load_overlay(path: String, custom_path: bool = false) -> void:
 	var loaded: Overlay = (
 		load(
-			"res://resources/scenes/game/overlays/" + path + "_overlay.tscn"
+			path if custom_path else "res://resources/scenes/game/overlays/" + path + "_overlay.tscn"
 		) as PackedScene
 	).instantiate()
 	overlay = loaded

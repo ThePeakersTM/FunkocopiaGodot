@@ -1,10 +1,9 @@
-extends Sprite2D
+extends Overlay
 
 @onready var page := $Page
 @onready var page_corner := $PageCorner
 @onready var page_corner_interaction := $PageCorner/Button
 @onready var page_flip := $PageFlip
-@onready var leave := $Leave
 
 func _ready() -> void:
 	page.animation = "Page"
@@ -26,14 +25,13 @@ func _ready() -> void:
 		page_corner.animation = "PageCorner"
 		page_corner.frame = page.frame
 	)
-	leave.pressed.connect(func():
-		get_parent().get_parent().on_hide_ui("tutorial")
-		hide()
-	)
+	
+	super._ready()
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	if page.frame == 0:
 		if Options.controller:
 			page.play("PageXB")
 		else:
 			page.play("Page")
+	super._process(delta)
