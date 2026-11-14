@@ -83,6 +83,8 @@ func play(animation: StringName, speed: float = 1.0, backwards: bool = false):
 			_pushed_null_sprite_warning = true
 		return
 	
+	animToPlay = animToPlay.replace("-||-",  anim_sprite.animation)
+	animToPlay = animToPlay.replace("-|-|-", anim_animation)
 	if not animToPlay.begins_with("|-|"):
 		animToPlay = anim_prefix + animToPlay
 	else:
