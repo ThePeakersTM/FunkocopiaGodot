@@ -5,6 +5,9 @@ extends Overlay
 
 @onready var computer_boot := $ComputerStart
 
+@onready var loading_screen := $ScreenElements/LoadingScreen
+@onready var loading_bar := $ScreenElements/LoadingScreen/LoadingBar
+
 var did_play_button_sound := false
 
 var powered_on := false
@@ -14,11 +17,38 @@ func _plug_connected() -> bool:
 
 func _turn_on() -> void:
 	computer_boot.play()
+	loading_bar.visible = false
+	create_tween().tween_method(
+		func(val): loading_screen.modulate = Color(1, 1, 1, val),
+		0.0,
+		1.0,
+		0.75
+	).finished.connect(func():
+		get_tree().create_timer(0.5).timeout.connect(func():
+			loading_bar.visible = true
+			create_tween().tween_method(
+				func(val):
+					loading_bar.position = Vector2(45 + ((val % 10) * 8), 104),
+				0,
+				26,
+				2.7
+			).finished.connect(func():
+				get_tree().create_timer(1).timeout.connect(func():
+					loading_screen.modulate = Color.TRANSPARENT
+					get_tree().create_timer(0.5).timeout.connect(func():
+						pass
+					)
+				)
+			)
+		)
+	)
 
 func _turn_off() -> void:
-	pass
+	powered_on = false
+	loading_screen.modulate = Color.TRANSPARENT
 
 func _ready() -> void:
+	loading_screen.modulate = Color.TRANSPARENT
 	on_off_button.pressed.connect(func():
 		if _plug_connected():
 			powered_on = not powered_on

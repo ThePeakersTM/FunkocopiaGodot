@@ -25,6 +25,10 @@ region = Rect2(385, 1, 202, 154)
 atlas = ExtResource("1_6sh6b")
 region = Rect2(588, 1, 203, 154)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_t5jfb"]
+atlas = ExtResource("1_6sh6b")
+region = Rect2(792, 1, 20, 7)
+
 [node name="Overlay" type="Sprite2D" unique_id=135972475]
 texture_filter = 1
 scale = Vector2(5, 5)
@@ -63,8 +67,14 @@ offset_bottom = 180.0
 mouse_filter = 2
 
 [node name="LoadingScreen" type="Sprite2D" parent="ScreenElements" unique_id=131305505]
-modulate = Color(1, 1, 1, 0)
+z_index = 1
 position = Vector2(-1.0000076, -1.9073486e-06)
 scale = Vector2(0.9999998, 0.9999998)
 texture = SubResource("AtlasTexture_lv2gj")
+centered = false
+
+[node name="LoadingBar" type="Sprite2D" parent="ScreenElements/LoadingScreen" unique_id=1667299778]
+z_index = -1
+position = Vector2(45, 104)
+texture = SubResource("AtlasTexture_t5jfb")
 centered = false
