@@ -6,7 +6,7 @@
 .idea/
 .scripts/
 
-builds/
+.builds/
 export_presets.cfg
 
 # Linux
