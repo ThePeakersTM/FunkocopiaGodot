@@ -17,6 +17,7 @@ anim_animation_names = Dictionary[String, String]({
 })
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." index="0" unique_id=572894081]
+position = Vector2(0, -27.000008)
 scale = Vector2(0.9999998, 0.9999998)
 sprite_frames = ExtResource("2_f1ic4")
 animation = &"BfellowTutorial"
@@ -24,6 +25,6 @@ centered = false
 offset = Vector2(-32, -32)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1" unique_id=1549465818]
-position = Vector2(-1, 27)
+position = Vector2(-1, -4.2915344e-06)
 scale = Vector2(0.99999976, 0.99999976)
 shape = SubResource("RectangleShape2D_4urv7")

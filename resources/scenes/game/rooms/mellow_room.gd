@@ -140,7 +140,7 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("left_click"):
 		if Cursor.current_mode == Cursor.MODE_INTERACT:
 			if touching_plug:
-				plug_connected = not plug_connected
+				player.navigate_to(plug.position + Vector2(50, 275), "RR")
 		if Cursor.current_mode == Cursor.MODE_OBSERVE:
 			if touching_calendar:
 				load_overlay("calendar")

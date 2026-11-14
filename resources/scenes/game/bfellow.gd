@@ -15,7 +15,9 @@ func set_pos(pos: Vector2) -> void:
 
 var velocity_dist := 1.0
 
-func _process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
+	super._physics_process(delta)
+	
 	blink_timer += 1
 	
 	if get_parent().get_node("Camera2D").in_ui == true: return
@@ -28,34 +30,37 @@ func _process(_delta: float) -> void:
 	position = _true_pos
 	velocity.x = 0
 	velocity.y = 0
-	if Input.is_key_pressed(KEY_W):
-		velocity.y -= SPEED
-	if Input.is_key_pressed(KEY_S):
-		velocity.y += SPEED
-	if Input.is_key_pressed(KEY_A):
-		velocity.x -= SPEED
-	if Input.is_key_pressed(KEY_D):
-		velocity.x += SPEED
-	if Options.controller:
-		var gx := Input.get_joy_axis(0, JOY_AXIS_LEFT_X)
-		var gy := Input.get_joy_axis(0, JOY_AXIS_LEFT_Y)
-		
-		if abs(gx) < Options.controller_deadzone:
-			gx = 0
-		if abs(gy) < Options.controller_deadzone:
-			gy = 0
-		gx = signf(gx)
-		gy = signf(gy)
-		velocity.x += gx * SPEED
-		velocity.y += gy * SPEED
-	velocity_dist = sqrt((velocity.x * velocity.x) + (velocity.y * velocity.y))
-	if velocity_dist > 1:
-		velocity_dist = 1.25
-	if velocity.x != 0 and velocity.y != 0:
-		velocity = Vector2(
-			velocity.x / velocity_dist,
-			velocity.y / velocity_dist
-		)
+	if not navigating:
+		if Input.is_key_pressed(KEY_W):
+			velocity.y -= SPEED
+		if Input.is_key_pressed(KEY_S):
+			velocity.y += SPEED
+		if Input.is_key_pressed(KEY_A):
+			velocity.x -= SPEED
+		if Input.is_key_pressed(KEY_D):
+			velocity.x += SPEED
+		if Options.controller:
+			var gx := Input.get_joy_axis(0, JOY_AXIS_LEFT_X)
+			var gy := Input.get_joy_axis(0, JOY_AXIS_LEFT_Y)
+			
+			if abs(gx) < Options.controller_deadzone:
+				gx = 0
+			if abs(gy) < Options.controller_deadzone:
+				gy = 0
+			gx = signf(gx)
+			gy = signf(gy)
+			velocity.x += gx * SPEED
+			velocity.y += gy * SPEED
+		velocity_dist = sqrt((velocity.x * velocity.x) + (velocity.y * velocity.y))
+		if velocity_dist > 1:
+			velocity_dist = 1.25
+		if velocity.x != 0 and velocity.y != 0:
+			velocity = Vector2(
+				velocity.x / velocity_dist,
+				velocity.y / velocity_dist
+			)
+	else:
+		velocity = navigation_velocity * SPEED
 	calculate_normals()
 	if moving:
 		play("walk", max(abs(velocity.x), abs(velocity.y)) / 200)

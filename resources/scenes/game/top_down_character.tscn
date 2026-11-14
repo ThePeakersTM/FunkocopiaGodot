@@ -6,3 +6,9 @@
 texture_filter = 1
 scale = Vector2(5, 5)
 script = ExtResource("1_gk0ws")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1445140743]
+path_desired_distance = 3.0
+target_desired_distance = 3.0
+path_postprocessing = 1
+debug_enabled = true

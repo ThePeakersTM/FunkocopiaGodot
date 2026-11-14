@@ -4,3 +4,5 @@
 
 [node name="Room" type="Node2D" unique_id=1200955835]
 script = ExtResource("1_xniq3")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=1255163599]

@@ -40,10 +40,18 @@ class_name TopDownCharacter2D
 ## The current direction of facing. You can either change it in paramaters, in script
 ## or by calculating it with the method [method TopDownCharacter2D.calculate_normals].
 @export var anim_facing_direction: String = "DD"
+
+#region navigation
+@export_group("Navigation", "navigation_")
+@export var navigation_offset := Vector2.ZERO
+@onready var nav: NavigationAgent2D = $NavigationAgent2D
+var navigating := false
+var navigation_velocity: Vector2
+var nav_dir_override: String = ""
+#endregion
+
 var anim_animation := ""
-
 var moving := false
-
 var moonwalk := false
 
 #region warnings
@@ -96,4 +104,25 @@ func calculate_normals() -> void:
 		moving = false
 		return
 	moving = true
-	anim_facing_direction = anim_direction_names[normal]
+	if navigating and nav_dir_override != "":
+		anim_facing_direction = nav_dir_override
+	else:
+		anim_facing_direction = anim_direction_names[normal]
+
+func _get_navpos(pos: Vector2) -> Vector2:
+	return pos - navigation_offset
+
+func navigate_to(pos: Vector2, direction_override: String = "") -> void:
+	if nav.target_position != _get_navpos(pos):
+		nav.target_position = _get_navpos(pos)
+	navigating = true
+	nav_dir_override = direction_override
+
+func _physics_process(_delta: float) -> void:
+	if navigating:
+		if nav.is_target_reached() or nav.target_position.distance_to(_get_navpos(global_position)) < 5:
+			navigating = false
+		else:
+			navigation_velocity = to_local(
+				nav.get_next_path_position()
+			).normalized()
