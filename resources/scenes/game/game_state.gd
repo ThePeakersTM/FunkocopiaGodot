@@ -26,7 +26,7 @@ func load_overlay(path: String, custom_path: bool = false) -> void:
 	overlay = loaded
 	camera.get_node("UI").add_child(overlay)
 	on_show_ui("overlay")
-	Cursor.can_change_cursor = false
+	Cursor.can_change_cursor = overlay.can_change_cursor
 
 func post_load_room() -> void:
 	print("Successfully loaded room with name \"" + room.title + "\".")

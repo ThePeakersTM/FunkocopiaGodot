@@ -194,6 +194,7 @@ centered = false
 script = ExtResource("2_4lqoq")
 custom_id = "tutorial"
 leave_rect = Rect2i(279, 79, 55, 47)
+can_change_cursor = true
 
 [node name="Page" type="AnimatedSprite2D" parent="." unique_id=1175263026]
 position = Vector2(106, 7)

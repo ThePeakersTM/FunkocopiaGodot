@@ -47,7 +47,7 @@ func change_scene(scene_path: String, post_transition: Callable = func(): pass) 
 			material.set_shader_parameter("progress", value),
 		0.0,
 		1.0,
-		0.5
+		0.4
 	)
 
 	await tween.finished

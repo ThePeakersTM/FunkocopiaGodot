@@ -3,6 +3,7 @@ class_name Overlay
 
 @export var custom_id := "overlay"
 @export var leave_rect := Rect2i(0, 0, 20, 20)
+@export var can_change_cursor := false
 
 var leave_interaction: Control
 
