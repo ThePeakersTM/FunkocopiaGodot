@@ -1,4 +1,4 @@
-namespace RubiconEngineFridayNightFunkin.resources;
+namespace Funkocopia.resources;
 
 using Godot;
 using System;

@@ -1,6 +1,6 @@
 ﻿Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rubicon Engine- Friday Night Funkin-", "Rubicon Engine- Friday Night Funkin-.csproj", "{C60F9FCA-0D49-4154-BB84-530274D1977C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Funkocopia", "Funkocopia.csproj", "{C60F9FCA-0D49-4154-BB84-530274D1977C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
