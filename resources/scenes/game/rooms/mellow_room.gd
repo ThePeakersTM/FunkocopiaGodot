@@ -24,6 +24,7 @@ extends Room
 
 @onready var plug := $Plug
 @onready var plug_interaction := $Plug/Control
+@onready var plug_sound := $Plug/Sound
 
 @onready var vent_door := $LilDoor
 @onready var vent_door_interaction := $LilDoor/Control
@@ -86,6 +87,14 @@ func _ready() -> void:
 
 var plug_connected := false
 
+func _face_player_up() -> void:
+	if player.anim_facing_direction == "DR":
+		player.anim_facing_direction = "UR"
+	elif player.anim_facing_direction == "DD":
+		player.anim_facing_direction = "UU"
+	elif player.anim_facing_direction == "DL":
+		player.anim_facing_direction = "UL"
+
 func _process(_delta: float) -> void:
 	blink_timer += 1
 	if camera.in_ui: return
@@ -145,11 +154,13 @@ func _process(_delta: float) -> void:
 				player.navigate_to(plug.global_position + Vector2(150, 280), _on_comp, "sides")
 		if Cursor.current_mode == Cursor.MODE_OBSERVE:
 			if touching_calendar:
+				_face_player_up()
 				load_overlay("calendar")
 			if touching_clockey:
+				_face_player_up()
 				load_overlay("clockey")
 			if touching_tutorial:
-				load_overlay("tutorial")
+				player.navigate_to($PlayerSpawn.global_position, _on_tutor)
 		if touching_boobs:
 			if Cursor.current_mode in [Cursor.NORMAL, Cursor.INTERACT]:
 				BoobExceptionHandler.exception()
@@ -165,10 +176,18 @@ func _process(_delta: float) -> void:
 	
 	plug.modulate = Color.TRANSPARENT if plug_connected else Color.WHITE
 
+func _on_tutor() -> void:
+	player.anim_facing_direction = "DD"
+	player.can_process_data = false
+	player.play("get_up", 1.0, true)
+
 func _on_comp() -> void:
+	player.anim_facing_direction = "RR"
 	load_overlay("computer")
 
 func _on_plug() -> void:
+	plug_sound.play()
+	player.anim_facing_direction = "RR"
 	player.can_process_data = false
 	player.play("plug", 1.0, plug_connected)
 

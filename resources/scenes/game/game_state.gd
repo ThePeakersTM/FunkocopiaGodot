@@ -3,6 +3,8 @@ extends Node2D
 @onready var player := $Bfellow
 @onready var camera := $Camera2D
 
+var _parsed_overlays: Dictionary[String, Overlay] = {}
+
 var room: Room = null
 var overlay: Overlay = null
 
@@ -18,15 +20,20 @@ func _ready() -> void:
 	load_overlay("tutorial")
 
 func load_overlay(path: String) -> void:
-	var loaded: Overlay = (
-		load(
-			path if path.begins_with(
-				"res://"
-			) else "res://resources/scenes/game/overlays/" + path + "_overlay.tscn"
-		) as PackedScene
-	).instantiate()
-	overlay = loaded
-	camera.get_node("UI").add_child(overlay)
+	if _parsed_overlays.has(path):
+		overlay = _parsed_overlays[path]
+		overlay.show()
+	else:
+		var loaded: Overlay = (
+			load(
+				path if path.begins_with(
+					"res://"
+				) else "res://resources/scenes/game/overlays/" + path + "_overlay.tscn"
+			) as PackedScene
+		).instantiate()
+		overlay = loaded
+		_parsed_overlays[path] = overlay
+		camera.get_node("UI").add_child(overlay)
 	on_show_ui("overlay")
 	Cursor.can_change_cursor = overlay.can_change_cursor
 

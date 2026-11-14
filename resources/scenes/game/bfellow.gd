@@ -33,8 +33,11 @@ func _physics_process(delta: float) -> void:
 			anim_sprite.position = Vector2(-1, -57)
 			if anim_sprite.frame == 11:
 				complete_anim = true
-		if anim_animation == "get_up" and anim_sprite.frame == 9:
-			complete_anim = true
+		if anim_animation == "get_up":
+			if anim_sprite.frame == (0 if last_played_backwards else 8):
+				complete_anim = true
+				if last_played_backwards:
+					get_parent().load_overlay("tutorial")
 		if complete_anim:
 			play("idle")
 			can_process_data = true

@@ -2,6 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://dtosaugvlibl1" path="res://assets/rooms/overlay/compooter/compooter.png" id="1_6sh6b"]
 [ext_resource type="Script" uid="uid://cuqr5c7353u16" path="res://resources/scenes/game/overlays/computer_overlay.gd" id="2_javnd"]
+[ext_resource type="AudioStream" uid="uid://bh3cxu5tyow41" path="res://assets/sounds/room_specific/mellow_room/computer_button.ogg" id="3_fg34s"]
+[ext_resource type="AudioStream" uid="uid://0hbgck8tso1h" path="res://assets/sounds/room_specific/mellow_room/computer_start.ogg" id="3_lv2gj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fwont"]
 atlas = ExtResource("1_6sh6b")
@@ -31,6 +33,9 @@ centered = false
 script = ExtResource("2_javnd")
 leave_rect = Rect2i(328, 155, 55, 47)
 
+[node name="ComputerStart" type="AudioStreamPlayer" parent="." unique_id=1117172421]
+stream = ExtResource("3_lv2gj")
+
 [node name="OnOffButton" type="TextureButton" parent="." unique_id=1551351121]
 offset_left = 181.0
 offset_top = 184.0
@@ -40,22 +45,26 @@ mouse_default_cursor_shape = 2
 texture_normal = SubResource("AtlasTexture_f6a36")
 texture_pressed = SubResource("AtlasTexture_javnd")
 
+[node name="Sound" type="AudioStreamPlayer" parent="OnOffButton" unique_id=479178173]
+stream = ExtResource("3_fg34s")
+
 [node name="CurvedScreen" type="Sprite2D" parent="." unique_id=370363099]
 position = Vector2(91, 26)
 texture = SubResource("AtlasTexture_fg34s")
 centered = false
 
 [node name="ScreenElements" type="Control" parent="." unique_id=894591306]
-clip_children = 2
 layout_mode = 3
 anchors_preset = 0
 offset_left = 91.0
 offset_top = 26.0
 offset_right = 293.0
 offset_bottom = 180.0
+mouse_filter = 2
 
 [node name="LoadingScreen" type="Sprite2D" parent="ScreenElements" unique_id=131305505]
 modulate = Color(1, 1, 1, 0)
-position = Vector2(-1, 0)
+position = Vector2(-1.0000076, -1.9073486e-06)
+scale = Vector2(0.9999998, 0.9999998)
 texture = SubResource("AtlasTexture_lv2gj")
 centered = false
