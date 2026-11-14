@@ -80,7 +80,7 @@ func _physics_process(delta: float) -> void:
 		velocity = navigation_velocity * SPEED
 	calculate_normals()
 	if moving:
-		play("walk", max(abs(velocity.x), abs(velocity.y)) / 200)
+		play("walk", (max(abs(velocity.x), abs(velocity.y)) / SPEED) * 1.25)
 	else:
 		if anim_animation != "blink":
 			play("idle", 1)

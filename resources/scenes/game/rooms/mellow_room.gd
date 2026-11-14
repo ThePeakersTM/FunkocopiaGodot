@@ -140,14 +140,16 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("left_click"):
 		if Cursor.current_mode == Cursor.MODE_INTERACT:
 			if touching_plug:
-				player.navigate_to(plug.global_position + Vector2(100, 260), _on_plug, "RR")
+				player.navigate_to(plug.global_position + Vector2(100, 260), _on_plug, "sides")
+			if touching_computer_screen:
+				player.navigate_to(plug.global_position + Vector2(150, 280), _on_comp, "sides")
 		if Cursor.current_mode == Cursor.MODE_OBSERVE:
 			if touching_calendar:
 				load_overlay("calendar")
 			if touching_clockey:
 				load_overlay("clockey")
 			if touching_tutorial:
-				show_ui("tutorial")
+				load_overlay("tutorial")
 		if touching_boobs:
 			if Cursor.current_mode in [Cursor.NORMAL, Cursor.INTERACT]:
 				BoobExceptionHandler.exception()
@@ -162,6 +164,9 @@ func _process(_delta: float) -> void:
 			outlet_sound.play()
 	
 	plug.modulate = Color.TRANSPARENT if plug_connected else Color.WHITE
+
+func _on_comp() -> void:
+	load_overlay("computer")
 
 func _on_plug() -> void:
 	player.can_process_data = false

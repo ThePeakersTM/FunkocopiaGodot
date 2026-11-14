@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://dgi273gms55vp"]
+
+[ext_resource type="Texture2D" uid="uid://dtosaugvlibl1" path="res://assets/rooms/overlay/compooter/compooter.png" id="1_6sh6b"]
+[ext_resource type="Script" uid="uid://cuqr5c7353u16" path="res://resources/scenes/game/overlays/computer_overlay.gd" id="2_javnd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fwont"]
+atlas = ExtResource("1_6sh6b")
+region = Rect2(0, 0, 384, 216)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f6a36"]
+atlas = ExtResource("1_6sh6b")
+region = Rect2(1, 217, 19, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_javnd"]
+atlas = ExtResource("1_6sh6b")
+region = Rect2(21, 217, 19, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fg34s"]
+atlas = ExtResource("1_6sh6b")
+region = Rect2(385, 1, 202, 154)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lv2gj"]
+atlas = ExtResource("1_6sh6b")
+region = Rect2(588, 1, 203, 154)
+
+[node name="Overlay" type="Sprite2D" unique_id=135972475]
+texture_filter = 1
+scale = Vector2(5, 5)
+texture = SubResource("AtlasTexture_fwont")
+centered = false
+script = ExtResource("2_javnd")
+leave_rect = Rect2i(328, 155, 55, 47)
+
+[node name="OnOffButton" type="TextureButton" parent="." unique_id=1551351121]
+offset_left = 181.0
+offset_top = 184.0
+offset_right = 200.0
+offset_bottom = 204.0
+mouse_default_cursor_shape = 2
+texture_normal = SubResource("AtlasTexture_f6a36")
+texture_pressed = SubResource("AtlasTexture_javnd")
+
+[node name="CurvedScreen" type="Sprite2D" parent="." unique_id=370363099]
+position = Vector2(91, 26)
+texture = SubResource("AtlasTexture_fg34s")
+centered = false
+
+[node name="ScreenElements" type="Control" parent="." unique_id=894591306]
+clip_children = 2
+layout_mode = 3
+anchors_preset = 0
+offset_left = 91.0
+offset_top = 26.0
+offset_right = 293.0
+offset_bottom = 180.0
+
+[node name="LoadingScreen" type="Sprite2D" parent="ScreenElements" unique_id=131305505]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(-1, 0)
+texture = SubResource("AtlasTexture_lv2gj")
+centered = false

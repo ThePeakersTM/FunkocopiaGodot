@@ -117,7 +117,10 @@ func calculate_normals() -> void:
 		return
 	moving = true
 	if navigating and nav_dir_override != "":
-		anim_facing_direction = nav_dir_override
+		if nav_dir_override == "sides":
+			anim_facing_direction = anim_direction_names[Vector2i(1 if normal.x > 0 else -1, 0)]
+		else:
+			anim_facing_direction = nav_dir_override
 	else:
 		anim_facing_direction = anim_direction_names[normal]
 
