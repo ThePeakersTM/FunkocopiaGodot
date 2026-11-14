@@ -13,14 +13,15 @@ anim_sprite = NodePath("Sprite")
 anim_prefix = "Bfellow"
 anim_animation_names = Dictionary[String, String]({
 "get_up": "Tutorial",
+"jump": "LampJump",
 "plug": "ConnectPlug"
 })
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." index="0" unique_id=572894081]
-position = Vector2(0, -27.000008)
+position = Vector2(0, -27)
 scale = Vector2(0.9999998, 0.9999998)
 sprite_frames = ExtResource("2_f1ic4")
-animation = &"BfellowConnectPlug"
+animation = &"BfellowTutorial"
 centered = false
 offset = Vector2(-32, -32)
 

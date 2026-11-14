@@ -23,14 +23,19 @@ func _physics_process(delta: float) -> void:
 	
 	if get_parent().get_node("Camera2D").in_ui == true: return
 	if not can_process_data:
+		var complete_anim := false
 		if anim_animation == "plug":
-			anim_sprite.position = Vector2(-6.5, -20)
+			anim_sprite.position = Vector2(-6, -20)
 			if anim_sprite.frame == (0 if last_played_backwards else 18):
 				get_parent().room.on_plug()
-				play("idle")
-				can_process_data = true
-				anim_sprite.position = DEFAULT_OFFSET
+				complete_anim = true
+		if anim_animation == "jump":
+			anim_sprite.position = Vector2(-1, -57)
+			if anim_sprite.frame == 11:
+				complete_anim = true
 		if anim_animation == "get_up" and anim_sprite.frame == 9:
+			complete_anim = true
+		if complete_anim:
 			play("idle")
 			can_process_data = true
 			anim_sprite.position = DEFAULT_OFFSET
