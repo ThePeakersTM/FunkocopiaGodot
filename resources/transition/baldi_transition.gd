@@ -15,7 +15,7 @@ func _ready() -> void:
 func transition(post_transition: Callable = func(): pass) -> void:
 	change_scene("", post_transition)
 
-func change_scene(scene_path: String, post_transition: Callable = func(): pass) -> void:
+func change_scene(scene_path: String, post_transition: Callable = func(): pass, should_transition: bool = true) -> void:
 	if transitioning:
 		return
 
@@ -39,19 +39,20 @@ func change_scene(scene_path: String, post_transition: Callable = func(): pass) 
 	post_transition.call()
 
 	await get_tree().process_frame
+	
+	if should_transition:
+		var tween := create_tween()
 
-	var tween := create_tween()
+		tween.tween_method(
+			func(value: float):
+				material.set_shader_parameter("progress", value),
+			0.0,
+			1.0,
+			0.4
+		)
 
-	tween.tween_method(
-		func(value: float):
-			material.set_shader_parameter("progress", value),
-		0.0,
-		1.0,
-		0.4
-	)
-
-	await tween.finished
-
+		await tween.finished
+	
 	overlay.visible = false
 	overlay.texture = null
 

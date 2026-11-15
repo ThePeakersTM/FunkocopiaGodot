@@ -1,0 +1,147 @@
+[gd_scene format=3 uid="uid://dshujopedlrjm"]
+
+[ext_resource type="Script" uid="uid://c34d7yv5redak" path="res://resources/game_seletcion.gd" id="1_xkchb"]
+[ext_resource type="FontFile" uid="uid://dnn4b8ikrsd55" path="res://resources/fonts/fnt_vcr.ttf" id="2_r4vbv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f6a36"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_f6a36"]
+font = ExtResource("2_r4vbv")
+font_size = 32
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Control" type="Control" unique_id=1119088169]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -640.0
+offset_bottom = -360.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.5, 1.5)
+script = ExtResource("1_xkchb")
+
+[node name="BG" type="ColorRect" parent="." unique_id=1417073252]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.22670749, 0.22670749, 0.22670746, 1)
+
+[node name="Margin" type="MarginContainer" parent="." unique_id=1624336457]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_right = -40.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 64
+
+[node name="HBoxMargin" type="MarginContainer" parent="Margin" unique_id=1284741029]
+layout_mode = 2
+theme_override_constants/margin_top = 64
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Margin/HBoxMargin" unique_id=577545744]
+layout_mode = 2
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="Game1" type="Button" parent="Margin/HBoxMargin/HBoxContainer" unique_id=125345049]
+z_index = 4
+custom_minimum_size = Vector2(275, 0)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_f6a36")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_f6a36")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_f6a36")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_f6a36")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_f6a36")
+text = "Fran Bow"
+
+[node name="Polygon2D" type="Polygon2D" parent="Margin/HBoxMargin/HBoxContainer/Game1" unique_id=1975053064]
+z_index = -1
+polygon = PackedVector2Array(48, 0, 363, 0, 299, 528, 0, 528)
+uv = PackedVector2Array(48, 0, 363, 0, 299, 528, 0, 528)
+
+[node name="Game2" type="Button" parent="Margin/HBoxMargin/HBoxContainer" unique_id=211398369]
+z_index = 3
+custom_minimum_size = Vector2(275, 0)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_f6a36")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_f6a36")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_f6a36")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_f6a36")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_f6a36")
+text = "Endacopia"
+
+[node name="Polygon2D" type="Polygon2D" parent="Margin/HBoxMargin/HBoxContainer/Game2" unique_id=1323624886]
+z_index = -1
+polygon = PackedVector2Array(48, 0, 363, 0, 299, 528, 0, 528)
+uv = PackedVector2Array(48, 0, 363, 0, 299, 528, 0, 528)
+
+[node name="Game3" type="Button" parent="Margin/HBoxMargin/HBoxContainer" unique_id=645835313]
+z_index = 2
+custom_minimum_size = Vector2(275, 0)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_f6a36")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_f6a36")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_f6a36")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_f6a36")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_f6a36")
+text = "Omori"
+
+[node name="Polygon2D" type="Polygon2D" parent="Margin/HBoxMargin/HBoxContainer/Game3" unique_id=336210036]
+z_index = -1
+polygon = PackedVector2Array(48, 0, 363, 0, 299, 528, 0, 528)
+uv = PackedVector2Array(48, 0, 363, 0, 299, 528, 0, 528)
+
+[node name="Game4" type="Button" parent="Margin/HBoxMargin/HBoxContainer" unique_id=1567832775]
+z_index = 1
+custom_minimum_size = Vector2(275, 0)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_f6a36")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_f6a36")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_f6a36")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_f6a36")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_f6a36")
+text = "Exhibit of Sorrows"
+
+[node name="Polygon2D" type="Polygon2D" parent="Margin/HBoxMargin/HBoxContainer/Game4" unique_id=455633378]
+z_index = -1
+polygon = PackedVector2Array(48, 0, 363, 0, 299, 528, 0, 528)
+uv = PackedVector2Array(48, 0, 363, 0, 299, 528, 0, 528)
+
+[node name="Label" type="Label" parent="." unique_id=646161984]
+z_index = 15
+texture_filter = 1
+layout_mode = 0
+offset_top = 64.0
+offset_right = 1280.0
+offset_bottom = 656.0
+text = "Select a game to play:"
+label_settings = SubResource("LabelSettings_f6a36")
+horizontal_alignment = 1
+
+[node name="Fade" type="ColorRect" parent="." unique_id=207338216]
+modulate = Color(1, 1, 1, 0)
+z_index = 16
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)

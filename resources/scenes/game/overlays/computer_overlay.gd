@@ -11,6 +11,8 @@ extends Overlay
 @onready var accounts_screen := $ScreenElements/AccountsScreen
 @onready var accounts := $ScreenElements/AccountsScreen/Accounts
 
+@onready var desktop_screen := $ScreenElements/DesktopScreen
+
 var did_play_button_sound := false
 
 var powered_on := false
@@ -48,10 +50,11 @@ func _turn_on() -> void:
 	)
 
 func _turn_off() -> void:
-	powered_on = false
+	powered_on              = false
 	loading_screen.modulate = Color.TRANSPARENT
-	loading_screen.visible = true
+	loading_screen.visible  = true
 	accounts_screen.visible = false
+	desktop_screen.visible  = false
 	accounts.play("invis")
 
 func _ready() -> void:
@@ -64,6 +67,15 @@ func _ready() -> void:
 			else:
 				_turn_off()
 	)
+	accounts.get_node("Bfellow").pressed.connect(func():
+		if accounts.animation == "idle":
+			accounts.play("disappear")
+	)
+	accounts.get_node("Henry").pressed.connect(func():
+		if accounts.animation == "idle":
+			accounts.play("henry")
+			accounts.get_node("Sound").play()
+	)
 	super._ready()
 
 func _process(delta: float) -> void:
@@ -75,4 +87,12 @@ func _process(delta: float) -> void:
 		did_play_button_sound = true
 	else:
 		did_play_button_sound = false
+	if (
+		accounts.frame == 2 and accounts.animation == "appear"
+	) or (
+		accounts.frame == 5 and accounts.animation == "henry"
+	):
+		accounts.play("idle")
+	if accounts.frame == 3 and accounts.animation == "disappear":
+		accounts_screen.visible = false
 	super._process(delta)

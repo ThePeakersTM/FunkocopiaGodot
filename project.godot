@@ -14,8 +14,8 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 [application]
 
-config/name="Funkocopia"
-run/main_scene="uid://c3pdrq2krhwxy"
+config/name="Fear of Fun"
+run/main_scene="uid://dshujopedlrjm"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/show_image=false

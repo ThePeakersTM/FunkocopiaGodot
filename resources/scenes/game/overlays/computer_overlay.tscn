@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://cuqr5c7353u16" path="res://resources/scenes/game/overlays/computer_overlay.gd" id="2_javnd"]
 [ext_resource type="AudioStream" uid="uid://bh3cxu5tyow41" path="res://assets/sounds/room_specific/mellow_room/computer_button.ogg" id="3_fg34s"]
 [ext_resource type="AudioStream" uid="uid://0hbgck8tso1h" path="res://assets/sounds/room_specific/mellow_room/computer_start.ogg" id="3_lv2gj"]
+[ext_resource type="AudioStream" uid="uid://dywao4wcnrtxh" path="res://assets/sounds/room_specific/mellow_room/denied.ogg" id="5_lkjrp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fwont"]
 atlas = ExtResource("1_6sh6b")
@@ -125,11 +126,17 @@ animations = [{
 "texture": SubResource("AtlasTexture_igvsd")
 }, {
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_82edm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_igvsd")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_y4igv")
 }],
 "loop": 0,
 "name": &"henry",
-"speed": 4.25
+"speed": 8.5
 }, {
 "frames": [{
 "duration": 1.0,
@@ -147,6 +154,10 @@ animations = [{
 "name": &"invis",
 "speed": 0.0
 }]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ivok"]
+atlas = ExtResource("1_6sh6b")
+region = Rect2(1, 238, 203, 154)
 
 [node name="Overlay" type="Sprite2D" unique_id=135972475]
 texture_filter = 1
@@ -179,16 +190,15 @@ centered = false
 [node name="ScreenElements" type="Control" parent="." unique_id=894591306]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 91.0
+offset_left = 90.0
 offset_top = 26.0
-offset_right = 293.0
+offset_right = 292.0
 offset_bottom = 180.0
 mouse_filter = 2
 
 [node name="LoadingScreen" type="Sprite2D" parent="ScreenElements" unique_id=131305505]
 visible = false
 z_index = 1
-position = Vector2(-1.0000076, -1.9073486e-06)
 scale = Vector2(0.9999998, 0.9999998)
 texture = SubResource("AtlasTexture_lv2gj")
 centered = false
@@ -200,27 +210,35 @@ texture = SubResource("AtlasTexture_t5jfb")
 centered = false
 
 [node name="AccountsScreen" type="Sprite2D" parent="ScreenElements" unique_id=757455800]
-position = Vector2(-1, 0)
+visible = false
 texture = SubResource("AtlasTexture_5pd38")
 centered = false
 
 [node name="Accounts" type="AnimatedSprite2D" parent="ScreenElements/AccountsScreen" unique_id=1739665828]
 position = Vector2(107, 51)
 sprite_frames = SubResource("SpriteFrames_f6a36")
-animation = &"idle"
+animation = &"henry"
+frame = 5
 centered = false
 
-[node name="Bfellow" type="Control" parent="ScreenElements/AccountsScreen/Accounts" unique_id=507765357]
-layout_mode = 3
-anchors_preset = 0
+[node name="Sound" type="AudioStreamPlayer" parent="ScreenElements/AccountsScreen/Accounts" unique_id=2055322242]
+stream = ExtResource("5_lkjrp")
+
+[node name="Bfellow" type="Button" parent="ScreenElements/AccountsScreen/Accounts" unique_id=975090653]
+self_modulate = Color(1, 1, 1, 0)
 offset_right = 63.0
 offset_bottom = 23.0
 mouse_default_cursor_shape = 2
+action_mode = 0
 
-[node name="Henry" type="Control" parent="ScreenElements/AccountsScreen/Accounts" unique_id=1375439568]
-layout_mode = 3
-anchors_preset = 0
+[node name="Henry" type="Button" parent="ScreenElements/AccountsScreen/Accounts" unique_id=2073017067]
+self_modulate = Color(1, 1, 1, 0)
 offset_top = 37.0
 offset_right = 63.0
 offset_bottom = 60.0
-mouse_default_cursor_shape = 2
+mouse_default_cursor_shape = 8
+action_mode = 0
+
+[node name="DesktopScreen" type="Sprite2D" parent="ScreenElements" unique_id=90690141]
+texture = SubResource("AtlasTexture_6ivok")
+centered = false
