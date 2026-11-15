@@ -38,12 +38,22 @@ var game_methods := [
 		print("Launching Exhibit of Sorrows")
 ]
 
+var available := [1]
+
 func _ready() -> void:
 	fade.modulate = Color.TRANSPARENT
 	fade.mouse_filter = MOUSE_FILTER_IGNORE
 	var games := $Margin/HBoxMargin/HBoxContainer.get_children()
 	for i in games.size():
 		var game: Button = games[i]
+		if i not in available:
+			game.mouse_filter = MOUSE_FILTER_IGNORE
+			game.mouse_default_cursor_shape = CURSOR_FORBIDDEN
+			game.disabled = true
+			game.modulate = Color(1, 1, 1, DISABLED_ALPHA)
+		else:
+			game.mouse_filter = MOUSE_FILTER_STOP
+			game.mouse_default_cursor_shape = CURSOR_POINTING_HAND
 		var base_z := games.size() - i
 		game.mouse_entered.connect(_hover.bind(game, true, base_z))
 		game.mouse_exited.connect(_hover.bind(game, false, base_z))
@@ -60,6 +70,7 @@ func _back_out_peak(s: float) -> float:
 
 const ALPHA_DURATION := 0.2
 const DIM_ALPHA := 0.1
+const DISABLED_ALPHA := DIM_ALPHA * 5
 
 var alpha_tweens := {}
 
@@ -91,4 +102,6 @@ func _hover(game: Control, up: bool, base_z: int) -> void:
 	tweens[game] = tween
 
 	for g: Control in $Margin/HBoxMargin/HBoxContainer.get_children():
-		_tween_alpha(g, DIM_ALPHA if (up and g != game) else 1.0)
+		_tween_alpha(g, DIM_ALPHA if (up and g != game) else (
+			DISABLED_ALPHA if g.disabled else 1.0
+		))
