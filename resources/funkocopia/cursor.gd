@@ -61,7 +61,7 @@ func get_cached_texture(path: String) -> Texture2D:
 	if _cached_textures.has(path):
 		return _cached_textures[path]
 	else:
-		var texture = load("res://assets/cursor/" + path)
+		var texture = load("res://assets/funkocopia/cursor/" + path)
 		_cached_textures[path] = texture
 		return texture
 
