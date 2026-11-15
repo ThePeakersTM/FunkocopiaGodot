@@ -915,13 +915,7 @@ animations = [{
 "speed": 8.5
 }]
 
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_mj833"]
-vertices = PackedVector2Array(1840, 1010, 1840, 888, 1920, 905, 1920, 1080, 1540, 1010, 0, 1080, 0, 1020, 1540, 817, 445, 760, 750, 760, 515, 475, 515, 425, 720, 425, 720, 475, 445, 720, 750, 679, 1355, 760)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 0, 3, 5, 6), PackedInt32Array(7, 4, 6, 8, 9), PackedInt32Array(10, 11, 12, 13), PackedInt32Array(14, 10, 13, 15, 9, 8), PackedInt32Array(7, 9, 16)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(0, 1020, 445, 760, 445, 720, 515, 475, 515, 425, 720, 425, 720, 475, 750, 679, 750, 760, 1355, 760, 1540, 817, 1540, 1010, 1840, 1010, 1840, 888, 1920, 905, 1920, 1080, 0, 1080)])
-agent_radius = 0.0
-
-[node name="Room" unique_id=1200955835 instance=ExtResource("1_kxtgk")]
+[node name="Room" type="Node2D" unique_id=1200955835]
 texture_filter = 1
 script = ExtResource("1_tvxqg")
 id = "mellow_room"
@@ -929,49 +923,49 @@ title = "Bfellow Room"
 can_move_x_axis = false
 can_move_y_axis = false
 
-[node name="PlayerSpawn" type="Node2D" parent="." index="0" unique_id=2062434493]
+[node name="PlayerSpawn" type="Node2D" parent="." unique_id=2062434493]
 position = Vector2(862.5, 915)
 
-[node name="CameraPosition" type="Node2D" parent="." index="1" unique_id=1301016050]
+[node name="CameraPosition" type="Node2D" parent="." unique_id=1301016050]
 
-[node name="Collision" type="StaticBody2D" parent="." index="2" unique_id=592214037]
+[node name="Collision" type="StaticBody2D" parent="." unique_id=592214037]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collision" index="0" unique_id=656697055]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collision" unique_id=656697055]
 polygon = PackedVector2Array(745, 65, 1345, 65, 1920, -250, 1920, 905, 1600, 835, 1355, 760, 750, 760, 750, 680, 720, 475, 720, 400)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collision" index="1" unique_id=155809501]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collision" unique_id=155809501]
 position = Vector2(1960, 540)
 shape = SubResource("RectangleShape2D_f6a36")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Collision" index="2" unique_id=268821605]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Collision" unique_id=268821605]
 position = Vector2(-40, 540)
 shape = SubResource("RectangleShape2D_f6a36")
 
-[node name="CollisionShape2D5" type="CollisionShape2D" parent="Collision" index="3" unique_id=566567404]
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Collision" unique_id=566567404]
 position = Vector2(610, 245)
 shape = SubResource("RectangleShape2D_6pd26")
 
-[node name="CollisionShape2D6" type="CollisionShape2D" parent="Collision" index="4" unique_id=805602194]
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Collision" unique_id=805602194]
 position = Vector2(1690, 780)
 shape = SubResource("RectangleShape2D_xun36")
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="Collision" index="5" unique_id=776140261]
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Collision" unique_id=776140261]
 position = Vector2(960, 1120)
 shape = SubResource("RectangleShape2D_pyajk")
 
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="Collision" index="6" unique_id=893977283]
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Collision" unique_id=893977283]
 position = Vector2(960, -40)
 shape = SubResource("RectangleShape2D_pyajk")
 
-[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Collision" index="7" unique_id=1908924692]
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Collision" unique_id=1908924692]
 polygon = PackedVector2Array(0, 1020, 445, 760, 445, 720, 515, 475, 515, 400, 445, 65, 0, -260)
 
-[node name="Room" type="Sprite2D" parent="." index="3" unique_id=2014463497]
+[node name="Room" type="Sprite2D" parent="." unique_id=2014463497]
 scale = Vector2(5, 5)
 texture = SubResource("AtlasTexture_dh8s6")
 centered = false
 
-[node name="Tutorial" type="Control" parent="." index="4" unique_id=268936420]
+[node name="Tutorial" type="Control" parent="." unique_id=268936420]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 765.0
@@ -979,7 +973,7 @@ offset_top = 940.0
 offset_right = 915.0
 offset_bottom = 990.0
 
-[node name="Calendar" type="Control" parent="." index="5" unique_id=1159812034]
+[node name="Calendar" type="Control" parent="." unique_id=1159812034]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 1160.0
@@ -987,14 +981,14 @@ offset_top = 120.0
 offset_right = 1300.0
 offset_bottom = 325.0
 
-[node name="ComputerScreen" type="AnimatedSprite2D" parent="." index="6" unique_id=1605778361]
+[node name="ComputerScreen" type="AnimatedSprite2D" parent="." unique_id=1605778361]
 self_modulate = Color(1, 1, 1, 0)
 position = Vector2(1135, 400)
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_mt8xm")
 centered = false
 
-[node name="Control" type="Control" parent="ComputerScreen" index="0" unique_id=519777604]
+[node name="Control" type="Control" parent="ComputerScreen" unique_id=519777604]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -1002,16 +996,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Plug" type="Sprite2D" parent="." index="7" unique_id=1216313038]
+[node name="Plug" type="Sprite2D" parent="." unique_id=1216313038]
 position = Vector2(940, 535)
 scale = Vector2(5, 5)
 texture = SubResource("AtlasTexture_t5jfb")
 centered = false
 
-[node name="Sound" type="AudioStreamPlayer" parent="Plug" index="0" unique_id=855892221]
+[node name="Sound" type="AudioStreamPlayer" parent="Plug" unique_id=855892221]
 stream = ExtResource("3_fdiqf")
 
-[node name="Control" type="Control" parent="Plug" index="1" unique_id=1020210240]
+[node name="Control" type="Control" parent="Plug" unique_id=1020210240]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 46.0
@@ -1019,27 +1013,27 @@ offset_top = 23.0
 offset_right = 71.0
 offset_bottom = 58.0
 
-[node name="Clockey" type="AnimatedSprite2D" parent="." index="8" unique_id=1766173608]
+[node name="Clockey" type="AnimatedSprite2D" parent="." unique_id=1766173608]
 position = Vector2(950, 225)
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_pyajk")
 animation = &"right_idle"
 centered = false
 
-[node name="Control" type="Control" parent="Clockey" index="0" unique_id=1681579004]
+[node name="Control" type="Control" parent="Clockey" unique_id=1681579004]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="GFChair" type="AnimatedSprite2D" parent="." index="9" unique_id=1652378349]
+[node name="GFChair" type="AnimatedSprite2D" parent="." unique_id=1652378349]
 position = Vector2(1000, 515)
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_xun36")
 animation = &"spin"
 centered = false
 
-[node name="Boobs" type="Control" parent="GFChair" index="0" unique_id=1751526192]
+[node name="Boobs" type="Control" parent="GFChair" unique_id=1751526192]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 128.0
@@ -1048,14 +1042,14 @@ offset_right = 148.0
 offset_bottom = 48.0
 mouse_default_cursor_shape = 8
 
-[node name="LilDoor" type="AnimatedSprite2D" parent="." index="10" unique_id=1771755188]
+[node name="LilDoor" type="AnimatedSprite2D" parent="." unique_id=1771755188]
 position = Vector2(1525, 240)
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_n3ks6")
 animation = &"LilDoor"
 centered = false
 
-[node name="Control" type="Control" parent="LilDoor" index="0" unique_id=1719902466]
+[node name="Control" type="Control" parent="LilDoor" unique_id=1719902466]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -1063,18 +1057,18 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="FunnyThings" type="Node2D" parent="." index="11" unique_id=1768371818]
+[node name="FunnyThings" type="Node2D" parent="." unique_id=1768371818]
 
-[node name="Fih" type="AnimatedSprite2D" parent="FunnyThings" index="0" unique_id=1095524271]
+[node name="Fih" type="AnimatedSprite2D" parent="FunnyThings" unique_id=1095524271]
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_1nbvr")
 animation = &"idle"
 centered = false
 
-[node name="Sound" type="AudioStreamPlayer" parent="FunnyThings/Fih" index="0" unique_id=1093232226]
+[node name="Sound" type="AudioStreamPlayer" parent="FunnyThings/Fih" unique_id=1093232226]
 stream = ExtResource("5_ha7o1")
 
-[node name="Control" type="Control" parent="FunnyThings/Fih" index="1" unique_id=1703868474]
+[node name="Control" type="Control" parent="FunnyThings/Fih" unique_id=1703868474]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 297.0
@@ -1083,16 +1077,16 @@ offset_right = 325.0
 offset_bottom = 35.0
 mouse_default_cursor_shape = 2
 
-[node name="Outlet" type="AnimatedSprite2D" parent="FunnyThings" index="1" unique_id=1128200904]
+[node name="Outlet" type="AnimatedSprite2D" parent="FunnyThings" unique_id=1128200904]
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_v47p7")
 animation = &"anim"
 centered = false
 
-[node name="Sound" type="AudioStreamPlayer" parent="FunnyThings/Outlet" index="0" unique_id=255310139]
+[node name="Sound" type="AudioStreamPlayer" parent="FunnyThings/Outlet" unique_id=255310139]
 stream = ExtResource("6_s7m6h")
 
-[node name="Control" type="Control" parent="FunnyThings/Outlet" index="1" unique_id=494000091]
+[node name="Control" type="Control" parent="FunnyThings/Outlet" unique_id=494000091]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 342.0
@@ -1101,16 +1095,16 @@ offset_right = 354.0
 offset_bottom = 26.0
 mouse_default_cursor_shape = 2
 
-[node name="DartCake" type="AnimatedSprite2D" parent="FunnyThings" index="2" unique_id=1183078021]
+[node name="DartCake" type="AnimatedSprite2D" parent="FunnyThings" unique_id=1183078021]
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_6pd26")
 animation = &"anim"
 centered = false
 
-[node name="Sound" type="AudioStreamPlayer" parent="FunnyThings/DartCake" index="0" unique_id=1998095492]
+[node name="Sound" type="AudioStreamPlayer" parent="FunnyThings/DartCake" unique_id=1998095492]
 stream = ExtResource("7_kl8kl")
 
-[node name="Control" type="Control" parent="FunnyThings/DartCake" index="1" unique_id=2120509371]
+[node name="Control" type="Control" parent="FunnyThings/DartCake" unique_id=2120509371]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 342.0
@@ -1118,7 +1112,3 @@ offset_top = 37.0
 offset_right = 367.0
 offset_bottom = 83.0
 mouse_default_cursor_shape = 2
-
-[node name="NavigationRegion2D" parent="." index="12" unique_id=1255163599]
-visible = false
-navigation_polygon = SubResource("NavigationPolygon_mj833")
