@@ -921,7 +921,7 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Arr
 outlines = Array[PackedVector2Array]([PackedVector2Array(0, 1020, 445, 760, 445, 720, 515, 475, 515, 425, 720, 425, 720, 475, 750, 679, 750, 760, 1355, 760, 1540, 817, 1540, 1010, 1840, 1010, 1840, 888, 1920, 905, 1920, 1080, 0, 1080)])
 agent_radius = 0.0
 
-[node name="Room" unique_id=1200955835]
+[node name="Room" unique_id=1200955835 instance=ExtResource("1_kxtgk")]
 texture_filter = 1
 script = ExtResource("1_tvxqg")
 id = "mellow_room"
