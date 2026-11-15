@@ -27,11 +27,14 @@ func double_pressed(key: StringName) -> bool:
 		double_press_times[key] = 0
 	
 	if Input.is_action_just_pressed(key):
-		if Time.get_ticks_msec() - double_press_timers[key] < 500:
+		var time := Time.get_ticks_msec() - double_press_timers[key]
+		if time < 500:
 			double_press_times[key] += 1
-			double_press_timers[key] = Time.get_ticks_msec()
+			if double_press_times[key] == 2:
+				return true
 		else:
 			double_press_times[key] = 0
+		double_press_timers[key] = Time.get_ticks_msec()
 	return false
 
 func _plug_connected() -> bool:
@@ -74,6 +77,18 @@ func _turn_off() -> void:
 	desktop_screen.visible  = false
 	accounts.play("invis")
 
+func _on_open_app(app_name: String) -> void:
+	var app_name_ext := app_name.rsplit(".")
+	var app_ext := "" if app_name_ext.size() == 1 else app_name_ext[1]
+	var app_no_ext := app_name if app_name_ext.size() == 1 else app_name_ext[0]
+	print(
+		"Opened app with name \"%s\". Extension: \"%s\", filename without extension: \"%s\"" % [
+			app_name,
+			app_ext,
+			app_no_ext
+		]
+	)
+
 func _ready() -> void:
 	_turn_off()
 	on_off_button.pressed.connect(func():
@@ -93,6 +108,12 @@ func _ready() -> void:
 			accounts.play("henry")
 			accounts.get_node("Sound").play()
 	)
+	var desktop_icons = desktop_screen.get_node("Elements").get_children()
+	for icon: TextureButton in desktop_icons:
+		icon.pressed.connect(func():
+			if double_pressed("left_click"):
+				_on_open_app(icon.name.replace("#", "."))
+		)
 	super._ready()
 
 const ICON_SUMMON_DELAY := 0.25
