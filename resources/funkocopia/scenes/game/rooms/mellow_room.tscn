@@ -915,6 +915,12 @@ animations = [{
 "speed": 8.5
 }]
 
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_f6a36"]
+vertices = PackedVector2Array(1840, 1010, 1919, 1010, 1919, 1080, 0, 1080, 1540, 1010, 0, 1020, 1540, 817, 445, 760, 750, 760, 515, 475, 515, 425, 720, 425, 720, 475, 445, 720, 750, 679, 1355, 760)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 0, 3, 5), PackedInt32Array(6, 4, 5, 7, 8), PackedInt32Array(9, 10, 11, 12), PackedInt32Array(13, 9, 12, 14, 8, 7), PackedInt32Array(6, 8, 15)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(0, 1020, 445, 760, 445, 720, 515, 475, 515, 425, 720, 425, 720, 475, 750, 679, 750, 760, 1355, 760, 1540, 817, 1540, 1010, 1840, 1010, 1919, 1010, 1919, 1080, 0, 1080)])
+agent_radius = 0.0
+
 [node name="Room" type="Node2D" unique_id=1200955835]
 texture_filter = 1
 script = ExtResource("1_tvxqg")
@@ -1112,3 +1118,6 @@ offset_top = 37.0
 offset_right = 367.0
 offset_bottom = 83.0
 mouse_default_cursor_shape = 2
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=481445244]
+navigation_polygon = SubResource("NavigationPolygon_f6a36")
