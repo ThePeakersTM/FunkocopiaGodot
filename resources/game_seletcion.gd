@@ -17,6 +17,11 @@ var game_methods := [
 	func():
 		print("Launching Fran Bow"),
 	func():
+		DisplayServer.set_icon(load("res://assets/funkocopia/icon.png").get_image())
+		DisplayServer.window_set_title(
+			"Fear of Fun - Funkocopia (Endacopia)" + (" (DEBUG)" if OS.is_debug_build() else "")
+		)
+		Cursor.create()
 		BaldiTransition.change_scene(
 			"res://resources/funkocopia/scenes/title_screen.tscn",
 			func(): pass,

@@ -65,7 +65,7 @@ func get_cached_texture(path: String) -> Texture2D:
 		_cached_textures[path] = texture
 		return texture
 
-func _ready() -> void:
+func create() -> void:
 	if not Options.native_cursor:
 		Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	
