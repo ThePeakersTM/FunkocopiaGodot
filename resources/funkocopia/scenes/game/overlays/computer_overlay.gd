@@ -95,4 +95,5 @@ func _process(delta: float) -> void:
 		accounts.play("idle")
 	if accounts.frame == 3 and accounts.animation == "disappear":
 		accounts_screen.visible = false
+		desktop_screen.visible  = true
 	super._process(delta)
