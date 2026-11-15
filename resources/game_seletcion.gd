@@ -13,14 +13,19 @@ func _on_launch(after: Callable) -> void:
 		get_tree().create_timer(1).timeout.connect(after)
 	)
 
+func _title(title: String = "") -> void:
+	DisplayServer.window_set_title(
+			"Fear of Fun" + (
+				" - " if title != "" else ""
+			) + title + (" (DEBUG)" if OS.is_debug_build() else "")
+		)
+
 var game_methods := [
 	func():
 		print("Launching Fran Bow"),
 	func():
 		DisplayServer.set_icon(load("res://assets/funkocopia/icon.png").get_image())
-		DisplayServer.window_set_title(
-			"Fear of Fun - Funkocopia (Endacopia)" + (" (DEBUG)" if OS.is_debug_build() else "")
-		)
+		_title("Funkocopia (Endacopia)")
 		Cursor.create()
 		BaldiTransition.change_scene(
 			"res://resources/funkocopia/scenes/title_screen.tscn",
