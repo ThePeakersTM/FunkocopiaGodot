@@ -17,6 +17,23 @@ var did_play_button_sound := false
 
 var powered_on := false
 
+var double_press_timers: Dictionary[String, int] = {}
+var double_press_times: Dictionary[String, int] = {}
+
+func double_pressed(key: StringName) -> bool:
+	if not double_press_timers.has(key):
+		double_press_timers[key] = Time.get_ticks_msec()
+	if not double_press_times.has(key):
+		double_press_times[key] = 0
+	
+	if Input.is_action_just_pressed(key):
+		if Time.get_ticks_msec() - double_press_timers[key] < 500:
+			double_press_times[key] += 1
+			double_press_timers[key] = Time.get_ticks_msec()
+		else:
+			double_press_times[key] = 0
+	return false
+
 func _plug_connected() -> bool:
 	return room.plug.modulate.a < 1
 
@@ -78,6 +95,19 @@ func _ready() -> void:
 	)
 	super._ready()
 
+const ICON_SUMMON_DELAY := 0.25
+const ICON_FOR_EACH_DELAY := 0.125
+
+func _show_desktop() -> void:
+	desktop_screen.visible  = true
+	var desktop_icons = desktop_screen.get_node("Elements").get_children()
+	for i in desktop_icons.size():
+		var icon: TextureButton = desktop_icons[i]
+		icon.visible = false
+		get_tree().create_timer(ICON_SUMMON_DELAY + (ICON_FOR_EACH_DELAY * i)).timeout.connect(func():
+			icon.visible = true
+		)
+
 func _process(delta: float) -> void:
 	if not _plug_connected():
 		_turn_off()
@@ -93,7 +123,7 @@ func _process(delta: float) -> void:
 		accounts.frame == 5 and accounts.animation == "henry"
 	):
 		accounts.play("idle")
-	if accounts.frame == 3 and accounts.animation == "disappear":
+	if accounts.frame == 3 and accounts.animation == "disappear" and accounts_screen.visible:
 		accounts_screen.visible = false
-		desktop_screen.visible  = true
+		_show_desktop()
 	super._process(delta)

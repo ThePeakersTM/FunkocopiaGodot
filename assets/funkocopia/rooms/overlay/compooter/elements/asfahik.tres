@@ -1,0 +1,8 @@
+[gd_resource type="AtlasTexture" format=3 uid="uid://dj08x1mu2ymyt"]
+
+[ext_resource type="Texture2D" uid="uid://dtosaugvlibl1" path="res://assets/funkocopia/rooms/overlay/compooter/compooter.png" id="1_56sdc"]
+
+[resource]
+atlas = ExtResource("1_56sdc")
+region = Rect2(224, 238, 30, 28)
+margin = Rect2(2.5, 4, 5, 7)

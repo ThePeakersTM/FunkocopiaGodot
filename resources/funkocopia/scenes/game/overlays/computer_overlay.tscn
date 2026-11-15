@@ -5,6 +5,9 @@
 [ext_resource type="AudioStream" uid="uid://0hbgck8tso1h" path="res://assets/funkocopia/sounds/room_specific/mellow_room/computer_start.ogg" id="3_jju00"]
 [ext_resource type="AudioStream" uid="uid://bh3cxu5tyow41" path="res://assets/funkocopia/sounds/room_specific/mellow_room/computer_button.ogg" id="4_o217d"]
 [ext_resource type="AudioStream" uid="uid://dywao4wcnrtxh" path="res://assets/funkocopia/sounds/room_specific/mellow_room/denied.ogg" id="5_fxqhs"]
+[ext_resource type="Texture2D" uid="uid://dj08x1mu2ymyt" path="res://assets/funkocopia/rooms/overlay/compooter/elements/asfahik.tres" id="6_jju00"]
+[ext_resource type="Texture2D" uid="uid://d3j1d06ekfwvt" path="res://assets/funkocopia/rooms/overlay/compooter/elements/save.exe.tres" id="6_ucl16"]
+[ext_resource type="Texture2D" uid="uid://bbhlshhm86ijs" path="res://assets/funkocopia/rooms/overlay/compooter/elements/Gallery.tres" id="7_o217d"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fwont"]
 atlas = ExtResource("1_5gwxl")
@@ -242,3 +245,32 @@ action_mode = 0
 [node name="DesktopScreen" type="Sprite2D" parent="ScreenElements" unique_id=90690141]
 texture = SubResource("AtlasTexture_6ivok")
 centered = false
+
+[node name="Elements" type="Node2D" parent="ScreenElements/DesktopScreen" unique_id=83768178]
+
+[node name="asfahik" type="TextureButton" parent="ScreenElements/DesktopScreen/Elements" unique_id=1632344186]
+offset_left = 47.999992
+offset_top = 47.999992
+offset_right = 82.99999
+offset_bottom = 82.99999
+mouse_default_cursor_shape = 2
+action_mode = 0
+texture_normal = ExtResource("6_jju00")
+
+[node name="Gallery" type="TextureButton" parent="ScreenElements/DesktopScreen/Elements" unique_id=1098998108]
+offset_left = 111.99999
+offset_top = 71.99999
+offset_right = 147.0
+offset_bottom = 106.99999
+mouse_default_cursor_shape = 2
+action_mode = 0
+texture_normal = ExtResource("7_o217d")
+
+[node name="Save#exe" type="TextureButton" parent="ScreenElements/DesktopScreen/Elements" unique_id=56843281]
+offset_left = 83.99999
+offset_top = 15.999998
+offset_right = 118.99999
+offset_bottom = 51.0
+mouse_default_cursor_shape = 2
+action_mode = 0
+texture_normal = ExtResource("6_ucl16")
