@@ -18,7 +18,7 @@ var game_methods := [
 		print("Launching Fran Bow"),
 	func():
 		BaldiTransition.change_scene(
-			"res://resources/scenes/title_screen.tscn",
+			"res://resources/funkocopia/scenes/title_screen.tscn",
 			func(): pass,
 			false
 		),
