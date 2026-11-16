@@ -59,6 +59,7 @@ func _ready() -> void:
 		else:
 			game.mouse_filter = MOUSE_FILTER_STOP
 			game.mouse_default_cursor_shape = CURSOR_POINTING_HAND
+			game.modulate = Color.WHITE
 		var base_z := games.size() - i
 		game.mouse_entered.connect(_hover.bind(game, true, base_z))
 		game.mouse_exited.connect(_hover.bind(game, false, base_z))
@@ -72,7 +73,7 @@ func _ready() -> void:
 				game.get_node("Polygon2D"),
 				"offset:y",
 				0,
-				0.6
+				0.4
 			).finished.connect(func():
 				if game.mouse_filter == MOUSE_FILTER_STOP:
 					game.disabled = false

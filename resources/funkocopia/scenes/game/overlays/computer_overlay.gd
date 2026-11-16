@@ -5,7 +5,12 @@ var folder_contents: Dictionary[String, Array] = {
 		"Doors.exe",
 		"RICHARD.exe"
 	],
-	"Gallery": DirAccess.get_files_at("res://assets/funkocopia/rooms/overlay/compooter/gallery")
+	"Gallery": Array(DirAccess.get_files_at(
+		"res://assets/funkocopia/rooms/overlay/compooter/gallery"
+	)).filter(func(file):
+		var image := Image.new()
+		return (not file.ends_with(".import")) and image.load(file) == OK
+		)
 }
 
 @onready var on_off_button := $OnOffButton
@@ -22,6 +27,8 @@ var folder_contents: Dictionary[String, Array] = {
 @onready var desktop_screen := $ScreenElements/DesktopScreen
 
 @onready var file_explorer := $ScreenElements/DesktopScreen/FileExplorer
+@onready var file_explorer_disabled_scroller := $ScreenElements/DesktopScreen/FileExplorer/DisabledScroller
+@onready var file_explorer_exit := $ScreenElements/DesktopScreen/FileExplorer/CloseButton
 
 var did_play_button_sound := false
 
@@ -93,11 +100,11 @@ func _load_element_texture(app_name: String) -> AtlasTexture:
 
 func _open_file_explorer(folder: String) -> void:
 	file_explorer.visible = true
+	var inside_folder: Array[String] = folder_contents[folder]
 
 func _on_open_app(app_name: String) -> void:
-	var app_name_ext := app_name.rsplit(".")
+	var app_name_ext := app_name.rsplit(".", true, 1)
 	var app_ext := "" if app_name_ext.size() == 1 else app_name_ext[1]
-	var app_no_ext := app_name if app_name_ext.size() == 1 else app_name_ext[0]
 	var is_folder := app_ext == ""
 	if is_folder:
 		_open_file_explorer(app_name)
@@ -126,8 +133,14 @@ func _ready() -> void:
 	for icon: TextureButton in desktop_icons:
 		icon.pressed.connect(func():
 			if double_pressed("left_click"):
-				_on_open_app(icon.name.replace("#", "."))
+				if not (file_explorer.visible):
+					_on_open_app(icon.name.replace("#", "."))
 		)
+	file_explorer_exit.pressed.connect(func():
+		if desktop_screen.visible:
+			if file_explorer.visible and not (false):
+				file_explorer.visible = false
+	)
 	super._ready()
 
 const ICON_SUMMON_DELAY := 0.25
@@ -161,4 +174,6 @@ func _process(delta: float) -> void:
 	if accounts.frame == 3 and accounts.animation == "disappear" and accounts_screen.visible:
 		accounts_screen.visible = false
 		_show_desktop()
+	if desktop_screen.visible:
+		pass
 	super._process(delta)

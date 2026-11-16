@@ -57,6 +57,7 @@ theme_override_constants/separation = 0
 alignment = 1
 
 [node name="Game1" type="Button" parent="Margin/HBoxMargin/HBoxContainer" unique_id=125345049]
+modulate = Color(1, 1, 1, 0.5)
 z_index = 4
 custom_minimum_size = Vector2(275, 0)
 layout_mode = 2
@@ -83,7 +84,6 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_f6a36")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_f6a36")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_f6a36")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_f6a36")
-text = "Endacopia"
 
 [node name="Polygon2D" type="Polygon2D" parent="Margin/HBoxMargin/HBoxContainer/Game2" unique_id=1323624886]
 z_index = -1
@@ -91,6 +91,7 @@ polygon = PackedVector2Array(48, 0, 363, 0, 299, 528, 0, 528)
 uv = PackedVector2Array(48, 0, 363, 0, 299, 528, 0, 528)
 
 [node name="Game3" type="Button" parent="Margin/HBoxMargin/HBoxContainer" unique_id=645835313]
+modulate = Color(1, 1, 1, 0.5)
 z_index = 2
 custom_minimum_size = Vector2(275, 0)
 layout_mode = 2
@@ -108,6 +109,7 @@ polygon = PackedVector2Array(48, 0, 363, 0, 299, 528, 0, 528)
 uv = PackedVector2Array(48, 0, 363, 0, 299, 528, 0, 528)
 
 [node name="Game4" type="Button" parent="Margin/HBoxMargin/HBoxContainer" unique_id=1567832775]
+modulate = Color(1, 1, 1, 0.5)
 z_index = 1
 custom_minimum_size = Vector2(275, 0)
 layout_mode = 2
