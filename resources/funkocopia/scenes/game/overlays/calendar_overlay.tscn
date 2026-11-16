@@ -13,4 +13,5 @@ scale = Vector2(5, 5)
 texture = SubResource("AtlasTexture_sxume")
 centered = false
 script = ExtResource("1_3qule")
+title = "Calendar"
 leave_rect = Rect2i(22, 148, 53, 60)

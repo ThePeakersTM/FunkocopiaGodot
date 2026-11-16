@@ -7,7 +7,8 @@ const DURATION := 0.15
 
 var tweens := {}
 
-func _on_launch(after: Callable) -> void:
+func _on_launch(game: Button, after: Callable) -> void:
+	if game.disabled: return
 	fade.mouse_filter = MOUSE_FILTER_STOP
 	create_tween().tween_property(fade, "modulate", Color.WHITE, 1).finished.connect(func():
 		get_tree().create_timer(1).timeout.connect(after)
@@ -57,7 +58,22 @@ func _ready() -> void:
 		var base_z := games.size() - i
 		game.mouse_entered.connect(_hover.bind(game, true, base_z))
 		game.mouse_exited.connect(_hover.bind(game, false, base_z))
-		game.pressed.connect(func(): _on_launch(game_methods[i]))
+		game.pressed.connect(func(): _on_launch(game, game_methods[i]))
+		game.get_node("Polygon2D").offset.y = 600
+		game.disabled = true
+		get_tree().create_timer(base_z/8.0).timeout.connect(func():
+			var tween = create_tween()
+			tween.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+			tween.tween_property(
+				game.get_node("Polygon2D"),
+				"offset:y",
+				0,
+				0.6
+			).finished.connect(func():
+				if game.mouse_filter == MOUSE_FILTER_STOP:
+					game.disabled = false
+			)
+		)
 
 const OVERSHOOT := 4.0  # default Godot is ~1.70158; higher = stronger
 
@@ -84,7 +100,9 @@ func _tween_alpha(node: Control, target: float) -> void:
 	tween.tween_property(node, "modulate:a", target, ALPHA_DURATION * dist)
 	alpha_tweens[node] = tween
 
-func _hover(game: Control, up: bool, base_z: int) -> void:
+func _hover(game: Button, up: bool, base_z: int) -> void:
+	if game.disabled: return
+	
 	var polygon: Polygon2D = game.get_node("Polygon2D")
 	if tweens.has(game) and tweens[game].is_valid():
 		tweens[game].kill()

@@ -162,12 +162,21 @@ animations = [{
 atlas = ExtResource("1_5gwxl")
 region = Rect2(1, 238, 203, 154)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_p7od3"]
+atlas = ExtResource("1_5gwxl")
+region = Rect2(205, 315, 145, 110)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vby3f"]
+atlas = ExtResource("1_5gwxl")
+region = Rect2(351, 331, 7, 90)
+
 [node name="Overlay" type="Sprite2D" unique_id=135972475]
 texture_filter = 1
 scale = Vector2(5, 5)
 texture = SubResource("AtlasTexture_fwont")
 centered = false
 script = ExtResource("2_ucl16")
+title = "Compooter"
 leave_rect = Rect2i(328, 155, 55, 47)
 
 [node name="ComputerStart" type="AudioStreamPlayer" parent="." unique_id=1117172421]
@@ -274,3 +283,28 @@ offset_bottom = 51.0
 mouse_default_cursor_shape = 2
 action_mode = 0
 texture_normal = ExtResource("6_ucl16")
+
+[node name="FileExplorer" type="Sprite2D" parent="ScreenElements/DesktopScreen" unique_id=1887244148]
+position = Vector2(100, 75)
+texture = SubResource("AtlasTexture_p7od3")
+
+[node name="DisabledScroller" type="Sprite2D" parent="ScreenElements/DesktopScreen/FileExplorer" unique_id=2080370083]
+position = Vector2(64.5, -39)
+texture = SubResource("AtlasTexture_vby3f")
+centered = false
+
+[node name="Control" type="Control" parent="ScreenElements/DesktopScreen/FileExplorer/DisabledScroller" unique_id=1933628724]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 8
+
+[node name="CloseButton" type="TextureButton" parent="ScreenElements/DesktopScreen/FileExplorer" unique_id=2059693041]
+offset_left = 59.5
+offset_top = -55.0
+offset_right = 68.5
+offset_bottom = -44.0
+mouse_default_cursor_shape = 2

@@ -32,6 +32,7 @@ func load_overlay(path: String) -> void:
 			) as PackedScene
 		).instantiate()
 		overlay = loaded
+		overlay.name = "Overlay#" + overlay.title
 		_parsed_overlays[path] = overlay
 		camera.get_node("UI").add_child(overlay)
 	on_show_ui("overlay")

@@ -203,6 +203,7 @@ scale = Vector2(5, 5)
 texture = SubResource("AtlasTexture_f6a36")
 centered = false
 script = ExtResource("2_lcmi5")
+title = "Clockey"
 leave_rect = Rect2i(320, 180, 60, 33)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=312766179]

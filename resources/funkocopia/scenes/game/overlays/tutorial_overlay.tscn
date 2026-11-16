@@ -193,6 +193,7 @@ texture = SubResource("AtlasTexture_nv3l3")
 centered = false
 script = ExtResource("2_4lqoq")
 custom_id = "tutorial"
+title = "Tutorial"
 leave_rect = Rect2i(279, 79, 55, 47)
 can_change_cursor = true
 

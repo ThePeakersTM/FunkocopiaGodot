@@ -1,5 +1,13 @@
 extends Overlay
 
+var folder_contents: Dictionary[String, Array] = {
+	"asfahik": [
+		"Doors.exe",
+		"RICHARD.exe"
+	],
+	"Gallery": DirAccess.get_files_at("res://assets/funkocopia/rooms/overlay/compooter/gallery")
+}
+
 @onready var on_off_button := $OnOffButton
 @onready var button_sound := $OnOffButton/Sound
 
@@ -12,6 +20,8 @@ extends Overlay
 @onready var accounts := $ScreenElements/AccountsScreen/Accounts
 
 @onready var desktop_screen := $ScreenElements/DesktopScreen
+
+@onready var file_explorer := $ScreenElements/DesktopScreen/FileExplorer
 
 var did_play_button_sound := false
 
@@ -75,21 +85,25 @@ func _turn_off() -> void:
 	loading_screen.visible  = true
 	accounts_screen.visible = false
 	desktop_screen.visible  = false
+	file_explorer.visible   = false
 	accounts.play("invis")
+
+func _load_element_texture(app_name: String) -> AtlasTexture:
+	return load("res://assets/funkocopia/rooms/overlay/compooter/elements/" + app_name + ".tres")
+
+func _open_file_explorer(folder: String) -> void:
+	file_explorer.visible = true
 
 func _on_open_app(app_name: String) -> void:
 	var app_name_ext := app_name.rsplit(".")
 	var app_ext := "" if app_name_ext.size() == 1 else app_name_ext[1]
 	var app_no_ext := app_name if app_name_ext.size() == 1 else app_name_ext[0]
-	print(
-		"Opened app with name \"%s\". Extension: \"%s\", filename without extension: \"%s\"" % [
-			app_name,
-			app_ext,
-			app_no_ext
-		]
-	)
+	var is_folder := app_ext == ""
+	if is_folder:
+		_open_file_explorer(app_name)
 
 func _ready() -> void:
+	print(folder_contents["Gallery"])
 	_turn_off()
 	on_off_button.pressed.connect(func():
 		if _plug_connected():
