@@ -9,9 +9,12 @@ var tweens := {}
 
 func _on_launch(game: Button, after: Callable) -> void:
 	if game.disabled: return
+	var kettei := $Kettei
+	kettei.volume_linear = 1
+	kettei.play()
 	fade.mouse_filter = MOUSE_FILTER_STOP
 	create_tween().tween_property(fade, "modulate", Color.WHITE, 1).finished.connect(func():
-		get_tree().create_timer(1).timeout.connect(after)
+		get_tree().create_timer(0.5).timeout.connect(after)
 	)
 
 func _title(title: String = "") -> void:
@@ -28,6 +31,7 @@ var game_methods := [
 		DisplayServer.set_icon(load("res://assets/funkocopia/icon.png").get_image())
 		_title("Funkocopia (Endacopia)")
 		Cursor.create()
+		Dwmapi.funkocopia()
 		BaldiTransition.change_scene(
 			"res://resources/funkocopia/scenes/title_screen.tscn",
 			func(): pass,

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c34d7yv5redak" path="res://resources/game_seletcion.gd" id="1_xkchb"]
 [ext_resource type="FontFile" uid="uid://dnn4b8ikrsd55" path="res://resources/fonts/fnt_vcr.ttf" id="2_r4vbv"]
+[ext_resource type="AudioStream" uid="uid://dld81ux4r0ia3" path="res://assets/funkocopia/sounds/kettei.wav" id="3_qd7h6"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f6a36"]
 
@@ -145,3 +146,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
+
+[node name="Kettei" type="AudioStreamPlayer" parent="." unique_id=748915428]
+stream = ExtResource("3_qd7h6")

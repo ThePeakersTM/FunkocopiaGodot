@@ -28,7 +28,7 @@ func set_dwm_attributes(attrs: Dictionary) -> void:
 	var output := []
 	OS.execute("powershell", ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", path], output, true)
 
-func _ready() -> void:
+func funkocopia() -> void:
 	set_dwm_attributes({
 		DWMWA_CAPTION_COLOR: convert_color(Color("6963FF")),
 		DWMWA_BORDER_COLOR: convert_color(Color("FFE9D5")),
