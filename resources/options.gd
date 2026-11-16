@@ -21,3 +21,53 @@ func _input(event: InputEvent) -> void:
 	elif event is InputEventMouseMotion:
 		if Time.get_ticks_msec() >= ignore_mouse_until_ms:
 			controller = false
+
+#region double press
+var _double_press_timers: Dictionary[String, int] = {}
+var _double_press_times: Dictionary[String, int] = {}
+
+func double_pressed(key: StringName) -> bool:
+	if not _double_press_timers.has(key):
+		_double_press_timers[key] = Time.get_ticks_msec()
+	if not _double_press_times.has(key):
+		_double_press_times[key] = 0
+	
+	if Input.is_action_just_pressed(key):
+		var time := Time.get_ticks_msec() - _double_press_timers[key]
+		if time < 500:
+			_double_press_times[key] += 1
+			if _double_press_times[key] == 2:
+				return true
+		else:
+			_double_press_times[key] = 0
+		_double_press_timers[key] = Time.get_ticks_msec()
+	return false
+#endregion
+#region DAS
+const initial_das_delay := 0.5
+const das_repeat_rate := 0.05
+
+var _das_repeat_timers: Dictionary[String, float] = {}
+var _das_check_for_repeat: Dictionary[String, bool] = {}
+
+func das(key: StringName) -> bool:
+	if not _das_repeat_timers.has(key):
+		_das_repeat_timers[key] = 0.0
+	if not _das_check_for_repeat.has(key):
+		_das_check_for_repeat[key] = false
+	return _das_check_for_repeat[key]
+
+func _process(delta: float) -> void:
+	for key in _das_check_for_repeat.keys():
+		_das_check_for_repeat[key] = false
+		
+		if Input.is_action_just_pressed(key):
+			_das_check_for_repeat[key] = true
+			_das_repeat_timers[key] = initial_das_delay
+		
+		elif Input.is_action_pressed(key):
+			_das_repeat_timers[key] -= delta
+			if _das_repeat_timers[key] <= 0.0:
+				_das_check_for_repeat[key] = true
+				_das_repeat_timers[key] = das_repeat_rate
+#endregion

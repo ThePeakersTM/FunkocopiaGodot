@@ -1,16 +1,17 @@
 extends Overlay
 
+const _gallery_path = "res://assets/funkocopia/rooms/overlay/compooter/gallery"
+
 var folder_contents: Dictionary[String, Array] = {
 	"asfahik": [
 		"Doors.exe",
 		"RICHARD.exe"
 	],
 	"Gallery": Array(DirAccess.get_files_at(
-		"res://assets/funkocopia/rooms/overlay/compooter/gallery"
-	)).filter(func(file):
-		var image := Image.new()
-		return (not file.ends_with(".import")) and image.load(file) == OK
-		)
+		_gallery_path
+	)).filter(func(file): return (
+		not file.ends_with(".import")
+	) and load(_gallery_path + "/" + file) is Texture2D)
 }
 
 @onready var on_off_button := $OnOffButton
@@ -27,32 +28,16 @@ var folder_contents: Dictionary[String, Array] = {
 @onready var desktop_screen := $ScreenElements/DesktopScreen
 
 @onready var file_explorer := $ScreenElements/DesktopScreen/FileExplorer
+@onready var file_explorer_scroll_bar := $ScreenElements/DesktopScreen/FileExplorer/ScrollBar
+@onready var file_explorer_scroll_bar_up_button := $ScreenElements/DesktopScreen/FileExplorer/ScrollBar/Up
+@onready var file_explorer_scroll_bar_down_button := $ScreenElements/DesktopScreen/FileExplorer/ScrollBar/Down
+@onready var file_explorer_scroll_bar_center := $ScreenElements/DesktopScreen/FileExplorer/ScrollBar/TextureRect
 @onready var file_explorer_disabled_scroller := $ScreenElements/DesktopScreen/FileExplorer/DisabledScroller
 @onready var file_explorer_exit := $ScreenElements/DesktopScreen/FileExplorer/CloseButton
 
 var did_play_button_sound := false
 
 var powered_on := false
-
-var double_press_timers: Dictionary[String, int] = {}
-var double_press_times: Dictionary[String, int] = {}
-
-func double_pressed(key: StringName) -> bool:
-	if not double_press_timers.has(key):
-		double_press_timers[key] = Time.get_ticks_msec()
-	if not double_press_times.has(key):
-		double_press_times[key] = 0
-	
-	if Input.is_action_just_pressed(key):
-		var time := Time.get_ticks_msec() - double_press_timers[key]
-		if time < 500:
-			double_press_times[key] += 1
-			if double_press_times[key] == 2:
-				return true
-		else:
-			double_press_times[key] = 0
-		double_press_timers[key] = Time.get_ticks_msec()
-	return false
 
 func _plug_connected() -> bool:
 	return room.plug.modulate.a < 1
@@ -100,7 +85,9 @@ func _load_element_texture(app_name: String) -> AtlasTexture:
 
 func _open_file_explorer(folder: String) -> void:
 	file_explorer.visible = true
-	var inside_folder: Array[String] = folder_contents[folder]
+	var _inside_folder: Array = folder_contents[folder]
+	file_explorer_disabled_scroller.visible = true
+	file_explorer_scroll_bar.visible = false
 
 func _on_open_app(app_name: String) -> void:
 	var app_name_ext := app_name.rsplit(".", true, 1)
@@ -132,7 +119,7 @@ func _ready() -> void:
 	var desktop_icons = desktop_screen.get_node("Elements").get_children()
 	for icon: TextureButton in desktop_icons:
 		icon.pressed.connect(func():
-			if double_pressed("left_click"):
+			if Options.double_pressed("left_click"):
 				if not (file_explorer.visible):
 					_on_open_app(icon.name.replace("#", "."))
 		)
@@ -156,6 +143,31 @@ func _show_desktop() -> void:
 			icon.visible = true
 		)
 
+func get_grabber_y(vscroll: VScrollBar, alignment: int = 0) -> float:
+	var scroll_style: StyleBox = vscroll.get_theme_stylebox("scroll")
+	var margin_top: float = scroll_style.get_margin(SIDE_TOP)
+	var margin_bottom: float = scroll_style.get_margin(SIDE_BOTTOM)
+	
+	var track_height: float = vscroll.size.y - (margin_top + margin_bottom)
+	
+	var total_range: float = vscroll.max_value - vscroll.min_value
+	if total_range <= 0.0:
+		return margin_top
+		
+	var grabber_height: float = (vscroll.page / total_range) * track_height
+	var grabber_style: StyleBox = vscroll.get_theme_stylebox("grabber")
+	grabber_height = max(grabber_height, grabber_style.get_minimum_size().y)
+	
+	var travel_distance: float = track_height - grabber_height
+	
+	var max_scroll: float = total_range - vscroll.page
+	if max_scroll <= 0.0:
+		return margin_top
+		
+	var progress: float = (vscroll.value - vscroll.min_value) / max_scroll
+	
+	return margin_top + (progress * travel_distance) + grabber_height * (alignment * 0.5)
+
 func _process(delta: float) -> void:
 	if not _plug_connected():
 		_turn_off()
@@ -175,5 +187,10 @@ func _process(delta: float) -> void:
 		accounts_screen.visible = false
 		_show_desktop()
 	if desktop_screen.visible:
-		pass
+		if file_explorer:
+			if file_explorer_scroll_bar.visible:
+				file_explorer_scroll_bar_center.position.y = floor(get_grabber_y(
+					file_explorer_scroll_bar,
+					1
+				) - 3)
 	super._process(delta)

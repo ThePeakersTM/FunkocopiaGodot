@@ -8,6 +8,7 @@
 
 .builds/
 export_presets.cfg
+.vscode/
 
 # Linux
 *.directory
