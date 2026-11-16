@@ -4,7 +4,7 @@ const _gallery_path = "res://assets/funkocopia/rooms/overlay/compooter/gallery"
 
 var folder_contents: Dictionary[String, Array] = {
 	"asfahik": [
-		#"Doors.exe",
+		"Doors.exe",
 		#"RICHARD.exe"
 	],
 	"Gallery": (
