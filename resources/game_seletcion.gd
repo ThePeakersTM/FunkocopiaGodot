@@ -66,14 +66,14 @@ func _ready() -> void:
 		game.pressed.connect(func(): _on_launch(game, game_methods[i]))
 		game.get_node("Polygon2D").offset.y = 600
 		game.disabled = true
-		get_tree().create_timer(base_z/8.0).timeout.connect(func():
+		get_tree().create_timer(base_z/10.0).timeout.connect(func():
 			var tween = create_tween()
 			tween.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 			tween.tween_property(
 				game.get_node("Polygon2D"),
 				"offset:y",
 				0,
-				0.4
+				0.25
 			).finished.connect(func():
 				if game.mouse_filter == MOUSE_FILTER_STOP:
 					game.disabled = false

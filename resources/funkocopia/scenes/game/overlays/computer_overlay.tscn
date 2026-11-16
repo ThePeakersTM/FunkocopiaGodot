@@ -316,6 +316,23 @@ position = Vector2(30, 20)
 texture = SubResource("AtlasTexture_p7od3")
 centered = false
 
+[node name="InsideArea" type="Control" parent="ScreenElements/DesktopScreen/FileExplorer" unique_id=2007875299]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 0
+offset_left = 4.0
+offset_top = 16.0
+offset_right = 136.0
+offset_bottom = 106.0
+
+[node name="ScrollingArea" type="Control" parent="ScreenElements/DesktopScreen/FileExplorer/InsideArea" unique_id=1845773166]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="DisabledScroller" type="Sprite2D" parent="ScreenElements/DesktopScreen/FileExplorer" unique_id=2080370083]
 position = Vector2(137, 16)
 texture = SubResource("AtlasTexture_vby3f")
@@ -331,6 +348,7 @@ grow_vertical = 2
 mouse_default_cursor_shape = 8
 
 [node name="ScrollBar" type="VScrollBar" parent="ScreenElements/DesktopScreen/FileExplorer" unique_id=1507228781]
+visible = false
 offset_left = 137.0
 offset_top = 24.0
 offset_right = 144.0
@@ -362,24 +380,28 @@ layout_mode = 0
 offset_top = -8.0
 offset_right = 7.0
 offset_bottom = -1.0
+mouse_default_cursor_shape = 2
 theme_override_font_sizes/font_size = 6
 theme_override_styles/normal = SubResource("StyleBoxEmpty_f6a36")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_t5jfb")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_5pd38")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_p7od3")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_vby3f")
+action_mode = 0
 
 [node name="Down" type="Button" parent="ScreenElements/DesktopScreen/FileExplorer/ScrollBar" unique_id=540878780]
 layout_mode = 0
 offset_top = 75.0
 offset_right = 7.0
 offset_bottom = 82.0
+mouse_default_cursor_shape = 2
 theme_override_font_sizes/font_size = 6
 theme_override_styles/normal = SubResource("StyleBoxEmpty_f6a36")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_t5jfb")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_5pd38")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_p7od3")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_vby3f")
+action_mode = 0
 
 [node name="CloseButton" type="TextureButton" parent="ScreenElements/DesktopScreen/FileExplorer" unique_id=2059693041]
 anchors_preset = 1

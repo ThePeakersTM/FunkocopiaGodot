@@ -39,7 +39,7 @@ func double_pressed(key: StringName) -> bool:
 			if _double_press_times[key] == 2:
 				return true
 		else:
-			_double_press_times[key] = 0
+			_double_press_times[key] = 1
 		_double_press_timers[key] = Time.get_ticks_msec()
 	return false
 #endregion
@@ -52,12 +52,12 @@ var _das_check_for_repeat: Dictionary[String, bool] = {}
 
 func das(key: StringName) -> bool:
 	if not _das_repeat_timers.has(key):
-		_das_repeat_timers[key] = 0.0
+		_das_repeat_timers[key] = initial_das_delay
 	if not _das_check_for_repeat.has(key):
-		_das_check_for_repeat[key] = false
+		_das_check_for_repeat[key] = true
 	return _das_check_for_repeat[key]
 
-func _process(delta: float) -> void:
+func update_das(delta: float) -> void:
 	for key in _das_check_for_repeat.keys():
 		_das_check_for_repeat[key] = false
 		
@@ -71,3 +71,9 @@ func _process(delta: float) -> void:
 				_das_check_for_repeat[key] = true
 				_das_repeat_timers[key] = das_repeat_rate
 #endregion
+
+var _last_delta := 0.0
+
+func _process(delta: float) -> void:
+	update_das(delta)
+	_last_delta = delta

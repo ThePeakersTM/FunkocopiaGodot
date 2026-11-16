@@ -4,14 +4,17 @@ const _gallery_path = "res://assets/funkocopia/rooms/overlay/compooter/gallery"
 
 var folder_contents: Dictionary[String, Array] = {
 	"asfahik": [
-		"Doors.exe",
-		"RICHARD.exe"
+		#"Doors.exe",
+		#"RICHARD.exe"
 	],
-	"Gallery": Array(DirAccess.get_files_at(
+	"Gallery": (
+		func(a: Array):
+			a.sort_custom(func(x, y): return x.nocasecmp_to(y) < 0)
+			return a).call(Array(DirAccess.get_files_at(
 		_gallery_path
 	)).filter(func(file): return (
 		not file.ends_with(".import")
-	) and load(_gallery_path + "/" + file) is Texture2D)
+	) and load(_gallery_path + "/" + file) is Texture2D))
 }
 
 @onready var on_off_button := $OnOffButton
@@ -34,6 +37,11 @@ var folder_contents: Dictionary[String, Array] = {
 @onready var file_explorer_scroll_bar_center := $ScreenElements/DesktopScreen/FileExplorer/ScrollBar/TextureRect
 @onready var file_explorer_disabled_scroller := $ScreenElements/DesktopScreen/FileExplorer/DisabledScroller
 @onready var file_explorer_exit := $ScreenElements/DesktopScreen/FileExplorer/CloseButton
+@onready var file_explorer_inside_area := $ScreenElements/DesktopScreen/FileExplorer/InsideArea
+@onready var file_explorer_items_area := $ScreenElements/DesktopScreen/FileExplorer/InsideArea/ScrollingArea
+
+var touching_file_explorer_scroll_bar_up_button := false
+var touching_file_explorer_scroll_bar_down_button := false
 
 var did_play_button_sound := false
 
@@ -80,14 +88,55 @@ func _turn_off() -> void:
 	file_explorer.visible   = false
 	accounts.play("invis")
 
-func _load_element_texture(app_name: String) -> AtlasTexture:
-	return load("res://assets/funkocopia/rooms/overlay/compooter/elements/" + app_name + ".tres")
+func _load_element_texture(app_name: String) -> Texture2D:
+	var full_path = "res://assets/funkocopia/rooms/overlay/compooter/elements/" + app_name + ".tres"
+	if not FileAccess.file_exists(full_path):
+		push_warning("Failed to load texture with filename of \"%s\"." % full_path)
+		return load("res://assets/funkocopia/rooms/overlay/compooter/compooter.png")
+	return load(full_path)
 
 func _open_file_explorer(folder: String) -> void:
+	for i in file_explorer_items_area.get_children():
+		i.queue_free()
+	
 	file_explorer.visible = true
-	var _inside_folder: Array = folder_contents[folder]
-	file_explorer_disabled_scroller.visible = true
-	file_explorer_scroll_bar.visible = false
+	var inside_folder: Array = folder_contents[folder]
+	var row := 1.0
+	var col := 0.0
+	for item: String in inside_folder:
+		var item_texture = _load_element_texture(item)
+		
+		var element := TextureButton.new()
+		element.name = item.replace(".", "#")
+		element.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
+		element.action_mode = BaseButton.ACTION_MODE_BUTTON_PRESS
+		element.texture_normal = item_texture
+		element.size.x = item_texture.get_width()
+		element.size.y = item_texture.get_height()
+		element.position = Vector2(row, col)
+		element.pressed.connect(func():
+			if desktop_screen.visible:
+				if file_explorer.visible:
+					if Options.double_pressed("left_click"):
+						_on_open_app(element.name)
+		)
+		file_explorer_items_area.add_child(element)
+		
+		row += element.size.x + 3
+		if row > file_explorer.texture.get_width() - 48:
+			row = 1
+			col += 37
+	
+	var height := col + 35
+	
+	if height > 90:
+		file_explorer_disabled_scroller.visible = false
+		file_explorer_scroll_bar.visible = true
+		file_explorer_scroll_bar.max_value = height / 90.0
+	else:
+		file_explorer_disabled_scroller.visible = true
+		file_explorer_scroll_bar.visible = false
+		
 
 func _on_open_app(app_name: String) -> void:
 	var app_name_ext := app_name.rsplit(".", true, 1)
@@ -95,6 +144,8 @@ func _on_open_app(app_name: String) -> void:
 	var is_folder := app_ext == ""
 	if is_folder:
 		_open_file_explorer(app_name)
+
+const _arrow_change_value := 0.1
 
 func _ready() -> void:
 	print(folder_contents["Gallery"])
@@ -128,6 +179,13 @@ func _ready() -> void:
 			if file_explorer.visible and not (false):
 				file_explorer.visible = false
 	)
+	
+	file_explorer_scroll_bar_up_button.mouse_entered.connect(func(): touching_file_explorer_scroll_bar_up_button = true )
+	file_explorer_scroll_bar_up_button.mouse_exited.connect( func(): touching_file_explorer_scroll_bar_up_button = false)
+	
+	file_explorer_scroll_bar_down_button.mouse_entered.connect(func(): touching_file_explorer_scroll_bar_down_button = true )
+	file_explorer_scroll_bar_down_button.mouse_exited.connect( func(): touching_file_explorer_scroll_bar_down_button = false)
+	
 	super._ready()
 
 const ICON_SUMMON_DELAY := 0.25
@@ -193,4 +251,16 @@ func _process(delta: float) -> void:
 					file_explorer_scroll_bar,
 					1
 				) - 3)
+				file_explorer_items_area.position.y = (
+					file_explorer_scroll_bar.value * -90
+				)
+				if Options.das("left_click"):
+					if touching_file_explorer_scroll_bar_down_button:
+						file_explorer_scroll_bar.value += _arrow_change_value
+						if file_explorer_scroll_bar.value > file_explorer_scroll_bar.max_value:
+							file_explorer_scroll_bar.value = file_explorer_scroll_bar.max_value
+					if touching_file_explorer_scroll_bar_up_button:
+						file_explorer_scroll_bar.value -= _arrow_change_value
+						if file_explorer_scroll_bar.value < file_explorer_scroll_bar.min_value:
+							file_explorer_scroll_bar.value = file_explorer_scroll_bar.min_value
 	super._process(delta)
