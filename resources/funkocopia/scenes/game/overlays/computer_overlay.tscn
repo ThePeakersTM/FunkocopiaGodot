@@ -483,7 +483,6 @@ grow_horizontal = 0
 mouse_default_cursor_shape = 2
 
 [node name="ImageViewer" type="NinePatchRect" parent="ScreenElements/DesktopScreen" unique_id=1146390625]
-visible = false
 offset_right = 40.0
 offset_bottom = 40.0
 texture = SubResource("AtlasTexture_c2xmk")
@@ -511,7 +510,15 @@ offset_top = 17.0
 offset_right = 45.0
 offset_bottom = 57.0
 
+[node name="ColorRect" type="ColorRect" parent="ScreenElements/DesktopScreen/ImageViewer" unique_id=528542651]
+layout_mode = 1
+offset_left = 5.0
+offset_top = 16.0
+offset_right = 37.0
+offset_bottom = 16.0
+
 [node name="DoorsWindow" type="Sprite2D" parent="ScreenElements/DesktopScreen" unique_id=506171271]
+visible = false
 position = Vector2(40, 10)
 texture = SubResource("AtlasTexture_ctm3t")
 centered = false

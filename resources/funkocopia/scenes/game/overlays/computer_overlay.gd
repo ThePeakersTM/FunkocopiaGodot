@@ -47,6 +47,7 @@ var folder_contents: Dictionary[String, Array] = {
 @onready var image_viewer := $ScreenElements/DesktopScreen/ImageViewer
 @onready var image_viewer_exit := $ScreenElements/DesktopScreen/ImageViewer/CloseButton
 @onready var image_viewer_image := $ScreenElements/DesktopScreen/ImageViewer/TextureRect
+@onready var image_viewer_anim := $ScreenElements/DesktopScreen/ImageViewer/ColorRect
 
 @onready var doors_window := $ScreenElements/DesktopScreen/DoorsWindow
 @onready var doors_window_loading := $ScreenElements/DesktopScreen/DoorsWindow/Loading
@@ -177,6 +178,10 @@ func _on_open_app(app_name: String) -> void:
 				5 / scale_thing,
 				5 / scale_thing
 			)
+			image_viewer_anim.size = Vector2(
+				(image.get_width()  * image_viewer_image.scale.x),
+				(image.get_height() * image_viewer_image.scale.y)
+			)
 			image_viewer.size = Vector2(
 				(image.get_width()  * image_viewer_image.scale.x) + 12,
 				(image.get_height() * image_viewer_image.scale.y) + 22
@@ -184,6 +189,20 @@ func _on_open_app(app_name: String) -> void:
 			image_viewer.position = Vector2(
 				(203.0 - image_viewer.size.x) / 2.0,
 				((154.0 - image_viewer.size.y) / 2.0) - 2
+			)
+			image_viewer_anim.visible = true
+			create_tween().tween_method(
+				func(val: float):
+					var v := snappedi(roundf(val), 15)
+					image_viewer_anim.position.y = (
+						image.get_height() * image_viewer_image.scale.y
+					) - v + 17
+					image_viewer_anim.size.y = v,
+				image.get_height() * image_viewer_image.scale.y,
+				0.0,
+				1.5
+			).finished.connect(func():
+				image_viewer_anim.visible = false
 			)
 		elif app_ext == "exe":
 			if irl_name == "Doors.exe":
