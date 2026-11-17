@@ -2,13 +2,21 @@
 
 [ext_resource type="Script" uid="uid://c34d7yv5redak" path="res://resources/game_seletcion.gd" id="1_xkchb"]
 [ext_resource type="FontFile" uid="uid://dnn4b8ikrsd55" path="res://resources/fonts/fnt_vcr.ttf" id="2_r4vbv"]
-[ext_resource type="AudioStream" uid="uid://dld81ux4r0ia3" path="res://assets/funkocopia/sounds/kettei.wav" id="3_qd7h6"]
+[ext_resource type="AudioStream" uid="uid://dld81ux4r0ia3" path="res://assets/sounds/kettei.wav" id="3_qd7h6"]
+[ext_resource type="AudioStream" uid="uid://bpmp55ykeidxm" path="res://assets/sounds/scenelight.wav" id="4_5ypt3"]
+[ext_resource type="Texture2D" uid="uid://bddgnkbeffy4d" path="res://assets/spotlight.png" id="5_tkh3o"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f6a36"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_f6a36"]
 font = ExtResource("2_r4vbv")
 font_size = 32
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_5ypt3"]
+font = ExtResource("2_r4vbv")
+font_size = 64
 outline_size = 6
 outline_color = Color(0, 0, 0, 1)
 
@@ -57,7 +65,6 @@ theme_override_constants/separation = 0
 alignment = 1
 
 [node name="Game1" type="Button" parent="Margin/HBoxMargin/HBoxContainer" unique_id=125345049]
-modulate = Color(1, 1, 1, 0.5)
 z_index = 4
 custom_minimum_size = Vector2(275, 0)
 layout_mode = 2
@@ -91,7 +98,6 @@ polygon = PackedVector2Array(48, 0, 363, 0, 299, 528, 0, 528)
 uv = PackedVector2Array(48, 0, 363, 0, 299, 528, 0, 528)
 
 [node name="Game3" type="Button" parent="Margin/HBoxMargin/HBoxContainer" unique_id=645835313]
-modulate = Color(1, 1, 1, 0.5)
 z_index = 2
 custom_minimum_size = Vector2(275, 0)
 layout_mode = 2
@@ -109,7 +115,6 @@ polygon = PackedVector2Array(48, 0, 363, 0, 299, 528, 0, 528)
 uv = PackedVector2Array(48, 0, 363, 0, 299, 528, 0, 528)
 
 [node name="Game4" type="Button" parent="Margin/HBoxMargin/HBoxContainer" unique_id=1567832775]
-modulate = Color(1, 1, 1, 0.5)
 z_index = 1
 custom_minimum_size = Vector2(275, 0)
 layout_mode = 2
@@ -138,7 +143,7 @@ label_settings = SubResource("LabelSettings_f6a36")
 horizontal_alignment = 1
 
 [node name="Fade" type="ColorRect" parent="." unique_id=207338216]
-modulate = Color(1, 1, 1, 0)
+visible = false
 z_index = 16
 layout_mode = 1
 anchors_preset = 15
@@ -149,5 +154,30 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
+[node name="Label" type="Label" parent="Fade" unique_id=1207073643]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Loading..."
+label_settings = SubResource("LabelSettings_5ypt3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Kettei" type="AudioStreamPlayer" parent="." unique_id=748915428]
 stream = ExtResource("3_qd7h6")
+
+[node name="Scenelight" type="AudioStreamPlayer" parent="." unique_id=1512198522]
+stream = ExtResource("4_5ypt3")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=992084026]
+color = Color(0.7372549, 0.7372549, 0.7372549, 1)
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1499767252]
+position = Vector2(640, 360)
+scale = Vector2(0.667, 0.667)
+shadow_enabled = true
+texture = ExtResource("5_tkh3o")

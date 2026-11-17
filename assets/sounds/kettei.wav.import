@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://dld81ux4r0ia3"
-path="res://.godot/imported/kettei.wav-c91dae41d09314e5225b6b29528feffc.sample"
+path="res://.godot/imported/kettei.wav-e8557d0c5991198602c75b7e431d768a.sample"
 
 [deps]
 
-source_file="res://assets/funkocopia/sounds/kettei.wav"
-dest_files=["res://.godot/imported/kettei.wav-c91dae41d09314e5225b6b29528feffc.sample"]
+source_file="res://assets/sounds/kettei.wav"
+dest_files=["res://.godot/imported/kettei.wav-e8557d0c5991198602c75b7e431d768a.sample"]
 
 [params]
 

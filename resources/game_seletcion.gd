@@ -1,6 +1,11 @@
 extends Control
 
 @onready var fade := $Fade
+@onready var fade_label := $Fade/Label
+@onready var scene_light := $Scenelight
+
+@onready var point_light := $PointLight2D
+@onready var canvas_modulate := $CanvasModulate
 
 const LIFT := -24.0
 const DURATION := 0.15
@@ -46,34 +51,63 @@ var game_methods := [
 var available := [1]
 
 func _ready() -> void:
-	fade.modulate = Color.TRANSPARENT
-	fade.mouse_filter = MOUSE_FILTER_IGNORE
+	point_light.visible = false
+	fade.visible = true
+	fade_label.visible = false
+	fade.modulate = Color.WHITE
+	fade.mouse_filter = MOUSE_FILTER_STOP
+	get_tree().create_timer(0.85).timeout.connect(func():
+		get_tree().create_timer(0.5).timeout.connect(func():
+			fade.modulate = Color.TRANSPARENT
+			fade.mouse_filter = MOUSE_FILTER_IGNORE
+			fade_label.visible = true
+			point_light.visible = true
+			canvas_modulate.color = Color(0.503, 0.503, 0.503)
+			point_light.energy = 1.0
+			get_tree().create_timer(0.5).timeout.connect(func():
+				create_tween().tween_method(
+					func(v: float):
+						point_light.energy = 1.0 - v
+						var j := v / 2.0
+						if v == 0:
+							j = 0.0
+						var i = j + 0.503
+						canvas_modulate.color = Color(i, i, i),
+					0.0,
+					1.0,
+					2
+				)
+			)
+		)
+		scene_light.play()
+	)
 	var games := $Margin/HBoxMargin/HBoxContainer.get_children()
 	for i in games.size():
 		var game: Button = games[i]
+		var polygon: Polygon2D = game.get_node("Polygon2D")
 		if i not in available:
 			game.mouse_filter = MOUSE_FILTER_IGNORE
 			game.mouse_default_cursor_shape = CURSOR_FORBIDDEN
 			game.disabled = true
-			game.modulate = Color(1, 1, 1, DISABLED_ALPHA)
+			polygon.color = Color(DISABLED_ALPHA, DISABLED_ALPHA, DISABLED_ALPHA)
 		else:
 			game.mouse_filter = MOUSE_FILTER_STOP
 			game.mouse_default_cursor_shape = CURSOR_POINTING_HAND
-			game.modulate = Color.WHITE
+			polygon.color = Color.WHITE
 		var base_z := games.size() - i
 		game.mouse_entered.connect(_hover.bind(game, true, base_z))
 		game.mouse_exited.connect(_hover.bind(game, false, base_z))
 		game.pressed.connect(func(): _on_launch(game, game_methods[i]))
 		game.get_node("Polygon2D").offset.y = 600
 		game.disabled = true
-		get_tree().create_timer(base_z/10.0).timeout.connect(func():
+		get_tree().create_timer((base_z/10.0)+4).timeout.connect(func():
 			var tween = create_tween()
 			tween.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 			tween.tween_property(
 				game.get_node("Polygon2D"),
 				"offset:y",
 				0,
-				0.25
+				0.5
 			).finished.connect(func():
 				if game.mouse_filter == MOUSE_FILTER_STOP:
 					game.disabled = false
@@ -89,20 +123,19 @@ func _back_out(t: float, s: float) -> float:
 func _back_out_peak(s: float) -> float:
 	return 1.0 - 2.0 * s / (3.0 * (s + 1.0))
 
-const ALPHA_DURATION := 0.2
+const ALPHA_DURATION := 0.4
 const DIM_ALPHA := 0.1
 const DISABLED_ALPHA := DIM_ALPHA * 5
 
 var alpha_tweens := {}
 
-func _tween_alpha(node: Control, target: float) -> void:
+func _tween_alpha(node: Polygon2D, target: float) -> void:
 	if alpha_tweens.has(node) and alpha_tweens[node].is_valid():
 		alpha_tweens[node].kill()
-	# scale duration by how far the alpha still has to travel
-	var dist := absf(target - node.modulate.a) / (1.0 - DIM_ALPHA)
+	var dist := absf(target - node.color.r) / (1.0 - DIM_ALPHA)
 	var tween := create_tween()
 	tween.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
-	tween.tween_property(node, "modulate:a", target, ALPHA_DURATION * dist)
+	tween.tween_property(node, "color", Color(target, target, target), ALPHA_DURATION * dist)
 	alpha_tweens[node] = tween
 
 func _hover(game: Button, up: bool, base_z: int) -> void:
@@ -125,6 +158,7 @@ func _hover(game: Button, up: bool, base_z: int) -> void:
 	tweens[game] = tween
 
 	for g: Control in $Margin/HBoxMargin/HBoxContainer.get_children():
-		_tween_alpha(g, DIM_ALPHA if (up and g != game) else (
+		var p: Polygon2D = g.get_node("Polygon2D")
+		_tween_alpha(p, DIM_ALPHA if (up and g != game) else (
 			DISABLED_ALPHA if g.disabled else 1.0
 		))
