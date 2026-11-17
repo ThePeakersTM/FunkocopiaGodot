@@ -375,7 +375,7 @@ offset_left = 83.99999
 offset_top = 15.999998
 offset_right = 118.99999
 offset_bottom = 51.0
-mouse_default_cursor_shape = 2
+mouse_default_cursor_shape = 8
 action_mode = 0
 texture_normal = ExtResource("6_ucl16")
 
