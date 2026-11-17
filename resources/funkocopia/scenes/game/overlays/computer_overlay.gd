@@ -48,6 +48,12 @@ var folder_contents: Dictionary[String, Array] = {
 @onready var image_viewer_exit := $ScreenElements/DesktopScreen/ImageViewer/CloseButton
 @onready var image_viewer_image := $ScreenElements/DesktopScreen/ImageViewer/TextureRect
 
+@onready var doors_window := $ScreenElements/DesktopScreen/DoorsWindow
+@onready var doors_window_loading := $ScreenElements/DesktopScreen/DoorsWindow/Loading
+@onready var doors_window_doors := $ScreenElements/DesktopScreen/DoorsWindow/Doors
+@onready var doors_window_exit := $ScreenElements/DesktopScreen/DoorsWindow/CloseButton
+@onready var doors_window_door_anim := $ScreenElements/DesktopScreen/DoorsWindow/DoorAnim
+
 var touching_file_explorer_scroll_bar_up_button := false
 var touching_file_explorer_scroll_bar_down_button := false
 
@@ -95,6 +101,7 @@ func _turn_off() -> void:
 	desktop_screen.visible  = false
 	file_explorer.visible   = false
 	image_viewer.visible    = false
+	doors_window.visible    = false
 	accounts.play("invis")
 
 func _load_element_texture(app_name: String) -> Texture2D:
@@ -127,7 +134,7 @@ func _open_file_explorer(folder: String) -> void:
 		element.position = Vector2(row, col)
 		element.pressed.connect(func():
 			if desktop_screen.visible:
-				if file_explorer.visible and not (image_viewer.visible):
+				if file_explorer.visible and not (image_viewer.visible or doors_window.visible):
 					if Options.double_pressed("left_click"):
 						_on_open_app(element.name.replace("#", "."))
 		)
@@ -180,7 +187,23 @@ func _on_open_app(app_name: String) -> void:
 			)
 		elif app_ext == "exe":
 			if irl_name == "Doors.exe":
-				print("Doors launch placeholder")
+				doors_window_door_anim.visible = false
+				doors_window.visible = true
+				doors_window_loading.visible = true
+				for door in doors_window_doors.get_children():
+					door.modulate = Color.TRANSPARENT
+				get_tree().create_timer(2).timeout.connect(func():
+					doors_window_loading.visible = false
+					var doors = doors_window_doors.get_children()
+					for i in doors.size():
+						var door: TextureButton = doors[i]
+						get_tree().create_timer((i+1)/8.0).timeout.connect(func():
+							if i not in got_doors:
+								door.modulate = Color.WHITE
+						)
+				)
+
+var got_doors: Array[int] = []
 
 const _arrow_change_value := 0.1
 
@@ -212,7 +235,7 @@ func _ready() -> void:
 		)
 	file_explorer_exit.pressed.connect(func():
 		if desktop_screen.visible:
-			if file_explorer.visible and not (image_viewer.visible):
+			if file_explorer.visible and not (image_viewer.visible or doors_window.visible):
 				file_explorer.visible = false
 	)
 	
@@ -224,9 +247,32 @@ func _ready() -> void:
 	
 	image_viewer_exit.pressed.connect(func():
 		if desktop_screen.visible:
-			if image_viewer.visible and not (false):
+			if image_viewer.visible:
 				image_viewer.visible = false
 	)
+	
+	doors_window_exit.pressed.connect(func():
+		if desktop_screen.visible:
+			if doors_window.visible:
+				doors_window.visible = false
+	)
+	
+	var doors = doors_window_doors.get_children()
+	for i in doors.size():
+		var door: TextureButton = doors[i]
+		door.pressed.connect(func():
+			if desktop_screen.visible:
+				if doors_window.visible:
+					if door.modulate == Color.WHITE:
+						if not door.disabled:
+							door.modulate = Color.TRANSPARENT
+							door.mouse_default_cursor_shape = Control.CURSOR_ARROW
+							doors_window_door_anim.global_position = door.global_position
+							doors_window_door_anim.visible = true
+							doors_window_door_anim.play()
+							if not i in got_doors:
+								got_doors.append(i)
+		)
 	
 	super._ready()
 
@@ -287,7 +333,7 @@ func _process(delta: float) -> void:
 		accounts_screen.visible = false
 		_show_desktop()
 	if desktop_screen.visible:
-		if file_explorer.visible and not (image_viewer.visible):
+		if file_explorer.visible and not (image_viewer.visible or doors_window.visible):
 			if file_explorer_scroll_bar.visible:
 				file_explorer_scroll_bar_center.position.y = floor(get_grabber_y(
 					file_explorer_scroll_bar,
@@ -322,4 +368,7 @@ func _process(delta: float) -> void:
 					file_explorer_scroll_bar.value += _arrow_change_value
 					if file_explorer_scroll_bar.value > file_explorer_scroll_bar.max_value:
 						file_explorer_scroll_bar.value = file_explorer_scroll_bar.max_value
+	if doors_window_door_anim.frame == 5:
+		doors_window_door_anim.visible = false
+	
 	super._process(delta)

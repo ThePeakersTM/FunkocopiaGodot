@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://dj08x1mu2ymyt" path="res://assets/funkocopia/rooms/overlay/compooter/elements/asfahik.tres" id="6_jju00"]
 [ext_resource type="Texture2D" uid="uid://d3j1d06ekfwvt" path="res://assets/funkocopia/rooms/overlay/compooter/elements/save.exe.tres" id="6_ucl16"]
 [ext_resource type="Texture2D" uid="uid://bbhlshhm86ijs" path="res://assets/funkocopia/rooms/overlay/compooter/elements/Gallery.tres" id="7_o217d"]
+[ext_resource type="Texture2D" uid="uid://ydg0ixdor7ru" path="res://assets/funkocopia/rooms/overlay/compooter/door_unlocked.tres" id="9_fxqhs"]
+[ext_resource type="Texture2D" uid="uid://ca2icbu4dhh2d" path="res://assets/funkocopia/rooms/overlay/compooter/door_locked.tres" id="10_htdye"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fwont"]
 atlas = ExtResource("1_5gwxl")
@@ -200,6 +202,68 @@ filter_clip = true
 [sub_resource type="AtlasTexture" id="AtlasTexture_c2xmk"]
 atlas = ExtResource("1_5gwxl")
 region = Rect2(371, 315, 145, 110)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ctm3t"]
+atlas = ExtResource("1_5gwxl")
+region = Rect2(129, 427, 145, 109)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fg221"]
+atlas = ExtResource("1_5gwxl")
+region = Rect2(275, 502, 38, 75)
+margin = Rect2(0, 15.5, 0, 31)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g758k"]
+atlas = ExtResource("1_5gwxl")
+region = Rect2(314, 502, 38, 89)
+margin = Rect2(0, 8.5, 0, 17)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v8pbo"]
+atlas = ExtResource("1_5gwxl")
+region = Rect2(353, 502, 38, 92)
+margin = Rect2(0, 7, 0, 14)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8rm0m"]
+atlas = ExtResource("1_5gwxl")
+region = Rect2(392, 502, 38, 106)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3g25o"]
+atlas = ExtResource("1_5gwxl")
+region = Rect2(431, 536, 38, 106)
+filter_clip = true
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_htdye"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fg221")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g758k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v8pbo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8rm0m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3g25o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3g25o")
+}],
+"loop": 0,
+"name": &"anim",
+"speed": 8.5
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ri3ad"]
+atlas = ExtResource("1_5gwxl")
+region = Rect2(1, 393, 127, 70)
 
 [node name="Overlay" type="Sprite2D" unique_id=135972475]
 texture_filter = 1
@@ -446,3 +510,63 @@ offset_left = 5.0
 offset_top = 17.0
 offset_right = 45.0
 offset_bottom = 57.0
+
+[node name="DoorsWindow" type="Sprite2D" parent="ScreenElements/DesktopScreen" unique_id=506171271]
+position = Vector2(40, 10)
+texture = SubResource("AtlasTexture_ctm3t")
+centered = false
+
+[node name="DoorAnim" type="AnimatedSprite2D" parent="ScreenElements/DesktopScreen/DoorsWindow" unique_id=449783495]
+visible = false
+position = Vector2(5, 7)
+scale = Vector2(0.99999994, 0.99999994)
+sprite_frames = SubResource("SpriteFrames_htdye")
+animation = &"anim"
+centered = false
+
+[node name="Loading" type="Sprite2D" parent="ScreenElements/DesktopScreen/DoorsWindow" unique_id=1718044699]
+visible = false
+position = Vector2(9, 25.5)
+texture = SubResource("AtlasTexture_ri3ad")
+centered = false
+
+[node name="Doors" type="HBoxContainer" parent="ScreenElements/DesktopScreen/DoorsWindow" unique_id=1406979098]
+offset_left = 5.0
+offset_top = 7.0
+offset_right = 140.0
+offset_bottom = 113.0
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="Door1" type="TextureButton" parent="ScreenElements/DesktopScreen/DoorsWindow/Doors" unique_id=1480069492]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+action_mode = 0
+texture_normal = ExtResource("9_fxqhs")
+texture_disabled = ExtResource("10_htdye")
+
+[node name="Door2" type="TextureButton" parent="ScreenElements/DesktopScreen/DoorsWindow/Doors" unique_id=1679941182]
+layout_mode = 2
+mouse_default_cursor_shape = 8
+disabled = true
+action_mode = 0
+texture_normal = ExtResource("9_fxqhs")
+texture_disabled = ExtResource("10_htdye")
+
+[node name="Door3" type="TextureButton" parent="ScreenElements/DesktopScreen/DoorsWindow/Doors" unique_id=831747661]
+layout_mode = 2
+mouse_default_cursor_shape = 8
+disabled = true
+action_mode = 0
+texture_normal = ExtResource("9_fxqhs")
+texture_disabled = ExtResource("10_htdye")
+
+[node name="CloseButton" type="TextureButton" parent="ScreenElements/DesktopScreen/DoorsWindow" unique_id=660825375]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -11.0
+offset_right = -2.0
+offset_bottom = 11.0
+grow_horizontal = 0
+mouse_default_cursor_shape = 2

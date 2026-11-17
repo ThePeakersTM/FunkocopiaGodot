@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TextureAtlas imagePath="compooter.png">
+    <SubTexture name="Background0000" x="0" y="0" width="384" height="216" />
+
+    <SubTexture name="Screen0000" x="385" y="1"   width="202" height="154" />
+    <SubTexture name="Screen0001" x="588" y="1"   width="203" height="154" />
+    <SubTexture name="Screen0002" x="385" y="156" width="204" height="154" />
+    <SubTexture name="Screen0003" x="1"   y="238" width="203" height="154" />
+
+    <SubTexture name="Button0000" x="1"  y="217" width="19" height="20" />
+    <SubTexture name="Button0001" x="21" y="217" width="19" height="20" />
+
+    <SubTexture name="LoadingBar0000" x="792" y="1" width="20" height="7" />
+
+    <SubTexture name="Accounts0000" x="590" y="156" width="63" height="60" />
+    <SubTexture name="Accounts0001" x="654" y="156" width="63" height="60" />
+    <SubTexture name="Accounts0002" x="718" y="156" width="63" height="60" />
+    <SubTexture name="Accounts0003" x="590" y="217" width="63" height="60" />
+    <SubTexture name="Accounts0004" x="654" y="217" width="63" height="60" />
+    <SubTexture name="Accounts0005" x="654" y="217" width="63" height="60" />
+    <SubTexture name="Accounts6767" x="590" y="156" width="63" height="60" />
+    
+    <SubTexture name="DesktopElement0000" x="224" y="238" width="30" height="28" frameX="0"  frameY="-4" frameWidth="32" frameHeight="32" />
+    <SubTexture name="DesktopElement0001" x="346" y="277" width="28" height="31" frameX="-3" frameY="-3" frameWidth="32" frameHeight="32" />
+    <SubTexture name="DesktopElement0002" x="205" y="238" width="18" height="25" frameX="-7" frameY="-7" frameWidth="32" frameHeight="32" />
+
+    <SubTexture name="FileExplorer0000"     x="205" y="315" width="145" height="110"/>
+    <SubTexture name="ScrollerDisabled0000" x="351" y="331" width="7"   height="90" />
+    <SubTexture name="ScrollBar0000"        x="359" y="339" width="7"   height="40" />
+
+    <SubTexture name="TIMES_OUT.png" x="0"  y="467" width="62" height="35"/>
+    <SubTexture name="gf.png"        x="63" y="467" width="24" height="35"/>
+    <SubTexture name="cover.png"     x="88" y="467" width="40" height="35"/>
+    <SubTexture name="Clockey.png"   x="0"  y="503" width="48" height="35"/>
+    <SubTexture name="FUCK.png"      x="49" y="503" width="36" height="35"/>
+    <SubTexture name="dont.png"      x="86" y="503" width="35" height="35"/>
+    <SubTexture name="scrapped.png"  x="0"  y="540" width="53" height="35"/>
+    <SubTexture name="icon.png"      x="54" y="540" width="33" height="35"/>
+
+    <SubTexture name="Doors.exe"   x="280" y="237" width="42" height="40"/>
+    <SubTexture name="RICHARD.exe" x="207" y="275" width="51" height="40"/>
+
+    <SubTexture name="DoorsWindow0000" x="129" y="427" width="145" height="109"/>
+    <SubTexture name="DoorsLoading0000" x="1" y="393" width="127" height="70"/>
+
+    <SubTexture name="DoorLocked0000" x="275" y="426" width="38" height="75"  frameX="0" frameY="-15.5" frameWidth="38" frameHeight="106"/>
+    <SubTexture name="DoorNormal0000" x="275" y="502" width="38" height="75"  frameX="0" frameY="-15.5" frameWidth="38" frameHeight="106"/>
+    <SubTexture name="DoorVanish0000" x="275" y="502" width="38" height="75"  frameX="0" frameY="-15.5" frameWidth="38" frameHeight="106"/>
+    <SubTexture name="DoorVanish0001" x="314" y="502" width="38" height="89"  frameX="0" frameY="-8.5"  frameWidth="38" frameHeight="106"/>
+    <SubTexture name="DoorVanish0002" x="353" y="502" width="38" height="92"  frameX="0" frameY="-7"    frameWidth="38" frameHeight="106"/>
+    <SubTexture name="DoorVanish0003" x="392" y="502" width="38" height="106" frameX="0" frameY="0"     frameWidth="38" frameHeight="106"/>
+    <SubTexture name="DoorVanish0004" x="431" y="536" width="38" height="106" frameX="0" frameY="0"     frameWidth="38" frameHeight="106"/>
+    <SubTexture name="DoorVanish0005" x="431" y="536" width="38" height="106" frameX="0" frameY="0"     frameWidth="38" frameHeight="106"/>
+
+    <SubTexture name="SuperSaverBG0000"      x="457" y="442" width="81" height="93"/>
+    <SubTexture name="SuperSaverDonsing0000" x="539" y="442" width="61" height="62"/>
+    <SubTexture name="SuperSaverDonsing0001" x="601" y="442" width="61" height="62"/>
+    <SubTexture name="SuperSaverDonsing0002" x="663" y="442" width="61" height="62"/>
+    <SubTexture name="SuperSaverDonsing0003" x="725" y="442" width="61" height="62"/>
+    <SubTexture name="SuperSaverDonsing0004" x="787" y="442" width="61" height="62"/>
+    <SubTexture name="SuperSaverDonsing0005" x="849" y="442" width="61" height="62"/>
+    <SubTexture name="SuperSaverŻamping0000" x="539" y="505" width="61" height="62"/>
+    <SubTexture name="SuperSaverŻamping0001" x="601" y="505" width="61" height="62"/>
+    <SubTexture name="SuperSaverŻamping0002" x="663" y="505" width="61" height="62"/>
+</TextureAtlas>
