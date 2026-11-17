@@ -5,6 +5,7 @@ class_name Overlay
 @export var title := "Overlay"
 @export var leave_rect := Rect2i(0, 0, 20, 20)
 @export var can_change_cursor := false
+@export var destroy_on_exit := false
 
 var room: Room:
 	get:
@@ -29,3 +30,5 @@ func _process(_delta: float) -> void:
 		if touching_leave:
 			get_parent().get_parent().on_hide_ui(custom_id)
 			hide()
+			if destroy_on_exit:
+				queue_free()

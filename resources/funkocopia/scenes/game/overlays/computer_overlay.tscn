@@ -197,6 +197,10 @@ filter_clip = true
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vby3f"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_c2xmk"]
+atlas = ExtResource("1_5gwxl")
+region = Rect2(371, 315, 145, 110)
+
 [node name="Overlay" type="Sprite2D" unique_id=135972475]
 texture_filter = 1
 scale = Vector2(5, 5)
@@ -312,6 +316,7 @@ action_mode = 0
 texture_normal = ExtResource("6_ucl16")
 
 [node name="FileExplorer" type="Sprite2D" parent="ScreenElements/DesktopScreen" unique_id=1887244148]
+visible = false
 position = Vector2(30, 20)
 texture = SubResource("AtlasTexture_p7od3")
 centered = false
@@ -412,3 +417,32 @@ offset_right = -4.0
 offset_bottom = 11.0
 grow_horizontal = 0
 mouse_default_cursor_shape = 2
+
+[node name="ImageViewer" type="NinePatchRect" parent="ScreenElements/DesktopScreen" unique_id=1146390625]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+texture = SubResource("AtlasTexture_c2xmk")
+patch_margin_left = 6
+patch_margin_top = 17
+patch_margin_right = 13
+patch_margin_bottom = 5
+
+[node name="CloseButton" type="TextureButton" parent="ScreenElements/DesktopScreen/ImageViewer" unique_id=1622614288]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -13.0
+offset_right = -4.0
+offset_bottom = 11.0
+grow_horizontal = 0
+offset_transform_position_ratio = Vector2(1, 0)
+mouse_default_cursor_shape = 2
+
+[node name="TextureRect" type="TextureRect" parent="ScreenElements/DesktopScreen/ImageViewer" unique_id=517790897]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 17.0
+offset_right = 45.0
+offset_bottom = 57.0

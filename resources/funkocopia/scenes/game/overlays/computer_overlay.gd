@@ -2,6 +2,10 @@ extends Overlay
 
 const _gallery_path = "res://assets/funkocopia/rooms/overlay/compooter/gallery"
 
+func is_file_an_image(file: String) -> bool:
+	if not FileAccess.file_exists(file): return false
+	return load(file) is Texture2D
+
 var folder_contents: Dictionary[String, Array] = {
 	"asfahik": [
 		"Doors.exe",
@@ -14,7 +18,7 @@ var folder_contents: Dictionary[String, Array] = {
 		_gallery_path
 	)).filter(func(file): return (
 		not file.ends_with(".import")
-	) and load(_gallery_path + "/" + file) is Texture2D))
+	) and is_file_an_image("%s/%s" % [_gallery_path, file])))
 }
 
 @onready var on_off_button := $OnOffButton
@@ -39,6 +43,10 @@ var folder_contents: Dictionary[String, Array] = {
 @onready var file_explorer_exit := $ScreenElements/DesktopScreen/FileExplorer/CloseButton
 @onready var file_explorer_inside_area := $ScreenElements/DesktopScreen/FileExplorer/InsideArea
 @onready var file_explorer_items_area := $ScreenElements/DesktopScreen/FileExplorer/InsideArea/ScrollingArea
+
+@onready var image_viewer := $ScreenElements/DesktopScreen/ImageViewer
+@onready var image_viewer_exit := $ScreenElements/DesktopScreen/ImageViewer/CloseButton
+@onready var image_viewer_image := $ScreenElements/DesktopScreen/ImageViewer/TextureRect
 
 var touching_file_explorer_scroll_bar_up_button := false
 var touching_file_explorer_scroll_bar_down_button := false
@@ -86,6 +94,7 @@ func _turn_off() -> void:
 	accounts_screen.visible = false
 	desktop_screen.visible  = false
 	file_explorer.visible   = false
+	image_viewer.visible    = false
 	accounts.play("invis")
 
 func _load_element_texture(app_name: String) -> Texture2D:
@@ -100,6 +109,8 @@ func _open_file_explorer(folder: String) -> void:
 		i.queue_free()
 	
 	file_explorer.visible = true
+	file_explorer_scroll_bar.value = 0
+	file_explorer_items_area.position.y = 0
 	var inside_folder: Array = folder_contents[folder]
 	var row := 1.0
 	var col := 0.0
@@ -116,9 +127,9 @@ func _open_file_explorer(folder: String) -> void:
 		element.position = Vector2(row, col)
 		element.pressed.connect(func():
 			if desktop_screen.visible:
-				if file_explorer.visible:
+				if file_explorer.visible and not (image_viewer.visible):
 					if Options.double_pressed("left_click"):
-						_on_open_app(element.name)
+						_on_open_app(element.name.replace("#", "."))
 		)
 		file_explorer_items_area.add_child(element)
 		
@@ -144,11 +155,30 @@ func _on_open_app(app_name: String) -> void:
 	var is_folder := app_ext == ""
 	if is_folder:
 		_open_file_explorer(app_name)
+	else:
+		var img := "%s/%s" % [_gallery_path, app_name]
+		if is_file_an_image(img):
+			image_viewer.visible = true
+			var image: Texture2D = load(img)
+			image_viewer_image.texture = image
+			image_viewer_image.size = image.get_size()
+			var scale_thing := maxf(image.get_width(), image.get_height()) / 24.5
+			image_viewer_image.scale = Vector2(
+				5 / scale_thing,
+				5 / scale_thing
+			)
+			image_viewer.size = Vector2(
+				(image.get_width()  * image_viewer_image.scale.x) + 12,
+				(image.get_height() * image_viewer_image.scale.y) + 22
+			)
+			image_viewer.position = Vector2(
+				(203.0 - image_viewer.size.x) / 2.0,
+				((154.0 - image_viewer.size.y) / 2.0) - 2
+			)
 
 const _arrow_change_value := 0.1
 
 func _ready() -> void:
-	print(folder_contents["Gallery"])
 	_turn_off()
 	on_off_button.pressed.connect(func():
 		if _plug_connected():
@@ -176,7 +206,7 @@ func _ready() -> void:
 		)
 	file_explorer_exit.pressed.connect(func():
 		if desktop_screen.visible:
-			if file_explorer.visible and not (false):
+			if file_explorer.visible and not (image_viewer.visible):
 				file_explorer.visible = false
 	)
 	
@@ -185,6 +215,12 @@ func _ready() -> void:
 	
 	file_explorer_scroll_bar_down_button.mouse_entered.connect(func(): touching_file_explorer_scroll_bar_down_button = true )
 	file_explorer_scroll_bar_down_button.mouse_exited.connect( func(): touching_file_explorer_scroll_bar_down_button = false)
+	
+	image_viewer_exit.pressed.connect(func():
+		if desktop_screen.visible:
+			if image_viewer.visible and not (false):
+				image_viewer.visible = false
+	)
 	
 	super._ready()
 
@@ -245,7 +281,7 @@ func _process(delta: float) -> void:
 		accounts_screen.visible = false
 		_show_desktop()
 	if desktop_screen.visible:
-		if file_explorer:
+		if file_explorer.visible and not (image_viewer.visible):
 			if file_explorer_scroll_bar.visible:
 				file_explorer_scroll_bar_center.position.y = floor(get_grabber_y(
 					file_explorer_scroll_bar,
@@ -254,13 +290,30 @@ func _process(delta: float) -> void:
 				file_explorer_items_area.position.y = (
 					file_explorer_scroll_bar.value * -90
 				)
+				var scroll_up := false
+				var scroll_down := false
 				if Options.das("left_click"):
 					if touching_file_explorer_scroll_bar_down_button:
-						file_explorer_scroll_bar.value += _arrow_change_value
-						if file_explorer_scroll_bar.value > file_explorer_scroll_bar.max_value:
-							file_explorer_scroll_bar.value = file_explorer_scroll_bar.max_value
+						scroll_down = true
 					if touching_file_explorer_scroll_bar_up_button:
-						file_explorer_scroll_bar.value -= _arrow_change_value
-						if file_explorer_scroll_bar.value < file_explorer_scroll_bar.min_value:
-							file_explorer_scroll_bar.value = file_explorer_scroll_bar.min_value
+						scroll_up = true
+				
+				if Input.is_action_just_pressed("scroll_up"):
+					scroll_up = true
+				
+				if Input.is_action_just_pressed("scroll_down"):
+					scroll_down = true
+				
+				if scroll_up and scroll_down:
+					scroll_up = false
+					scroll_down = false
+				
+				if scroll_up:
+					file_explorer_scroll_bar.value -= _arrow_change_value
+					if file_explorer_scroll_bar.value < file_explorer_scroll_bar.min_value:
+						file_explorer_scroll_bar.value = file_explorer_scroll_bar.min_value
+				if scroll_down:
+					file_explorer_scroll_bar.value += _arrow_change_value
+					if file_explorer_scroll_bar.value > file_explorer_scroll_bar.max_value:
+						file_explorer_scroll_bar.value = file_explorer_scroll_bar.max_value
 	super._process(delta)
