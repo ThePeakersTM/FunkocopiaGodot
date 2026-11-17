@@ -101,6 +101,7 @@ func _ready() -> void:
 		game.get_node("Polygon2D").offset.y = 600
 		game.disabled = true
 		get_tree().create_timer((base_z/10.0)+4).timeout.connect(func():
+			game.get_node("Whoosh").play()
 			var tween = create_tween()
 			tween.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 			tween.tween_property(

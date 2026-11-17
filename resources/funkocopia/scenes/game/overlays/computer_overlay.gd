@@ -113,12 +113,12 @@ func _open_file_explorer(folder: String) -> void:
 	file_explorer_items_area.position.y = 0
 	var inside_folder: Array = folder_contents[folder]
 	var row := 1.0
-	var col := 0.0
-	for item: String in inside_folder:
+	var col := 1.0
+	for i: int in inside_folder.size():
+		var item: String = inside_folder[i]
 		var item_texture = _load_element_texture(item)
 		
 		var element := TextureButton.new()
-		element.name = item.replace(".", "#")
 		element.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
 		element.action_mode = BaseButton.ACTION_MODE_BUTTON_PRESS
 		element.texture_normal = item_texture
@@ -132,13 +132,15 @@ func _open_file_explorer(folder: String) -> void:
 						_on_open_app(element.name.replace("#", "."))
 		)
 		file_explorer_items_area.add_child(element)
+		element.name = item.replace(".", "#")
 		
-		row += element.size.x + 3
-		if row > file_explorer.texture.get_width() - 48:
-			row = 1
-			col += 37
+		if i != inside_folder.size() - 1:
+			row += element.size.x + 3
+			if row > file_explorer.texture.get_width() - 48:
+				row = 1
+				col += 37
 	
-	var height := col + 35
+	var height: float = col + 36.0
 	
 	if height > 90:
 		file_explorer_disabled_scroller.visible = false
@@ -150,13 +152,14 @@ func _open_file_explorer(folder: String) -> void:
 		
 
 func _on_open_app(app_name: String) -> void:
-	var app_name_ext := app_name.rsplit(".", true, 1)
+	var irl_name = app_name.replace("#", ".").rstrip("2")
+	var app_name_ext := irl_name.rsplit(".", true, 1)
 	var app_ext := "" if app_name_ext.size() == 1 else app_name_ext[1]
-	var is_folder := app_ext == ""
+	var is_folder := app_ext == "" and not app_name.contains("@")
 	if is_folder:
-		_open_file_explorer(app_name)
+		_open_file_explorer(irl_name)
 	else:
-		var img := "%s/%s" % [_gallery_path, app_name]
+		var img := "%s/%s" % [_gallery_path, irl_name]
 		if is_file_an_image(img):
 			image_viewer.visible = true
 			var image: Texture2D = load(img)
@@ -175,6 +178,9 @@ func _on_open_app(app_name: String) -> void:
 				(203.0 - image_viewer.size.x) / 2.0,
 				((154.0 - image_viewer.size.y) / 2.0) - 2
 			)
+		elif app_ext == "exe":
+			if irl_name == "Doors.exe":
+				print("Doors launch placeholder")
 
 const _arrow_change_value := 0.1
 

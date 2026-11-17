@@ -17,7 +17,9 @@ func set_mouse_mode(control: Control, valid: Array[Cursor.Mode] = Cursor.ALL_FUN
 		control.mouse_default_cursor_shape = Control.CURSOR_ARROW
 
 func load_overlay(overlay: String) -> void:
-	get_parent().load_overlay(overlay)
+	get_tree().create_timer(0.25).timeout.connect(func():
+		get_parent().load_overlay(overlay)
+	)
 
 func show_ui(ui: String) -> void:
 	get_parent().on_show_ui(ui)
