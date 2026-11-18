@@ -32,6 +32,9 @@ extends Room
 @onready var calendar_interaction := $Calendar
 @onready var tutorial_interaction := $Tutorial
 
+@onready var door := $Door
+@onready var door_interaction := $Door/Control
+
 var touching_boobs := false
 
 var touching_dart_cake := false
@@ -44,6 +47,7 @@ var touching_computer_screen := false
 var touching_vent_door := false
 var touching_tutorial := false
 var touching_calendar := false
+var touching_door := false
 
 var blink_timer := 25
 
@@ -85,6 +89,10 @@ func _ready() -> void:
 	tutorial_interaction.mouse_entered.connect(func(): touching_tutorial = true )
 	tutorial_interaction.mouse_exited.connect( func(): touching_tutorial = false)
 
+	door.visible = false
+	door_interaction.mouse_entered.connect(func(): touching_door = true )
+	door_interaction.mouse_exited.connect( func(): touching_door = false)
+
 var plug_connected := false
 
 func _face_player_up() -> void:
@@ -120,7 +128,7 @@ func _process(_delta: float) -> void:
 		var y_factor = (player.position.y - 315) / 280
 		var thing = round(((y_factor * 1.5) + 3.5) * 5) / 5
 		player.scale = Vector2(thing, thing)
-		player.anim_sprite.offset.y = -(y_factor / 35) - 28
+		player.anim_sprite.offset.y = -(y_factor) - 30
 	else:
 		player.scale = Vector2(5, 5)
 		player.anim_sprite.offset.y = -32
@@ -146,6 +154,8 @@ func _process(_delta: float) -> void:
 		fih.play("idle")
 	if outlet.animation == "anim" and outlet.frame == 15:
 		outlet.play("idle")
+	if door.animation == "appear" and door.frame == 6:
+		door.play("normal")
 	if Input.is_action_just_pressed("left_click"):
 		if Cursor.current_mode == Cursor.MODE_INTERACT:
 			if touching_plug:

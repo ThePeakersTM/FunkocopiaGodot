@@ -98,7 +98,7 @@ func _ready() -> void:
 		game.mouse_entered.connect(_hover.bind(game, true, base_z))
 		game.mouse_exited.connect(_hover.bind(game, false, base_z))
 		game.pressed.connect(func(): _on_launch(game, game_methods[i]))
-		game.get_node("Polygon2D").offset.y = 600
+		game.get_node("Polygon2D").offset.y = -675
 		game.disabled = true
 		get_tree().create_timer((base_z/10.0)+4).timeout.connect(func():
 			game.get_node("Whoosh").play()

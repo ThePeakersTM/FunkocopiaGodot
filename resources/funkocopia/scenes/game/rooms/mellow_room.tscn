@@ -921,6 +921,163 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Arr
 outlines = Array[PackedVector2Array]([PackedVector2Array(0, 1020, 445, 760, 445, 720, 515, 475, 515, 425, 720, 425, 720, 475, 750, 679, 750, 760, 1355, 760, 1540, 817, 1540, 1010, 1840, 1010, 1919, 1010, 1919, 1080, 0, 1080)])
 agent_radius = 0.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_17pf8"]
+atlas = ExtResource("2_3m5xv")
+region = Rect2(5, 335, 38, 50)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sacbg"]
+atlas = ExtResource("2_3m5xv")
+region = Rect2(48, 335, 38, 50)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i0c65"]
+atlas = ExtResource("2_3m5xv")
+region = Rect2(91, 335, 38, 50)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_losgm"]
+atlas = ExtResource("2_3m5xv")
+region = Rect2(134, 335, 38, 50)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kd1l4"]
+atlas = ExtResource("2_3m5xv")
+region = Rect2(177, 335, 38, 50)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hk8jp"]
+atlas = ExtResource("2_3m5xv")
+region = Rect2(220, 335, 38, 50)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t2j6k"]
+atlas = ExtResource("2_3m5xv")
+region = Rect2(263, 335, 38, 50)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x5g66"]
+atlas = ExtResource("2_3m5xv")
+region = Rect2(5, 390, 38, 50)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5cdox"]
+atlas = ExtResource("2_3m5xv")
+region = Rect2(48, 390, 38, 50)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yx0ks"]
+atlas = ExtResource("2_3m5xv")
+region = Rect2(91, 390, 38, 50)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kprnb"]
+atlas = ExtResource("2_3m5xv")
+region = Rect2(134, 390, 38, 50)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t36nu"]
+atlas = ExtResource("2_3m5xv")
+region = Rect2(177, 390, 38, 50)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cg8c8"]
+atlas = ExtResource("2_3m5xv")
+region = Rect2(220, 390, 38, 50)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0l5dh"]
+atlas = ExtResource("2_3m5xv")
+region = Rect2(263, 390, 38, 50)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1d4k3"]
+atlas = ExtResource("2_3m5xv")
+region = Rect2(306, 390, 38, 50)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4i1p6"]
+atlas = ExtResource("2_3m5xv")
+region = Rect2(349, 390, 38, 50)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f6bay"]
+atlas = ExtResource("2_3m5xv")
+region = Rect2(392, 390, 38, 50)
+filter_clip = true
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tvxqg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_17pf8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sacbg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i0c65")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_losgm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kd1l4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hk8jp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t2j6k")
+}],
+"loop": 0,
+"name": &"appear",
+"speed": 8.5
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t2j6k")
+}],
+"loop": 1,
+"name": &"normal",
+"speed": 8.5
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x5g66")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5cdox")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yx0ks")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kprnb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t36nu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cg8c8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0l5dh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1d4k3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4i1p6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f6bay")
+}],
+"loop": 0,
+"name": &"open",
+"speed": 8.5
+}]
+
 [node name="Room" type="Node2D" unique_id=1200955835]
 texture_filter = 1
 script = ExtResource("1_tvxqg")
@@ -1121,3 +1278,19 @@ mouse_default_cursor_shape = 2
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=481445244]
 navigation_polygon = SubResource("NavigationPolygon_f6a36")
+
+[node name="Door" type="AnimatedSprite2D" parent="." unique_id=225684355]
+visible = false
+position = Vector2(525, 225)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_tvxqg")
+animation = &"open"
+centered = false
+
+[node name="Control" type="Control" parent="Door" unique_id=173938410]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

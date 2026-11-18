@@ -391,3 +391,8 @@ func _process(delta: float) -> void:
 		doors_window_door_anim.visible = false
 	
 	super._process(delta)
+
+func _on_exit() -> void:
+	if 0 in got_doors:
+		room.door.play("appear")
+		room.door.visible = true

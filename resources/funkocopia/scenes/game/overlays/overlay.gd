@@ -1,3 +1,4 @@
+@abstract
 extends Sprite2D
 class_name Overlay
 
@@ -7,6 +8,9 @@ class_name Overlay
 @export var can_change_cursor := false
 @export var destroy_on_exit := false
 
+func _none() -> void:
+	pass
+
 var room: Room:
 	get:
 		return get_parent().get_parent().get_parent().room
@@ -14,6 +18,9 @@ var room: Room:
 var leave_interaction: Control
 
 var touching_leave := false
+
+func _on_exit() -> void:
+	pass
 
 func _ready() -> void:
 	leave_interaction = Control.new()
@@ -30,5 +37,6 @@ func _process(_delta: float) -> void:
 		if touching_leave:
 			get_parent().get_parent().on_hide_ui(custom_id)
 			hide()
+			_on_exit()
 			if destroy_on_exit:
 				queue_free()
