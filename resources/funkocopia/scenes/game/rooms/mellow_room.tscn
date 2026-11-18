@@ -1078,6 +1078,10 @@ animations = [{
 "speed": 8.5
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_tvxqg"]
+atlas = ExtResource("2_3m5xv")
+region = Rect2(212, 226, 32, 32)
+
 [node name="Room" type="Node2D" unique_id=1200955835]
 texture_filter = 1
 script = ExtResource("1_tvxqg")
@@ -1294,3 +1298,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="SoccerBall" type="Sprite2D" parent="." unique_id=964428676]
+position = Vector2(75, 875)
+scale = Vector2(5, 5)
+texture = SubResource("AtlasTexture_tvxqg")
+centered = false
