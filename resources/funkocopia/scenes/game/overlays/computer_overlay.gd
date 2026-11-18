@@ -227,11 +227,12 @@ func _on_open_app(app_name: String) -> void:
 						get_tree().create_timer((i+1)/8.0).timeout.connect(func():
 							if i not in got_doors:
 								door.modulate = Color.WHITE
-							else:
 								if door.disabled:
 									door.mouse_default_cursor_shape = Control.CURSOR_FORBIDDEN
 								else:
 									door.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
+							else:
+								door.mouse_default_cursor_shape = Control.CURSOR_ARROW
 						)
 				)
 			elif irl_name == "Save.exe":
