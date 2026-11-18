@@ -12,11 +12,15 @@ func get_game_save_path(game: Games) -> String:
 		_: return ""
 
 var funkocopia_save: Dictionary[String, Variant]
+var has_funkocopia_save: bool = false
 
 func _get_game_save_data(game: Games) -> Dictionary[String, Variant]:
 	match game:
 		Games.FUNKOCOPIA: return funkocopia_save
 		_: return {}
+
+func clear_data() -> void:
+	clear_game_data(_save_game)
 
 func clear_game_data(game: Games) -> void:
 	_get_game_save_data(game).clear()
@@ -37,6 +41,11 @@ func has_data(key: String) -> bool:
 
 func get_data(key: String, default: Variant = null) -> Variant:
 	return _get_game_save_data(_save_game).get(key, default)
+
+func has_save() -> bool:
+	match _save_game:
+		Games.FUNKOCOPIA: return has_funkocopia_save
+		_: return false
 
 func save_file() -> void:
 	for game in ALL_GAMES:
@@ -61,6 +70,8 @@ func load_file() -> void:
 			continue
 		var parsed = JSON.parse_string(file.get_as_text())
 		if parsed is Dictionary:
+			if game == Games.FUNKOCOPIA:
+				has_funkocopia_save = true
 			clear_game_data(game)
 			for key in parsed:
 				_get_game_save_data(game)[key] = parsed[key]

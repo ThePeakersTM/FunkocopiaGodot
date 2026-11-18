@@ -15,7 +15,12 @@ func _ready() -> void:
 	button_list.hide()
 	frame = 0
 	new_button.pressed.connect(func():
+		SaveSystem.clear_data()
 		BaldiTransition.change_scene("res://resources/funkocopia/scenes/game/game_state.tscn")
+	)
+	continue_button.pressed.connect(func():
+		if not continue_button.disabled:
+			BaldiTransition.change_scene("res://resources/funkocopia/scenes/game/game_state.tscn")
 	)
 	quit_button.pressed.connect(func():
 		quit_button.texture_pressed = quit_button.texture_hover
@@ -29,13 +34,15 @@ func _ready() -> void:
 	
 	handle.mouse_entered.connect(func(): touching_handle = true )
 	handle.mouse_exited.connect( func(): touching_handle = false)
+	
+	continue_button.disabled = not SaveSystem.has_funkocopia_save
 
 var holding_handle := false
 var hold_offset: int
 
 func do_menu_shit() -> void:
 	show()
-	play("default")
+	play("save" if SaveSystem.has_funkocopia_save else "default")
 	sfx.play()
 
 func _process(_delta: float) -> void:
