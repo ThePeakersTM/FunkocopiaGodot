@@ -93,7 +93,7 @@ func _ready() -> void:
 			polygon.color = Color(DISABLED_ALPHA, DISABLED_ALPHA, DISABLED_ALPHA)
 		else:
 			game.mouse_filter = MOUSE_FILTER_STOP
-			game.mouse_default_cursor_shape = CURSOR_POINTING_HAND
+			game.mouse_default_cursor_shape = CURSOR_ARROW
 			polygon.color = Color.WHITE
 		var base_z := games.size() - i
 		game.mouse_entered.connect(_hover.bind(game, true, base_z))
@@ -113,6 +113,8 @@ func _ready() -> void:
 			).finished.connect(func():
 				if game.mouse_filter == MOUSE_FILTER_STOP:
 					game.disabled = false
+				if not game.disabled:
+					game.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
 			)
 		)
 

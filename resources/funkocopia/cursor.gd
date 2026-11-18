@@ -65,6 +65,8 @@ func get_cached_texture(path: String) -> Texture2D:
 		_cached_textures[path] = texture
 		return texture
 
+var created_cursor := false
+
 func create() -> void:
 	if not Options.native_cursor:
 		Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
@@ -87,6 +89,8 @@ func create() -> void:
 		add_child(newCursor_native)
 	else:
 		add_child(newCursor)
+	
+	created_cursor = true
 
 static func pixelate_movement(pos: Vector2, factor: Vector2) -> Vector2i:
 	return Vector2i(
@@ -174,6 +178,8 @@ func _controller_movement(view: Viewport, delta: float) -> void:
 	Input.warp_mouse(virtual_pos)
 
 func _process(delta: float) -> void:
+	if not created_cursor: return
+	
 	var view := get_viewport()
 	if view == null: return
 

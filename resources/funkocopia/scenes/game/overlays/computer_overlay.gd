@@ -216,16 +216,22 @@ func _on_open_app(app_name: String) -> void:
 				doors_window_door_anim.visible = false
 				doors_window.visible = true
 				doors_window_loading.visible = true
-				for door in doors_window_doors.get_children():
+				var doors = doors_window_doors.get_children()
+				for door: TextureButton in doors:
 					door.modulate = Color.TRANSPARENT
+					door.mouse_default_cursor_shape = Control.CURSOR_ARROW
 				get_tree().create_timer(2).timeout.connect(func():
 					doors_window_loading.visible = false
-					var doors = doors_window_doors.get_children()
 					for i in doors.size():
 						var door: TextureButton = doors[i]
 						get_tree().create_timer((i+1)/8.0).timeout.connect(func():
 							if i not in got_doors:
 								door.modulate = Color.WHITE
+							else:
+								if door.disabled:
+									door.mouse_default_cursor_shape = Control.CURSOR_FORBIDDEN
+								else:
+									door.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
 						)
 				)
 			elif irl_name == "Save.exe":

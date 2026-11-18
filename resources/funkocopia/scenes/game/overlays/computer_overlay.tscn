@@ -618,12 +618,6 @@ sprite_frames = SubResource("SpriteFrames_htdye")
 animation = &"anim"
 centered = false
 
-[node name="Loading" type="Sprite2D" parent="ScreenElements/DesktopScreen/DoorsWindow" unique_id=1718044699]
-visible = false
-position = Vector2(9, 25.5)
-texture = SubResource("AtlasTexture_ri3ad")
-centered = false
-
 [node name="Doors" type="HBoxContainer" parent="ScreenElements/DesktopScreen/DoorsWindow" unique_id=1406979098]
 offset_left = 5.0
 offset_top = 7.0
@@ -665,7 +659,16 @@ offset_bottom = 11.0
 grow_horizontal = 0
 mouse_default_cursor_shape = 2
 
+[node name="Loading" type="TextureRect" parent="ScreenElements/DesktopScreen/DoorsWindow" unique_id=116618356]
+offset_left = 9.0
+offset_top = 25.0
+offset_right = 136.0
+offset_bottom = 95.0
+mouse_filter = 0
+texture = SubResource("AtlasTexture_ri3ad")
+
 [node name="SuperSaver" type="Sprite2D" parent="ScreenElements/DesktopScreen" unique_id=200951894]
+visible = false
 position = Vector2(60, 25)
 texture = SubResource("AtlasTexture_m5xnv")
 centered = false
