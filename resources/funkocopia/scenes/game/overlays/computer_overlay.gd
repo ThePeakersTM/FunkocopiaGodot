@@ -55,6 +55,11 @@ var folder_contents: Dictionary[String, Array] = {
 @onready var doors_window_exit := $ScreenElements/DesktopScreen/DoorsWindow/CloseButton
 @onready var doors_window_door_anim := $ScreenElements/DesktopScreen/DoorsWindow/DoorAnim
 
+@onready var super_saver := $ScreenElements/DesktopScreen/SuperSaver
+@onready var super_saver_anim := $ScreenElements/DesktopScreen/SuperSaver/Dancer
+@onready var super_saver_yes_button := $ScreenElements/DesktopScreen/SuperSaver/Yes
+@onready var super_saver_no_button := $ScreenElements/DesktopScreen/SuperSaver/No
+
 var touching_file_explorer_scroll_bar_up_button := false
 var touching_file_explorer_scroll_bar_down_button := false
 
@@ -103,6 +108,8 @@ func _turn_off() -> void:
 	file_explorer.visible   = false
 	image_viewer.visible    = false
 	doors_window.visible    = false
+	super_saver.modulate = Color.TRANSPARENT
+	super_saver.visible = true
 	accounts.play("invis")
 
 func _load_element_texture(app_name: String) -> Texture2D:
@@ -221,7 +228,15 @@ func _on_open_app(app_name: String) -> void:
 								door.modulate = Color.WHITE
 						)
 				)
-
+			elif irl_name == "Save.exe":
+				super_saver_anim.stop()
+				super_saver_anim.play("idle")
+				create_tween().tween_property(
+					super_saver,
+					"modulate",
+					Color.WHITE,
+					0.75
+				)
 var got_doors: Array[int] = []
 
 const _arrow_change_value := 0.1
@@ -249,12 +264,12 @@ func _ready() -> void:
 	for icon: TextureButton in desktop_icons:
 		icon.pressed.connect(func():
 			if Options.double_pressed("left_click"):
-				if not (file_explorer.visible):
+				if not (file_explorer.visible or super_saver.modulate.a > 0):
 					_on_open_app(icon.name.replace("#", "."))
 		)
 	file_explorer_exit.pressed.connect(func():
 		if desktop_screen.visible:
-			if file_explorer.visible and not (image_viewer.visible or doors_window.visible):
+			if file_explorer.visible and not (image_viewer.visible or doors_window.visible or super_saver.modulate.a > 0):
 				file_explorer.visible = false
 	)
 	
@@ -292,17 +307,54 @@ func _ready() -> void:
 							if not i in got_doors:
 								got_doors.append(i)
 		)
-	
+	super_saver_yes_button.pressed.connect(func():
+		if desktop_screen.visible:
+			if super_saver.modulate.a > 0:
+				if not super_saver_yes_button.disabled:
+					super_saver_anim.play("save")
+					_save()
+					get_tree().create_timer(1.5).timeout.connect(func():
+						_super_saver_close()
+					)
+	)
+	super_saver_no_button.pressed.connect(func():
+		if desktop_screen.visible:
+			if super_saver.modulate.a > 0:
+				if not super_saver_no_button.disabled:
+					_super_saver_close()
+	)
+	if SaveSystem.get_data("in_computer", false) == true:
+		powered_on = true
+		_show_desktop(true)
+	var loaded: Array = SaveSystem.get_data("has_doors", [])
+	got_doors = Array(loaded, TYPE_INT, "", null)
 	super._ready()
+
+func _save() -> void:
+	SaveSystem.set_save_game(SaveSystem.Games.FUNKOCOPIA)
+	SaveSystem.pass_data("in_computer", true)
+	SaveSystem.pass_data("has_doors", got_doors)
+	SaveSystem.save_file()
+
+func _super_saver_close() -> void:
+	create_tween().tween_property(
+		super_saver,
+		"modulate",
+		Color.TRANSPARENT,
+		0.75
+	)
 
 const ICON_SUMMON_DELAY := 0.25
 const ICON_FOR_EACH_DELAY := 0.125
 
-func _show_desktop() -> void:
+func _show_desktop(skip_anim: bool = false) -> void:
 	desktop_screen.visible  = true
 	var desktop_icons = desktop_screen.get_node("Elements").get_children()
 	for i in desktop_icons.size():
 		var icon: TextureButton = desktop_icons[i]
+		if skip_anim:
+			icon.visible = true
+			continue
 		icon.visible = false
 		get_tree().create_timer(ICON_SUMMON_DELAY + (ICON_FOR_EACH_DELAY * i)).timeout.connect(func():
 			icon.visible = true
@@ -394,5 +446,6 @@ func _process(delta: float) -> void:
 
 func _on_exit() -> void:
 	if 0 in got_doors:
-		room.door.play("appear")
-		room.door.visible = true
+		if room.door.animation != "normal":
+			room.door.play("appear")
+			room.door.visible = true

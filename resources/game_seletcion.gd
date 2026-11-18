@@ -37,6 +37,7 @@ var game_methods := [
 		_title("Funkocopia (Endacopia)")
 		Cursor.create()
 		Dwmapi.funkocopia()
+		SaveSystem.load_file()
 		BaldiTransition.change_scene(
 			"res://resources/funkocopia/scenes/title_screen.tscn",
 			func(): pass,

@@ -73,7 +73,7 @@ func _ready() -> void:
 	computer_screen_interaction.mouse_entered.connect(func(): touching_computer_screen = true )
 	computer_screen_interaction.mouse_exited.connect( func(): touching_computer_screen = false)
 	
-	plug.self_modulate = Color.WHITE
+	plug.modulate = Color.WHITE
 	plug_interaction.mouse_entered.connect(func(): touching_plug = true )
 	plug_interaction.mouse_exited.connect( func(): touching_plug = false)
 	
@@ -92,6 +92,14 @@ func _ready() -> void:
 	door.visible = false
 	door_interaction.mouse_entered.connect(func(): touching_door = true )
 	door_interaction.mouse_exited.connect( func(): touching_door = false)
+	
+	if SaveSystem.get_data("in_computer", false) == true:
+		plug.modulate = Color.TRANSPARENT
+		plug_connected = true
+		computer_screen.modulate = Color.WHITE
+		load_overlay("computer", false)
+		player.global_position = plug.global_position + Vector2(150, 280)
+		player.anim_facing_direction = "RR"
 
 var plug_connected := false
 
@@ -107,6 +115,12 @@ func _fake_visible(condition: bool) -> Color:
 	return Color.WHITE if condition else Color.TRANSPARENT
 
 func _process(_delta: float) -> void:
+	if SaveSystem.get_data("in_computer", false) == true:
+		if overlay_exists("tutorial") and get_overlay("tutorial").visible:
+			get_overlay("tutorial").hide()
+		if overlay_exists("computer") and get_overlay("computer").visible:
+			player.set_pos(plug.global_position + Vector2(150, 280))
+	
 	blink_timer += 1
 	if camera.in_ui: return
 	set_mouse_mode(
