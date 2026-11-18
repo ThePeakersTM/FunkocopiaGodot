@@ -36,6 +36,11 @@ func _ready() -> void:
 	handle.mouse_exited.connect( func(): touching_handle = false)
 	
 	continue_button.disabled = not SaveSystem.has_funkocopia_save
+	continue_button.mouse_default_cursor_shape = (
+		Control.CURSOR_FORBIDDEN
+		if continue_button.disabled else
+		Control.CURSOR_POINTING_HAND
+	)
 
 var holding_handle := false
 var hold_offset: int
