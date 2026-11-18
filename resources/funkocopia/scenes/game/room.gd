@@ -21,5 +21,11 @@ func load_overlay(overlay: String) -> void:
 		get_parent().load_overlay(overlay)
 	)
 
+func overlay_exists(path: String) -> bool:
+	return get_parent().overlay_exists(path)
+
+func get_overlay(path: String) -> Overlay:
+	return get_parent().get_overlay(path)
+
 func show_ui(ui: String) -> void:
 	get_parent().on_show_ui(ui)

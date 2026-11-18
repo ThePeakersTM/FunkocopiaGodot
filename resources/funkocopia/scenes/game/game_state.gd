@@ -19,6 +19,12 @@ func _ready() -> void:
 	
 	load_overlay("tutorial")
 
+func overlay_exists(path: String) -> bool:
+	return _parsed_overlays.has(path)
+
+func get_overlay(path: String) -> Overlay:
+	return _parsed_overlays[path]
+
 func load_overlay(path: String) -> void:
 	if _parsed_overlays.has(path):
 		overlay = _parsed_overlays[path]

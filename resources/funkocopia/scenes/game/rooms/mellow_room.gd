@@ -103,6 +103,9 @@ func _face_player_up() -> void:
 	elif player.anim_facing_direction == "DL":
 		player.anim_facing_direction = "UL"
 
+func _fake_visible(condition: bool) -> Color:
+	return Color.WHITE if condition else Color.TRANSPARENT
+
 func _process(_delta: float) -> void:
 	blink_timer += 1
 	if camera.in_ui: return
@@ -156,6 +159,9 @@ func _process(_delta: float) -> void:
 		outlet.play("idle")
 	if door.animation == "appear" and door.frame == 6:
 		door.play("normal")
+	computer_screen.self_modulate = _fake_visible(
+		plug.modulate.a < 1 and (overlay_exists("computer") and get_overlay("computer").powered_on)
+	)
 	if Input.is_action_just_pressed("left_click"):
 		if Cursor.current_mode == Cursor.MODE_INTERACT:
 			if touching_plug:
