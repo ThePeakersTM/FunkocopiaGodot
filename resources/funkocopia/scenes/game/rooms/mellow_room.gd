@@ -35,6 +35,9 @@ extends Room
 @onready var door := $Door
 @onready var door_interaction := $Door/Control
 
+@onready var clockey_appear := $ClockeyAppear
+@onready var clockey_stop_collision := $Collision/CollisionShape2D7
+
 var touching_boobs := false
 
 var touching_dart_cake := false
@@ -100,6 +103,8 @@ func _ready() -> void:
 		load_overlay("computer", false)
 		player.global_position = plug.global_position + Vector2(150, 280)
 		player.anim_facing_direction = "RR"
+	
+	clockey_appear.visible = false
 
 var plug_connected := false
 
@@ -113,6 +118,8 @@ func _face_player_up() -> void:
 
 func _fake_visible(condition: bool) -> Color:
 	return Color.WHITE if condition else Color.TRANSPARENT
+
+var appeared := false
 
 func _process(_delta: float) -> void:
 	if SaveSystem.get_data("in_computer", false) == true:
@@ -141,6 +148,17 @@ func _process(_delta: float) -> void:
 		[Cursor.MODE_OBSERVE, Cursor.MODE_INTERACT                                  ])
 	set_mouse_mode(calendar_interaction,
 		[Cursor.MODE_OBSERVE,                       Cursor.MODE_SPEAK               ])
+	clockey_stop_collision.disabled = not (overlay_exists("computer") and 0 in get_overlay("computer").got_doors)
+	if player.position.x < 750 and player.position.y < 805:
+		if overlay_exists("computer") and 0 in get_overlay("computer").got_doors:
+			player.can_process_data = false
+			player.play("idle")
+			if not appeared:
+				clockey.visible = false
+				clockey_appear.visible = true
+				clockey_appear.play("appear")
+				appeared = true
+	
 	if player.position.y <= 595:
 		var y_factor = (player.position.y - 315) / 280
 		var thing = round(((y_factor * 1.5) + 3.5) * 5) / 5
