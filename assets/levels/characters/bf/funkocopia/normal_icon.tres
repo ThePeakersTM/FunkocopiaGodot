@@ -1,0 +1,30 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://by1tkjb0rgech"]
+
+[ext_resource type="Texture2D" uid="uid://cfvaarhkwk50g" path="res://assets/levels/characters/bf/funkocopia/normal_icon.png" id="1_x7e7n"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tk2us"]
+atlas = ExtResource("1_x7e7n")
+region = Rect2(56, 0, 56, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cms6s"]
+atlas = ExtResource("1_x7e7n")
+region = Rect2(0, 0, 56, 56)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tk2us")
+}],
+"loop": 0,
+"name": &"lose",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cms6s")
+}],
+"loop": 0,
+"name": &"neutral",
+"speed": 1.0
+}]

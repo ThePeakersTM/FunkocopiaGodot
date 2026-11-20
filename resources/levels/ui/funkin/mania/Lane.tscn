@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cl5ub8354p83i" path="res://addons/rubicon_mania/scripts/rubicon_level_mania_note_handler.gd" id="1_at88l"]
 [ext_resource type="Resource" uid="uid://ndurlv0cfk5o" path="res://addons/rubicon_mania/resources/default_settings.tres" id="2_hxfju"]
-[ext_resource type="SpriteFrames" uid="uid://da7bskefwchtf" path="res://assets/levels/ui/funkin/mania/funkin_lanes_frames.tres" id="3_ts1a1"]
+[ext_resource type="SpriteFrames" uid="uid://diwss0wxb5fcu" path="res://assets/levels/ui/funkocopia/mania/funkin_lanes.res" id="3_ts1a1"]
 [ext_resource type="AnimationLibrary" uid="uid://cf3vresl7owgj" path="res://assets/levels/ui/funkin/mania/funkin_lanes_library.tres" id="4_ts1a1"]
 
 [sub_resource type="Animation" id="Animation_o0sw0"]

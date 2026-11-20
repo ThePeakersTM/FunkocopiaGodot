@@ -162,6 +162,7 @@ _data = {
 }
 
 [node name="FunkinJudgment" type="Control" unique_id=1732067903 node_paths=PackedStringArray("animation_player")]
+texture_filter = 1
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -170,6 +171,7 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(2, 2)
 mouse_filter = 2
 script = ExtResource("1_s46ii")
 animation_player = NodePath("AnimationPlayer")
@@ -178,7 +180,7 @@ metadata/_custom_type_script = "uid://d62t527ab1ba"
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=443448318]
 modulate = Color(1, 1, 1, 0)
 sprite_frames = ExtResource("2_qicta")
-animation = &"killer"
+animation = &"sick"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D" unique_id=1695177674]
 libraries/funkin_judgments_library = ExtResource("2_bn3ep")

@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="bfellowbattle-spook.png">
+  <SubTexture name="bfellowbattle down0000" x="1" y="258" width="65" height="62" frameX="-18" frameY="-34" frameWidth="101" frameHeight="101" />
+  <SubTexture name="bfellowbattle down0001" x="66" y="258" width="66" height="60" frameX="-17" frameY="-33" frameWidth="101" frameHeight="101" />
+  <SubTexture name="bfellowbattle down0002" x="132" y="258" width="64" height="59" frameX="-17" frameY="-33" frameWidth="101" frameHeight="101" />
+  <SubTexture name="bfellowbattle down0003" x="197" y="258" width="65" height="59" frameX="-17" frameY="-32" frameWidth="101" frameHeight="101" />
+  <SubTexture name="bfellowbattle idle0000" x="193" y="132" width="64" height="63" frameX="-24" frameY="-29" frameWidth="101" frameHeight="101" />
+  <SubTexture name="bfellowbattle idle0001" x="1" y="132" width="64" height="63" frameX="-22" frameY="-30" frameWidth="101" frameHeight="101" />
+  <SubTexture name="bfellowbattle idle0002" x="66" y="68" width="65" height="63" frameX="-20" frameY="-31" frameWidth="101" frameHeight="101" />
+  <SubTexture name="bfellowbattle idle0003" x="0" y="68" width="66" height="64" frameX="-19" frameY="-31" frameWidth="101" frameHeight="101" />
+  <SubTexture name="bfellowbattle idle0004" x="130" y="0" width="65" height="66" frameX="-22" frameY="-29" frameWidth="101" frameHeight="101" />
+  <SubTexture name="bfellowbattle idle0005" x="66" y="1" width="64" height="65" frameX="-23" frameY="-30" frameWidth="101" frameHeight="101" />
+  <SubTexture name="bfellowbattle idle0006" x="0" y="0" width="65" height="67" frameX="-23" frameY="-29" frameWidth="101" frameHeight="101" />
+  <SubTexture name="bfellowbattle left0000" x="258" y="0" width="65" height="63" frameX="-19" frameY="-28" frameWidth="101" frameHeight="101" />
+  <SubTexture name="bfellowbattle left0001" x="0" y="195" width="65" height="62" frameX="-20" frameY="-29" frameWidth="101" frameHeight="101" />
+  <SubTexture name="bfellowbattle left0002" x="130" y="195" width="65" height="62" frameX="-21" frameY="-28" frameWidth="101" frameHeight="101" />
+  <SubTexture name="bfellowbattle left0003" x="195" y="195" width="65" height="62" frameX="-21" frameY="-29" frameWidth="101" frameHeight="101" />
+  <SubTexture name="bfellowbattle right0000" x="258" y="127" width="65" height="63" frameX="-28" frameY="-27" frameWidth="101" frameHeight="101" />
+  <SubTexture name="bfellowbattle right0001" x="258" y="64" width="64" height="63" frameX="-26" frameY="-28" frameWidth="101" frameHeight="101" />
+  <SubTexture name="bfellowbattle right0002" x="66" y="132" width="63" height="63" frameX="-27" frameY="-28" frameWidth="101" frameHeight="101" />
+  <SubTexture name="bfellowbattle right0003" x="132" y="68" width="62" height="63" frameX="-27" frameY="-28" frameWidth="101" frameHeight="101" />
+  <SubTexture name="bfellowbattle up0000" x="66" y="195" width="64" height="62" frameX="-25" frameY="-25" frameWidth="101" frameHeight="101" />
+  <SubTexture name="bfellowbattle up0001" x="129" y="132" width="64" height="63" frameX="-26" frameY="-27" frameWidth="101" frameHeight="101" />
+  <SubTexture name="bfellowbattle up0002" x="195" y="0" width="62" height="64" frameX="-26" frameY="-27" frameWidth="101" frameHeight="101" />
+  <SubTexture name="bfellowbattle up0003" x="195" y="64" width="62" height="64" frameX="-26" frameY="-28" frameWidth="101" frameHeight="101" />
+</TextureAtlas>

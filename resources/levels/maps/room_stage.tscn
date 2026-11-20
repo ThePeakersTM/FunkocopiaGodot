@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://bbpc0hgd8iet6"]
+
+[ext_resource type="Texture2D" uid="uid://box46l1casur8" path="res://assets/levels/maps/roomStage/bg.png" id="1_17gk8"]
+[ext_resource type="Script" uid="uid://b1c6b5fqx65cm" path="res://resources/levels/maps/room_stage.gd" id="1_oih7d"]
+[ext_resource type="Texture2D" uid="uid://djb7ihbfsb34q" path="res://assets/levels/maps/roomStage/pcOnThing.png" id="2_4dsgm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oih7d"]
+atlas = ExtResource("2_4dsgm")
+region = Rect2(0, 0, 120, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n33w1"]
+atlas = ExtResource("2_4dsgm")
+region = Rect2(0, 120, 120, 120)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f6a36"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oih7d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n33w1")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 4.25
+}]
+
+[node name="Stage" type="Node2D" unique_id=271087966]
+script = ExtResource("1_oih7d")
+
+[node name="Bg" type="Sprite2D" parent="." unique_id=384262278]
+position = Vector2(320, 125)
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("1_17gk8")
+
+[node name="PcOnThing" type="AnimatedSprite2D" parent="." unique_id=624238595]
+texture_filter = 1
+position = Vector2(472.5, 72.51)
+scale = Vector2(0.65, 0.65)
+sprite_frames = SubResource("SpriteFrames_f6a36")

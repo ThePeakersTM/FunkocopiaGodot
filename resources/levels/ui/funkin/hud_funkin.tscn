@@ -25,12 +25,14 @@ metadata/_edit_lock_ = true
 
 [node name="HealthBar" parent="." unique_id=2000574413 instance=ExtResource("1_m7k6q")]
 layout_mode = 1
+offset_left = -508.40002
 offset_top = 950.0
+offset_right = -507.6001
 offset_bottom = 964.0003
 grow_horizontal = 1
-scale = Vector2(1.25, 1.25)
 
 [node name="ScoreText" type="Label" parent="HealthBar" unique_id=1729475052]
+visible = false
 z_index = -1
 texture_filter = 1
 layout_mode = 1

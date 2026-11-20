@@ -1,0 +1,14 @@
+{
+	"opponentModeAllowed": false,
+	"icon": "clockey_entity",
+	"difficulties": [
+		"hard"
+	],
+	"color": "#000000",
+	"coopAllowed": false,
+	"stepsPerBeat": 4,
+	"displayName": "Times Out",
+	"needsVoices": true,
+	"beatsPerMeasure": 4,
+	"bpm": 174
+}

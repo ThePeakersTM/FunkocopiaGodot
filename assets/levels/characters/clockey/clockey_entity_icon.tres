@@ -1,0 +1,30 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://ifklcvvfvom7"]
+
+[ext_resource type="Texture2D" uid="uid://uqanxjbmo63o" path="res://assets/levels/characters/clockey/clockey_entity_icon.png" id="1_ve8lf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k61td"]
+atlas = ExtResource("1_ve8lf")
+region = Rect2(56, 0, 56, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fjilm"]
+atlas = ExtResource("1_ve8lf")
+region = Rect2(0, 0, 56, 56)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k61td")
+}],
+"loop": 0,
+"name": &"lose",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fjilm")
+}],
+"loop": 0,
+"name": &"neutral",
+"speed": 1.0
+}]

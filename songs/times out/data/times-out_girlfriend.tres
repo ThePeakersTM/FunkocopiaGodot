@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="RubiChart" format=3 uid="uid://bcjxeekhai1d4"]
+
+[ext_resource type="Script" uid="uid://iwh2edatglg5" path="res://addons/rubicon/scripts/data/chart/rubichart.gd" id="1_muf2d"]
+[ext_resource type="Script" uid="uid://cqv0q12des2ei" path="res://addons/rubicon/scripts/data/chart/rubichart_scroll_velocity.gd" id="2_mfo5q"]
+[ext_resource type="Script" uid="uid://vft2yke1y47m" path="res://addons/rubicon/scripts/data/chart/rubichart_section.gd" id="3_gehx0"]
+[ext_resource type="Script" uid="uid://bqufootljq8sg" path="res://addons/rubicon/scripts/data/chart/rubichart_row.gd" id="4_10wsx"]
+[ext_resource type="Script" uid="uid://bklt30g5xeqe7" path="res://addons/rubicon/scripts/data/chart/rubichart_note.gd" id="5_iaeoa"]
+
+[sub_resource type="Resource" id="Resource_153xv"]
+script = ExtResource("2_mfo5q")
+
+[sub_resource type="Resource" id="Resource_m2i7g"]
+script = ExtResource("5_iaeoa")
+id = "mania_lane2"
+
+[sub_resource type="Resource" id="Resource_81uvc"]
+script = ExtResource("4_10wsx")
+offset = 13
+quant = 16
+starts = Array[ExtResource("5_iaeoa")]([SubResource("Resource_m2i7g")])
+
+[sub_resource type="Resource" id="Resource_6mroe"]
+script = ExtResource("3_gehx0")
+measure = 40
+rows = Array[ExtResource("4_10wsx")]([SubResource("Resource_81uvc")])
+
+[resource]
+script = ExtResource("1_muf2d")
+sections = Array[ExtResource("3_gehx0")]([SubResource("Resource_6mroe")])
+scroll_velocities = Array[ExtResource("2_mfo5q")]([SubResource("Resource_153xv")])

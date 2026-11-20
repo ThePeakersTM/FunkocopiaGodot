@@ -2,26 +2,28 @@
 
 [ext_resource type="Theme" uid="uid://bb1yexfh7xfc0" path="res://resources/themes/funkin.tres" id="1_65b3u"]
 [ext_resource type="Script" uid="uid://crd76n1jk5nhh" path="res://addons/rubicon/scripts/scene/ui/rubicon_health_bar.gd" id="2_5iquc"]
-[ext_resource type="Script" uid="uid://diko6dcih1ww" path="res://addons/rubicon_extras/scripts/ui/rubicon_health_icon_bumper.gd" id="3_rn8pg"]
-[ext_resource type="SpriteFrames" uid="uid://b3krktfiymb4h" path="res://assets/levels/characters/bf/bf_icon.tres" id="3_yyckf"]
+[ext_resource type="Texture2D" uid="uid://cy2kqxfxrkneb" path="res://assets/funkocopia/score/icon_tray.png" id="3_5xvkj"]
 [ext_resource type="Script" uid="uid://bm6df7cye7cgq" path="res://addons/rubicon_extras/scripts/ui/rubicon_health_icon.gd" id="4_5iquc"]
+[ext_resource type="FontFile" uid="uid://dnn4b8ikrsd55" path="res://resources/fonts/fnt_vcr.ttf" id="4_5xvkj"]
+[ext_resource type="Script" uid="uid://qdfb0fvb2nbr" path="res://resources/levels/ui/funkin/components/icon_tray_time.gd" id="5_sslan"]
+[ext_resource type="SpriteFrames" uid="uid://by1tkjb0rgech" path="res://assets/levels/characters/bf/funkocopia/normal_icon.tres" id="8_sslan"]
 
-[sub_resource type="Curve2D" id="Curve2D_73l3f"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 884, 9, 0, 0, 0, 0, 205.16577, 4.2374268, 0, 0, 0, 0, 0, 9)
-}
-point_count = 3
+[sub_resource type="LabelSettings" id="LabelSettings_f6a36"]
+font = ExtResource("4_5xvkj")
+font_size = 26
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
 
-[node name="FunkinHealthBar" type="ProgressBar" unique_id=2000574413 node_paths=PackedStringArray("path", "path_follow")]
+[node name="FunkinHealthBar" type="ProgressBar" unique_id=2000574413]
+self_modulate = Color(1, 1, 1, 0)
 anchors_preset = -1
 anchor_left = 0.27
 anchor_right = 0.73
-offset_left = -0.4000244
+offset_left = -518.4
 offset_top = 56.0
-offset_right = 0.39990234
+offset_right = -517.6001
 offset_bottom = 70.0
 grow_horizontal = 2
-pivot_offset = Vector2(442, 0)
 size_flags_horizontal = 3
 size_flags_vertical = 1
 mouse_filter = 2
@@ -31,18 +33,30 @@ value = 50.0
 fill_mode = 1
 show_percentage = false
 script = ExtResource("2_5iquc")
-path = NodePath("Path2D")
-path_follow = NodePath("Path2D/PathFollow2D")
 metadata/_custom_type_script = "uid://crd76n1jk5nhh"
 
-[node name="HealthIconBumper" type="Node" parent="." unique_id=1753206126 node_paths=PackedStringArray("icon_group_first", "icon_group_second")]
-script = ExtResource("3_rn8pg")
-icon_group_first = NodePath("../Path2D/PathFollow2D/GroupFirst")
-icon_group_second = NodePath("../Path2D/PathFollow2D/GroupSecond")
-bump_amount_first = Vector2(0.15, 0.15)
-bump_amount_second = Vector2(-0.15, 0.15)
+[node name="IconTray" type="Sprite2D" parent="." unique_id=1236261961]
+position = Vector2(195, -10)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("3_5xvkj")
+
+[node name="Label" type="Label" parent="IconTray" unique_id=1535936370]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -326.0
+offset_top = -162.0
+offset_right = -250.0
+offset_bottom = -139.0
+grow_horizontal = 2
+text = "00:00"
+label_settings = SubResource("LabelSettings_f6a36")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("5_sslan")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=37679061]
+visible = false
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = -1
@@ -56,24 +70,15 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Path2D" type="Path2D" parent="." unique_id=772053415]
-curve = SubResource("Curve2D_73l3f")
-
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" unique_id=1230556197]
-position = Vector2(441.97382, 5.898827)
-progress = 442.03595
-rotates = false
-
-[node name="GroupFirst" type="Node2D" parent="Path2D/PathFollow2D" unique_id=1136049132]
-position = Vector2(-73, 0)
-
-[node name="HealthIconL" type="AnimatedSprite2D" parent="Path2D/PathFollow2D/GroupFirst" unique_id=2114972775 node_paths=PackedStringArray("health_bar")]
-scale = Vector2(1.25, 1.25)
-sprite_frames = ExtResource("3_yyckf")
+[node name="HealthIconL" type="AnimatedSprite2D" parent="." unique_id=2114972775 node_paths=PackedStringArray("health_bar")]
+texture_filter = 1
+position = Vector2(118.75, -5)
+scale = Vector2(3, 3)
+sprite_frames = ExtResource("8_sslan")
 animation = &"neutral"
 autoplay = "neutral"
 script = ExtResource("4_5iquc")
-health_bar = NodePath("../../../..")
+health_bar = NodePath("..")
 neutral_animation_name = &"neutral"
 lose_enabled = true
 lose_animation_name = &"lose"
@@ -82,17 +87,15 @@ win_enabled = false
 win_animation_name = &"win"
 win_trigger_percentage = 0.25
 
-[node name="GroupSecond" type="Node2D" parent="Path2D/PathFollow2D" unique_id=1253693466]
-position = Vector2(73, 0)
-scale = Vector2(-1, 1)
-
-[node name="HealthIconR" type="AnimatedSprite2D" parent="Path2D/PathFollow2D/GroupSecond" unique_id=500134408 node_paths=PackedStringArray("health_bar")]
-scale = Vector2(1.25, 1.25)
-sprite_frames = ExtResource("3_yyckf")
+[node name="HealthIconR" type="AnimatedSprite2D" parent="." unique_id=500134408 node_paths=PackedStringArray("health_bar")]
+texture_filter = 1
+position = Vector2(268.75, -5)
+scale = Vector2(3, 3)
+sprite_frames = ExtResource("8_sslan")
 animation = &"neutral"
-autoplay = "neutral"
+flip_h = true
 script = ExtResource("4_5iquc")
-health_bar = NodePath("../../../..")
+health_bar = NodePath("..")
 neutral_animation_name = &"neutral"
 lose_enabled = true
 lose_animation_name = &"lose"

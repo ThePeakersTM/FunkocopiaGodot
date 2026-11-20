@@ -132,6 +132,7 @@ point_map = {
 &"Opponent": NodePath("../../OpponentCameraPoint"),
 &"Player": NodePath("../../PlayerCameraPoint")
 }
+_current_point = &"Opponent"
 metadata/_custom_type_script = "uid://dk0ffxu4bdk3c"
 
 [node name="RubiconCameraBumper" type="Node" parent="RubiconInterpolatedCamera2D" unique_id=1339474565]

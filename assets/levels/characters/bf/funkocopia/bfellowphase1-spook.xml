@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="bfellowphase1-spook.png">
+  <SubTexture name="bfellowphase1 down0000" x="446" y="146" width="54" height="73" frameX="-38" frameY="-32" frameWidth="135" frameHeight="135" />
+  <SubTexture name="bfellowphase1 down0001" x="244" y="319" width="53" height="73" frameX="-36" frameY="-32" frameWidth="135" frameHeight="135" />
+  <SubTexture name="bfellowphase1 down0002" x="390" y="225" width="53" height="73" frameX="-34" frameY="-32" frameWidth="135" frameHeight="135" />
+  <SubTexture name="bfellowphase1 down0003" x="351" y="319" width="53" height="73" frameX="-33" frameY="-33" frameWidth="135" frameHeight="135" />
+  <SubTexture name="bfellowphase1 idle0000" x="338" y="76" width="51" height="73" frameX="-40" frameY="-32" frameWidth="135" frameHeight="135" />
+  <SubTexture name="bfellowphase1 idle0001" x="390" y="151" width="51" height="74" frameX="-38" frameY="-32" frameWidth="135" frameHeight="135" />
+  <SubTexture name="bfellowphase1 idle0002" x="390" y="76" width="52" height="75" frameX="-38" frameY="-30" frameWidth="135" frameHeight="135" />
+  <SubTexture name="bfellowphase1 idle0003" x="338" y="0" width="52" height="76" frameX="-38" frameY="-29" frameWidth="135" frameHeight="135" />
+  <SubTexture name="bfellowphase1 idle0004" x="159" y="243" width="52" height="76" frameX="-38" frameY="-30" frameWidth="135" frameHeight="135" />
+  <SubTexture name="bfellowphase1 idle0005" x="271" y="77" width="51" height="76" frameX="-39" frameY="-29" frameWidth="135" frameHeight="135" />
+  <SubTexture name="bfellowphase1 idle0006" x="271" y="153" width="51" height="76" frameX="-39" frameY="-29" frameWidth="135" frameHeight="135" />
+  <SubTexture name="bfellowphase1 left0000" x="211" y="243" width="58" height="76" frameX="-28" frameY="-30" frameWidth="135" frameHeight="135" />
+  <SubTexture name="bfellowphase1 left0001" x="57" y="319" width="60" height="76" frameX="-27" frameY="-30" frameWidth="135" frameHeight="135" />
+  <SubTexture name="bfellowphase1 left0002" x="117" y="319" width="63" height="75" frameX="-26" frameY="-31" frameWidth="135" frameHeight="135" />
+  <SubTexture name="bfellowphase1 left0003" x="180" y="319" width="64" height="75" frameX="-26" frameY="-31" frameWidth="135" frameHeight="135" />
+  <SubTexture name="bfellowphase1 right0000" x="214" y="77" width="56" height="76" frameX="-46" frameY="-29" frameWidth="135" frameHeight="135" />
+  <SubTexture name="bfellowphase1 right0001" x="269" y="243" width="56" height="76" frameX="-45" frameY="-30" frameWidth="135" frameHeight="135" />
+  <SubTexture name="bfellowphase1 right0002" x="390" y="0" width="56" height="76" frameX="-44" frameY="-29" frameWidth="135" frameHeight="135" />
+  <SubTexture name="bfellowphase1 right0003" x="0" y="319" width="57" height="76" frameX="-42" frameY="-30" frameWidth="135" frameHeight="135" />
+  <SubTexture name="bfellowphase1 miss down0000" x="446" y="0" width="56" height="73" frameX="-34" frameY="-32" frameWidth="135" frameHeight="135" />
+  <SubTexture name="bfellowphase1 miss down0001" x="0" y="395" width="63" height="73" frameX="-30" frameY="-33" frameWidth="135" frameHeight="135" />
+  <SubTexture name="bfellowphase1 miss down0002" x="446" y="73" width="56" height="73" frameX="-34" frameY="-32" frameWidth="135" frameHeight="135" />
+  <SubTexture name="bfellowphase1 miss down0003" x="297" y="319" width="54" height="73" frameX="-35" frameY="-33" frameWidth="135" frameHeight="135" />
+  <SubTexture name="bfellowphase1 miss left0000" x="0" y="243" width="85" height="76" frameX="-15" frameY="-30" frameWidth="135" frameHeight="135" />
+  <SubTexture name="bfellowphase1 miss left0001" x="85" y="243" width="74" height="76" frameX="-20" frameY="-30" frameWidth="135" frameHeight="135" />
+  <SubTexture name="bfellowphase1 miss left0002" x="271" y="0" width="67" height="77" frameX="-25" frameY="-28" frameWidth="135" frameHeight="135" />
+  <SubTexture name="bfellowphase1 miss left0003" x="182" y="166" width="66" height="76" frameX="-24" frameY="-29" frameWidth="135" frameHeight="135" />
+  <SubTexture name="bfellowphase1 miss right0000" x="0" y="166" width="58" height="77" frameX="-45" frameY="-29" frameWidth="135" frameHeight="135" />
+  <SubTexture name="bfellowphase1 miss right0001" x="58" y="166" width="66" height="77" frameX="-42" frameY="-29" frameWidth="135" frameHeight="135" />
+  <SubTexture name="bfellowphase1 miss right0002" x="124" y="166" width="58" height="77" frameX="-46" frameY="-29" frameWidth="135" frameHeight="135" />
+  <SubTexture name="bfellowphase1 miss right0003" x="214" y="0" width="57" height="77" frameX="-46" frameY="-28" frameWidth="135" frameHeight="135" />
+  <SubTexture name="bfellowphase1 miss up0000" x="105" y="0" width="56" height="81" frameX="-37" frameY="-25" frameWidth="135" frameHeight="135" />
+  <SubTexture name="bfellowphase1 miss up0001" x="0" y="85" width="62" height="81" frameX="-34" frameY="-25" frameWidth="135" frameHeight="135" />
+  <SubTexture name="bfellowphase1 miss up0002" x="105" y="0" width="56" height="81" frameX="-37" frameY="-25" frameWidth="135" frameHeight="135" />
+  <SubTexture name="bfellowphase1 miss up0003" x="161" y="0" width="53" height="81" frameX="-39" frameY="-25" frameWidth="135" frameHeight="135" />
+  <SubTexture name="bfellowphase1 up0000" x="0" y="0" width="52" height="85" frameX="-40" frameY="-21" frameWidth="135" frameHeight="135" />
+  <SubTexture name="bfellowphase1 up0001" x="52" y="0" width="53" height="82" frameX="-38" frameY="-24" frameWidth="135" frameHeight="135" />
+  <SubTexture name="bfellowphase1 up0002" x="62" y="85" width="54" height="81" frameX="-38" frameY="-25" frameWidth="135" frameHeight="135" />
+  <SubTexture name="bfellowphase1 up0003" x="116" y="85" width="53" height="80" frameX="-39" frameY="-26" frameWidth="135" frameHeight="135" />
+</TextureAtlas>

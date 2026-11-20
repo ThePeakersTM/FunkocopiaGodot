@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="pcOnThing.png">
+    <SubTexture name="Anim0000" x="0" y="0"   width="120" height="120"/>
+    <SubTexture name="Anim0001" x="0" y="120" width="120" height="120"/>
+</TextureAtlas>

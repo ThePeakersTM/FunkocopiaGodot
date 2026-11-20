@@ -1,0 +1,186 @@
+[gd_scene format=3 uid="uid://dpm1hd06ohor1"]
+
+[ext_resource type="Script" uid="uid://dqqqiv8d0q8gc" path="res://addons/rubicon/scripts/scene/game/rubicon_character.gd" id="1_ipr4q"]
+[ext_resource type="SpriteFrames" uid="uid://6w516uos4o7t" path="res://assets/levels/characters/clockey/ClockeyV2_frames.res" id="2_ce5o4"]
+[ext_resource type="AnimationLibrary" uid="uid://bx345phk73cpc" path="res://assets/levels/characters/clockey/ClockeyV2_library.tres" id="3_7u3op"]
+
+[sub_resource type="Animation" id="Animation_ipr4q"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_wpxuh"]
+length = 1.9166999999999998
+tracks/0/type = "animation"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite/SpriteAnimationPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": PackedStringArray("ClockeyV2_library/idle_"),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-46, -81)]
+}
+
+[sub_resource type="Animation" id="Animation_y5dna"]
+length = 0.625
+tracks/0/type = "animation"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite/SpriteAnimationPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": PackedStringArray("ClockeyV2_library/singDOWN_"),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-48, -81)]
+}
+
+[sub_resource type="Animation" id="Animation_hpb40"]
+length = 0.625
+tracks/0/type = "animation"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite/SpriteAnimationPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": PackedStringArray("ClockeyV2_library/singLEFT_"),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-47, -82)]
+}
+
+[sub_resource type="Animation" id="Animation_j414l"]
+length = 0.625
+tracks/0/type = "animation"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite/SpriteAnimationPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": PackedStringArray("ClockeyV2_library/singRIGHT_"),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-47, -81)]
+}
+
+[sub_resource type="Animation" id="Animation_ngbbb"]
+length = 0.625
+tracks/0/type = "animation"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite/SpriteAnimationPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": PackedStringArray("ClockeyV2_library/singUP_"),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-49, -80)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4bpdj"]
+_data = {
+&"RESET": SubResource("Animation_ipr4q"),
+&"dance_idle": SubResource("Animation_wpxuh"),
+&"sing_down": SubResource("Animation_y5dna"),
+&"sing_left": SubResource("Animation_hpb40"),
+&"sing_right": SubResource("Animation_j414l"),
+&"sing_up": SubResource("Animation_ngbbb")
+}
+
+[node name="ClockeyV2" type="Node2D" unique_id=326400387 node_paths=PackedStringArray("animation_player")]
+texture_filter = 1
+script = ExtResource("1_ipr4q")
+animation_player = NodePath("RootAnimationPlayer")
+singing_sing_to_dance_interval = 7
+dancing_force_dance = false
+dancing_animations = Array[StringName]([&"dance_idle"])
+animations = Dictionary[StringName, StringName]({
+&"miss_down": &"sing_down",
+&"miss_left": &"sing_left",
+&"miss_right": &"sing_right",
+&"miss_up": &"sing_up",
+&"sing_down": &"sing_down",
+&"sing_left": &"sing_left",
+&"sing_right": &"sing_right",
+&"sing_up": &"sing_up"
+})
+dancing_animations = Array[StringName]([&"dance_idle"])
+
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=722780128]
+scale = Vector2(6, 6)
+sprite_frames = ExtResource("2_ce5o4")
+animation = &"singUP"
+frame = 14
+
+[node name="SpriteAnimationPlayer" type="AnimationPlayer" parent="Sprite" unique_id=565781651]
+libraries/ClockeyV2_library = ExtResource("3_7u3op")
+
+[node name="RootAnimationPlayer" type="AnimationPlayer" parent="." unique_id=280005688]
+libraries/ = SubResource("AnimationLibrary_4bpdj")

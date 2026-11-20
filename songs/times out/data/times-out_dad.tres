@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="RubiChart" format=3 uid="uid://bom05giy1b6lq"]
+
+[ext_resource type="Script" uid="uid://iwh2edatglg5" path="res://addons/rubicon/scripts/data/chart/rubichart.gd" id="1_g71y3"]
+[ext_resource type="Script" uid="uid://cqv0q12des2ei" path="res://addons/rubicon/scripts/data/chart/rubichart_scroll_velocity.gd" id="2_g5f61"]
+[ext_resource type="Script" uid="uid://vft2yke1y47m" path="res://addons/rubicon/scripts/data/chart/rubichart_section.gd" id="3_xr38c"]
+[ext_resource type="Script" uid="uid://bqufootljq8sg" path="res://addons/rubicon/scripts/data/chart/rubichart_row.gd" id="4_0pbj8"]
+[ext_resource type="Script" uid="uid://bklt30g5xeqe7" path="res://addons/rubicon/scripts/data/chart/rubichart_note.gd" id="5_wp1mi"]
+
+[sub_resource type="Resource" id="Resource_g71y3"]
+script = ExtResource("2_g5f61")
+
+[sub_resource type="Resource" id="Resource_g5f61"]
+script = ExtResource("5_wp1mi")
+id = "mania_lane0"
+
+[sub_resource type="Resource" id="Resource_xr38c"]
+script = ExtResource("4_0pbj8")
+offset = 15
+quant = 16
+starts = Array[ExtResource("5_wp1mi")]([SubResource("Resource_g5f61")])
+
+[sub_resource type="Resource" id="Resource_0pbj8"]
+script = ExtResource("3_xr38c")
+measure = 40
+rows = Array[ExtResource("4_0pbj8")]([SubResource("Resource_xr38c")])
+
+[sub_resource type="Resource" id="Resource_wp1mi"]
+script = ExtResource("5_wp1mi")
+id = "mania_lane2"
+
+[sub_resource type="Resource" id="Resource_fj7cv"]
+script = ExtResource("4_0pbj8")
+offset = 7
+quant = 16
+starts = Array[ExtResource("5_wp1mi")]([SubResource("Resource_wp1mi")])
+
+[sub_resource type="Resource" id="Resource_5r61o"]
+script = ExtResource("3_xr38c")
+measure = 48
+rows = Array[ExtResource("4_0pbj8")]([SubResource("Resource_fj7cv")])
+
+[resource]
+script = ExtResource("1_g71y3")
+sections = Array[ExtResource("3_xr38c")]([SubResource("Resource_0pbj8"), SubResource("Resource_5r61o")])
+scroll_velocities = Array[ExtResource("2_g5f61")]([SubResource("Resource_g71y3")])

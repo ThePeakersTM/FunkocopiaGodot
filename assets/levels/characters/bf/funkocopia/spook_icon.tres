@@ -1,0 +1,30 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://dhuh636wejvvc"]
+
+[ext_resource type="Texture2D" uid="uid://dui7cpwu7jtsp" path="res://assets/levels/characters/bf/funkocopia/spook_icon.png" id="1_hwebb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4tyif"]
+atlas = ExtResource("1_hwebb")
+region = Rect2(56, 0, 56, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_io71j"]
+atlas = ExtResource("1_hwebb")
+region = Rect2(0, 0, 56, 56)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4tyif")
+}],
+"loop": 0,
+"name": &"lose",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_io71j")
+}],
+"loop": 0,
+"name": &"neutral",
+"speed": 1.0
+}]

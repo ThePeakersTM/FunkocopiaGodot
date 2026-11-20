@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="RubiconLevelMetadata" format=3 uid="uid://dkiijgwifrwkt"]
+
+[ext_resource type="Script" uid="uid://bc3yyfgu0v8yh" path="res://addons/rubicon/scripts/data/rubicon_level_metadata_difficulty.gd" id="1_qxqr0"]
+[ext_resource type="Script" uid="uid://bn0j3jpwu1e0p" path="res://addons/rubicon/scripts/data/rubicon_level_metadata.gd" id="2_ifddp"]
+[ext_resource type="Script" uid="uid://c1dyvxe4okjkv" path="res://addons/rubicon/scripts/data/rubicon_time_change.gd" id="3_c1p0w"]
+
+[sub_resource type="Resource" id="Resource_g1d77"]
+script = ExtResource("3_c1p0w")
+bpm = 174.0
+
+[resource]
+script = ExtResource("2_ifddp")
+title = "Time's Out"
+time_changes = Array[ExtResource("3_c1p0w")]([SubResource("Resource_g1d77")])

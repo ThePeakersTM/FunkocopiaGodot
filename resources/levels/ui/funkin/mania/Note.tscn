@@ -1,41 +1,42 @@
 [gd_scene format=3 uid="uid://c582dds6i66py"]
 
 [ext_resource type="Script" uid="uid://bdt5xs4hqh4ng" path="res://addons/rubicon_mania/scripts/rubicon_level_mania_note.gd" id="1_vqnpu"]
-[ext_resource type="Texture2D" uid="uid://b1ou1ypk42a88" path="res://assets/levels/ui/funkin/mania/funkin_notes.png" id="2_aha53"]
-[ext_resource type="SpriteFrames" uid="uid://ccy66glbn8d6s" path="res://assets/levels/ui/funkin/mania/funkin_notes_frames.tres" id="3_tkgvx"]
+[ext_resource type="Texture2D" uid="uid://dm0tcg7ctuydk" path="res://assets/levels/ui/funkocopia/mania/default.png" id="2_vqnpu"]
+[ext_resource type="SpriteFrames" uid="uid://tgwhv00n77wt" path="res://assets/levels/ui/funkocopia/mania/funkin_notes.res" id="3_tkgvx"]
 [ext_resource type="AnimationLibrary" uid="uid://cnrh1c1255vf8" path="res://assets/levels/ui/funkin/mania/funkin_notes_library.tres" id="4_tkgvx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tkgvx"]
-atlas = ExtResource("2_aha53")
-region = Rect2(312, 317, 41, 50)
+atlas = ExtResource("2_vqnpu")
+region = Rect2(1026, 336, 36, 50)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_aha53"]
-atlas = ExtResource("2_aha53")
-region = Rect2(69, 317, 63, 50)
+atlas = ExtResource("2_vqnpu")
+region = Rect2(1026, 388, 63, 48)
+margin = Rect2(0, 1, 0, 2)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vqnpu"]
-atlas = ExtResource("2_aha53")
-region = Rect2(267, 317, 41, 50)
+atlas = ExtResource("2_vqnpu")
+region = Rect2(1026, 234, 36, 50)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5p607"]
-atlas = ExtResource("2_aha53")
-region = Rect2(3, 317, 63, 50)
+atlas = ExtResource("2_vqnpu")
+region = Rect2(1026, 285, 63, 50)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3yv02"]
-atlas = ExtResource("2_aha53")
-region = Rect2(318, 54, 41, 50)
+atlas = ExtResource("2_vqnpu")
+region = Rect2(1026, 132, 36, 50)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ajgpx"]
-atlas = ExtResource("2_aha53")
-region = Rect2(201, 317, 63, 50)
+atlas = ExtResource("2_vqnpu")
+region = Rect2(1026, 183, 63, 50)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jvf40"]
-atlas = ExtResource("2_aha53")
-region = Rect2(318, 2, 41, 50)
+atlas = ExtResource("2_vqnpu")
+region = Rect2(1026, 30, 36, 50)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h658e"]
-atlas = ExtResource("2_aha53")
-region = Rect2(135, 317, 63, 50)
+atlas = ExtResource("2_vqnpu")
+region = Rect2(1026, 81, 63, 50)
 
 [sub_resource type="Animation" id="Animation_ajgpx"]
 length = 0.001
@@ -702,7 +703,8 @@ grow_vertical = 2
 pivot_offset = Vector2(0, 75)
 
 [node name="TrailL" type="TextureRect" parent="Container/TrailMask" unique_id=320553279]
-modulate = Color(1, 1, 1, 0.5019608)
+modulate = Color(1, 1, 1, 0.75000006)
+texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -713,6 +715,7 @@ offset_right = -64.0
 offset_bottom = -50.0
 texture = SubResource("AtlasTexture_tkgvx")
 expand_mode = 1
+stretch_mode = 1
 
 [node name="Tail" type="TextureRect" parent="Container/TrailMask/TrailL" unique_id=2134936530]
 layout_mode = 1
@@ -727,7 +730,7 @@ texture = SubResource("AtlasTexture_aha53")
 
 [node name="TrailD" type="TextureRect" parent="Container/TrailMask" unique_id=301607859]
 visible = false
-modulate = Color(1, 1, 1, 0.5019608)
+modulate = Color(1, 1, 1, 0.75000006)
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -738,6 +741,7 @@ offset_right = -64.0
 offset_bottom = -50.0
 texture = SubResource("AtlasTexture_vqnpu")
 expand_mode = 1
+stretch_mode = 1
 
 [node name="Tail" type="TextureRect" parent="Container/TrailMask/TrailD" unique_id=214120093]
 layout_mode = 1
@@ -752,7 +756,7 @@ texture = SubResource("AtlasTexture_5p607")
 
 [node name="TrailU" type="TextureRect" parent="Container/TrailMask" unique_id=211361522]
 visible = false
-modulate = Color(1, 1, 1, 0.5019608)
+modulate = Color(1, 1, 1, 0.75000006)
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -763,6 +767,7 @@ offset_right = -64.0
 offset_bottom = -50.0
 texture = SubResource("AtlasTexture_3yv02")
 expand_mode = 1
+stretch_mode = 1
 
 [node name="Tail" type="TextureRect" parent="Container/TrailMask/TrailU" unique_id=762902309]
 layout_mode = 1
@@ -777,7 +782,7 @@ texture = SubResource("AtlasTexture_ajgpx")
 
 [node name="TrailR" type="TextureRect" parent="Container/TrailMask" unique_id=522613433]
 visible = false
-modulate = Color(1, 1, 1, 0.5019608)
+modulate = Color(1, 1, 1, 0.75000006)
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -788,6 +793,7 @@ offset_right = -64.0
 offset_bottom = -50.0
 texture = SubResource("AtlasTexture_jvf40")
 expand_mode = 1
+stretch_mode = 1
 
 [node name="Tail" type="TextureRect" parent="Container/TrailMask/TrailR" unique_id=1572487606]
 layout_mode = 1
@@ -814,6 +820,7 @@ grow_vertical = 2
 pivot_offset = Vector2(0, 75)
 
 [node name="Graphic" type="AnimatedSprite2D" parent="Container/Sprite" unique_id=901087157]
+texture_filter = 1
 position = Vector2(0, 75)
 sprite_frames = ExtResource("3_tkgvx")
 animation = &"left_note_neutral"
