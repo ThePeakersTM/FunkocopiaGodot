@@ -141,6 +141,7 @@ region = Rect2(741, 76, 58, 30)
 
 [node name="Menu" type="AnimatedSprite2D" unique_id=603921014]
 texture_filter = 1
+position = Vector2(960, 540)
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_bql8r")
 frame = 4

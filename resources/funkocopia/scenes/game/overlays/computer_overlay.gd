@@ -164,7 +164,11 @@ func _open_file_explorer(folder: String) -> void:
 	else:
 		file_explorer_disabled_scroller.visible = true
 		file_explorer_scroll_bar.visible = false
-		
+
+func process_image(img: String) -> Texture2D:
+	return CheckerLoader.load_with_checker(
+		img
+	)
 
 func _on_open_app(app_name: String) -> void:
 	var irl_name = app_name.replace("#", ".").rstrip("2")
@@ -177,7 +181,7 @@ func _on_open_app(app_name: String) -> void:
 		var img := "%s/%s" % [_gallery_path, irl_name]
 		if is_file_an_image(img):
 			image_viewer.visible = true
-			var image: Texture2D = load(img)
+			var image: Texture2D = process_image(img)
 			image_viewer_image.texture = image
 			image_viewer_image.size = image.get_size()
 			var scale_thing := maxf(image.get_width(), image.get_height()) / 24.5
@@ -190,7 +194,7 @@ func _on_open_app(app_name: String) -> void:
 				(image.get_height() * image_viewer_image.scale.y)
 			)
 			image_viewer.size = Vector2(
-				(image.get_width()  * image_viewer_image.scale.x) + 12,
+				(image.get_width()  * image_viewer_image.scale.x) + 10,
 				(image.get_height() * image_viewer_image.scale.y) + 22
 			)
 			image_viewer.position = Vector2(

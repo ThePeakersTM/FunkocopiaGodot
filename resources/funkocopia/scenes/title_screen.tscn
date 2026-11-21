@@ -461,6 +461,7 @@ animation = &"appear"
 
 [node name="Menu" parent="." unique_id=603921014 instance=ExtResource("47_dq15c")]
 visible = false
+position = Vector2(0, 0)
 
 [node name="Splash" parent="." unique_id=1989545989 instance=ExtResource("1_r64ju")]
 visible = false

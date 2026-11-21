@@ -144,6 +144,9 @@ func _tween_alpha(node: Polygon2D, target: float) -> void:
 
 func _hover(game: Button, up: bool, base_z: int) -> void:
 	if game.disabled: return
+	if up:
+		var whoosh: AudioStreamPlayer = game.get_node("Whoosh")
+		whoosh.play()
 	
 	var polygon: Polygon2D = game.get_node("Polygon2D")
 	if tweens.has(game) and tweens[game].is_valid():

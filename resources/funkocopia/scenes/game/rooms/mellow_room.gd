@@ -38,6 +38,8 @@ extends Room
 @onready var clockey_appear := $ClockeyAppear
 @onready var clockey_stop_collision := $Collision/CollisionShape2D7
 
+@onready var soccer_ball := $SoccerBall
+
 var touching_boobs := false
 
 var touching_dart_cake := false
@@ -158,6 +160,11 @@ func _process(_delta: float) -> void:
 				clockey_appear.visible = true
 				clockey_appear.play("appear")
 				appeared = true
+	
+	if player.global_position.y < soccer_ball.global_position.y + 125:
+		soccer_ball.z_index = 5
+	else:
+		soccer_ball.z_index = 0
 	
 	if player.position.y <= 595:
 		var y_factor = (player.position.y - 315) / 280
