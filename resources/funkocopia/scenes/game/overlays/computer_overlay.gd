@@ -198,20 +198,25 @@ func _on_open_app(app_name: String) -> void:
 				(image.get_height() * image_viewer_image.scale.y) + 22
 			)
 			image_viewer.position = Vector2(
-				(203.0 - image_viewer.size.x) / 2.0,
+				 (203.0 - image_viewer.size.x) / 2.0,
 				((154.0 - image_viewer.size.y) / 2.0) - 2
 			)
+			var length = (image_viewer.size.x * image_viewer.size.y) / 8224.0
 			image_viewer_anim.visible = true
 			create_tween().tween_method(
 				func(val: float):
-					var v := snappedi(roundf(val), 15)
+					var v := clampi(
+						snappedi(roundf(val), 15),
+						0,
+						image.get_height() * image_viewer_image.scale.y
+					)
 					image_viewer_anim.position.y = (
 						image.get_height() * image_viewer_image.scale.y
 					) - v + 17
 					image_viewer_anim.size.y = v,
 				image.get_height() * image_viewer_image.scale.y,
 				0.0,
-				1.5
+				length
 			).finished.connect(func():
 				image_viewer_anim.visible = false
 			)
@@ -417,10 +422,10 @@ func _process(delta: float) -> void:
 	if desktop_screen.visible:
 		if file_explorer.visible and not (image_viewer.visible or doors_window.visible):
 			if file_explorer_scroll_bar.visible:
-				file_explorer_scroll_bar_center.position.y = floor(get_grabber_y(
+				file_explorer_scroll_bar_center.position.y = get_grabber_y(
 					file_explorer_scroll_bar,
 					1
-				) - 3)
+				) - 3
 				file_explorer_items_area.position.y = (
 					file_explorer_scroll_bar.value * -90
 				)

@@ -6,7 +6,7 @@ static func load_with_checker(
 		light: Color = Color(0.8, 0.8, 0.8),
 		dark: Color = Color(0.6, 0.6, 0.6)
 ) -> Texture2D:
-	var img := Image.load_from_file(path)
+	var img: Image = load(path).get_image()
 	if img == null or img.is_empty():
 		push_error("Could not load image: %s" % path)
 		return null
