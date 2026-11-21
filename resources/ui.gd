@@ -10,3 +10,5 @@ func _ready() -> void:
 		reference_health_bar.position.y = 75
 		reference_opponent_strumline.position.y = 950
 		reference_player_strumline.position.y = 950
+		
+		$FunkinHUD/FunkinJudgment.position.y = 825

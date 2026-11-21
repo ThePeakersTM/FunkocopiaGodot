@@ -11,7 +11,6 @@
 [ext_resource type="Script" uid="uid://bk8alxtg2qxnl" path="res://addons/rubicon_extras/scripts/camera/rubicon_interpolated_camera_2d.gd" id="9_cgv7f"]
 [ext_resource type="PackedScene" uid="uid://dpm1hd06ohor1" path="res://resources/levels/characters/ClockeyV2.tscn" id="9_ry8wl"]
 [ext_resource type="Script" uid="uid://dk0ffxu4bdk3c" path="res://addons/rubicon_extras/scripts/camera/rubicon_position_setter.gd" id="10_sg0uw"]
-[ext_resource type="Script" uid="uid://bcy0fvr2gilvq" path="res://addons/rubicon_extras/scripts/camera/rubicon_camera_bumper.gd" id="11_paf2s"]
 [ext_resource type="Script" uid="uid://dl1v7li3unik0" path="res://addons/rubicon/scripts/scene/game/modules/rubicon_health_module.gd" id="12_sg0uw"]
 [ext_resource type="Script" uid="uid://n4mhgfnlwkcl" path="res://resources/ui.gd" id="13_ry8wl"]
 [ext_resource type="PackedScene" uid="uid://c2fn4h7rdtf8" path="res://resources/levels/ui/funkin/hud_funkin.tscn" id="14_03bop"]
@@ -126,11 +125,6 @@ point_map = {
 }
 metadata/_custom_type_script = "uid://dk0ffxu4bdk3c"
 
-[node name="RubiconCameraBumper" type="Node" parent="RubiconInterpolatedCamera2D" unique_id=458929707]
-script = ExtResource("11_paf2s")
-enabled = false
-metadata/_custom_type_script = "uid://bcy0fvr2gilvq"
-
 [node name="RubiconHealthModule" type="Node" parent="." unique_id=449892856 node_paths=PackedStringArray("note_controller")]
 script = ExtResource("12_sg0uw")
 note_controller = NodePath("../UILayer/UI/Player")
@@ -171,6 +165,12 @@ level_note_controller = NodePath("../../../Player")
 unformatted_text = "Score: {performance_score_value} - Accuracy: {performance_accuracy_percent}% - Misses: {performance_hits_miss}"
 
 [node name="FunkinJudgment" parent="UILayer/UI/FunkinHUD" index="1" unique_id=1732067903 node_paths=PackedStringArray("level_note_controller")]
+anchors_preset = 5
+anchor_top = 0.0
+anchor_bottom = 0.0
+offset_top = 150.0
+offset_bottom = 150.0
+grow_vertical = 1
 level_note_controller = NodePath("../../Player")
 
 [node name="Opponent" type="Control" parent="UILayer/UI" unique_id=40918089 groups=["controllers"]]

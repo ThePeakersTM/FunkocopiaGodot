@@ -11,8 +11,8 @@ script = ExtResource("2_mnssr")
 
 [sub_resource type="Resource" id="Resource_n33w1"]
 script = ExtResource("2_mnssr")
-measure_time = 66.486
-multiplier = 3.0
+measure_time = 36.0
+multiplier = 2.7
 metadata/_custom_type_script = "uid://cqv0q12des2ei"
 
 [sub_resource type="Resource" id="Resource_um7bg"]
