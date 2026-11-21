@@ -23,12 +23,40 @@
 [ext_resource type="Resource" uid="uid://d3gd5egsmfwfp" path="res://addons/rubicon_mania/resources/default_input_map.tres" id="20_pm0wv"]
 [ext_resource type="PackedScene" uid="uid://dslpk7i6qqjdl" path="res://resources/levels/ui/funkin/components/funkin_note_splash.tscn" id="21_4npfs"]
 
+[sub_resource type="Animation" id="Animation_03bop"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Stage:spoopy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
 [sub_resource type="Animation" id="Animation_i0rhg"]
 resource_name = "scene"
 length = 253.09
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Stage:spoopy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 82.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vc332"]
 _data = {
+&"RESET": SubResource("Animation_03bop"),
 &"scene": SubResource("Animation_i0rhg")
 }
 
@@ -100,6 +128,7 @@ metadata/_custom_type_script = "uid://dk0ffxu4bdk3c"
 
 [node name="RubiconCameraBumper" type="Node" parent="RubiconInterpolatedCamera2D" unique_id=458929707]
 script = ExtResource("11_paf2s")
+enabled = false
 metadata/_custom_type_script = "uid://bcy0fvr2gilvq"
 
 [node name="RubiconHealthModule" type="Node" parent="." unique_id=449892856 node_paths=PackedStringArray("note_controller")]
@@ -127,10 +156,16 @@ metadata/_edit_lock_ = true
 [node name="FunkinHUD" parent="UILayer/UI" unique_id=814096794 instance=ExtResource("14_03bop")]
 layout_mode = 1
 
-[node name="HealthIconL" parent="UILayer/UI/FunkinHUD/HealthBar" parent_id_path=PackedInt32Array(814096794, 2000574413) index="2" unique_id=2114972775]
+[node name="HealthBar" parent="UILayer/UI/FunkinHUD" index="0" unique_id=2000574413 node_paths=PackedStringArray("health_module")]
+health_module = NodePath("../../../../RubiconHealthModule")
+
+[node name="HealthIconL" parent="UILayer/UI/FunkinHUD/HealthBar" index="2" unique_id=2114972775]
 sprite_frames = ExtResource("16_03bop")
 
-[node name="ScoreText" parent="UILayer/UI/FunkinHUD/HealthBar" parent_id_path=PackedInt32Array(814096794, 2000574413) index="4" unique_id=1729475052 node_paths=PackedStringArray("level_note_controller")]
+[node name="Health" parent="UILayer/UI/FunkinHUD/HealthBar" index="4" unique_id=221088211]
+frame = 5
+
+[node name="ScoreText" parent="UILayer/UI/FunkinHUD/HealthBar" index="5" unique_id=1729475052 node_paths=PackedStringArray("level_note_controller")]
 text = "Score: {performance_score_value} - Accuracy: {performance_accuracy_percent}% - Misses: {performance_hits_miss}"
 level_note_controller = NodePath("../../../Player")
 unformatted_text = "Score: {performance_score_value} - Accuracy: {performance_accuracy_percent}% - Misses: {performance_hits_miss}"

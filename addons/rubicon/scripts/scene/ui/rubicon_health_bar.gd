@@ -31,6 +31,15 @@ func _ready() -> void:
 
 func health_changed() -> void:
 	value = health_module.health
+	
+	var normalized_health: float = (health_module.health - health_module.min_health) / (health_module.max_health - health_module.min_health)
+	
+	var health_bar: AnimatedSprite2D = $Health
+	health_bar.frame = clampi(
+		1 + ceili((1 - clampf((1.0 - normalized_health), 0.0, 1.0)) * 9),
+		1,
+		10
+	) - 1
 
 func _on_value_changed(value: float) -> void:
 	if path_follow != null and path_follow.is_inside_tree():

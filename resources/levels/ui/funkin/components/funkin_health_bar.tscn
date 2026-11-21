@@ -2,10 +2,11 @@
 
 [ext_resource type="Theme" uid="uid://bb1yexfh7xfc0" path="res://resources/themes/funkin.tres" id="1_65b3u"]
 [ext_resource type="Script" uid="uid://crd76n1jk5nhh" path="res://addons/rubicon/scripts/scene/ui/rubicon_health_bar.gd" id="2_5iquc"]
-[ext_resource type="Texture2D" uid="uid://cy2kqxfxrkneb" path="res://assets/funkocopia/score/icon_tray.png" id="3_5xvkj"]
+[ext_resource type="Texture2D" uid="uid://cy2kqxfxrkneb" path="res://assets/funkocopia/ui/score/icon_tray.png" id="3_5xvkj"]
 [ext_resource type="Script" uid="uid://bm6df7cye7cgq" path="res://addons/rubicon_extras/scripts/ui/rubicon_health_icon.gd" id="4_5iquc"]
 [ext_resource type="FontFile" uid="uid://dnn4b8ikrsd55" path="res://resources/fonts/fnt_vcr.ttf" id="4_5xvkj"]
 [ext_resource type="Script" uid="uid://qdfb0fvb2nbr" path="res://resources/levels/ui/funkin/components/icon_tray_time.gd" id="5_sslan"]
+[ext_resource type="Texture2D" uid="uid://crx17t4hav5in" path="res://assets/funkocopia/ui/battle/ui.png" id="8_ho62d"]
 [ext_resource type="SpriteFrames" uid="uid://by1tkjb0rgech" path="res://assets/levels/characters/bf/funkocopia/normal_icon.tres" id="8_sslan"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_f6a36"]
@@ -14,15 +15,93 @@ font_size = 26
 outline_size = 2
 outline_color = Color(0, 0, 0, 1)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_w1rff"]
+atlas = ExtResource("8_ho62d")
+region = Rect2(2, 158, 105, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wo16e"]
+atlas = ExtResource("8_ho62d")
+region = Rect2(2, 142, 105, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vcaqw"]
+atlas = ExtResource("8_ho62d")
+region = Rect2(2, 126, 105, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d7e3r"]
+atlas = ExtResource("8_ho62d")
+region = Rect2(2, 110, 105, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_28tnr"]
+atlas = ExtResource("8_ho62d")
+region = Rect2(2, 94, 105, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_auwws"]
+atlas = ExtResource("8_ho62d")
+region = Rect2(2, 78, 105, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fqgk2"]
+atlas = ExtResource("8_ho62d")
+region = Rect2(2, 62, 105, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cu4mx"]
+atlas = ExtResource("8_ho62d")
+region = Rect2(2, 46, 105, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x4fdj"]
+atlas = ExtResource("8_ho62d")
+region = Rect2(2, 30, 105, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k7f8g"]
+atlas = ExtResource("8_ho62d")
+region = Rect2(2, 14, 105, 14)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f6a36"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w1rff")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wo16e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vcaqw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d7e3r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_28tnr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_auwws")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fqgk2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cu4mx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x4fdj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k7f8g")
+}],
+"loop": 0,
+"name": &"default",
+"speed": 0.0
+}]
+
 [node name="FunkinHealthBar" type="ProgressBar" unique_id=2000574413]
 self_modulate = Color(1, 1, 1, 0)
 anchors_preset = -1
 anchor_left = 0.27
 anchor_right = 0.73
 offset_left = -518.4
-offset_top = 56.0
+offset_top = 950.0
 offset_right = -517.6001
-offset_bottom = 70.0
+offset_bottom = 964.0
 grow_horizontal = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -36,6 +115,7 @@ script = ExtResource("2_5iquc")
 metadata/_custom_type_script = "uid://crd76n1jk5nhh"
 
 [node name="IconTray" type="Sprite2D" parent="." unique_id=1236261961]
+texture_filter = 1
 position = Vector2(195, -10)
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("3_5xvkj")
@@ -103,5 +183,12 @@ lose_trigger_percentage = 0.25
 win_enabled = false
 win_animation_name = &"win"
 win_trigger_percentage = 0.75
+
+[node name="Health" type="AnimatedSprite2D" parent="." unique_id=221088211]
+texture_filter = 1
+position = Vector2(5, -945)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_f6a36")
+centered = false
 
 [connection signal="value_changed" from="." to="." method="_on_value_changed"]

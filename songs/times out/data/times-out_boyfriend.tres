@@ -9,6 +9,12 @@
 [sub_resource type="Resource" id="Resource_sn6di"]
 script = ExtResource("2_mnssr")
 
+[sub_resource type="Resource" id="Resource_n33w1"]
+script = ExtResource("2_mnssr")
+measure_time = 66.486
+multiplier = 3.0
+metadata/_custom_type_script = "uid://cqv0q12des2ei"
+
 [sub_resource type="Resource" id="Resource_um7bg"]
 script = ExtResource("5_ej1nf")
 id = "mania_lane0"
@@ -4198,4 +4204,4 @@ rows = Array[ExtResource("4_drct0")]([SubResource("Resource_h6mp6"), SubResource
 [resource]
 script = ExtResource("1_v0lln")
 sections = Array[ExtResource("3_pt6ry")]([SubResource("Resource_6a8me"), SubResource("Resource_sgqi7"), SubResource("Resource_ok0et"), SubResource("Resource_nfcv8"), SubResource("Resource_urx3j"), SubResource("Resource_dutwr"), SubResource("Resource_0jfla"), SubResource("Resource_3ylxr"), SubResource("Resource_ddh40"), SubResource("Resource_y0qju"), SubResource("Resource_a8bhg"), SubResource("Resource_h3rl4"), SubResource("Resource_ppn3r"), SubResource("Resource_s4ofg"), SubResource("Resource_va2aw"), SubResource("Resource_0e755"), SubResource("Resource_x77oy"), SubResource("Resource_qpmyw"), SubResource("Resource_45c0q"), SubResource("Resource_jfxln"), SubResource("Resource_gsc0e"), SubResource("Resource_ve7q0"), SubResource("Resource_u0lqi"), SubResource("Resource_7fcpf"), SubResource("Resource_pv4qr"), SubResource("Resource_sbvsh"), SubResource("Resource_sdusn"), SubResource("Resource_0krav"), SubResource("Resource_52s83"), SubResource("Resource_r324w"), SubResource("Resource_46bk5"), SubResource("Resource_5b32f"), SubResource("Resource_0qdhw"), SubResource("Resource_wkomj"), SubResource("Resource_7nf0r"), SubResource("Resource_t7ol6"), SubResource("Resource_5hlrr"), SubResource("Resource_db3tc"), SubResource("Resource_uoqc2"), SubResource("Resource_yyue1"), SubResource("Resource_6vo8i"), SubResource("Resource_3o8yq"), SubResource("Resource_0n202"), SubResource("Resource_6il22"), SubResource("Resource_d124d"), SubResource("Resource_w3sts"), SubResource("Resource_yg4vo"), SubResource("Resource_qmecm"), SubResource("Resource_2do4y"), SubResource("Resource_6wy5m"), SubResource("Resource_weugw"), SubResource("Resource_c44mt"), SubResource("Resource_fc4a3"), SubResource("Resource_qy3rx"), SubResource("Resource_4xhk4"), SubResource("Resource_b3obb"), SubResource("Resource_gytro"), SubResource("Resource_cjas2"), SubResource("Resource_6so3o"), SubResource("Resource_mvmq3"), SubResource("Resource_msk0o"), SubResource("Resource_fpile"), SubResource("Resource_tj40n"), SubResource("Resource_tu4w6"), SubResource("Resource_hkrgc"), SubResource("Resource_0px2j"), SubResource("Resource_xvbtu"), SubResource("Resource_afhc3"), SubResource("Resource_jfud1")])
-scroll_velocities = Array[ExtResource("2_mnssr")]([SubResource("Resource_sn6di")])
+scroll_velocities = Array[ExtResource("2_mnssr")]([SubResource("Resource_sn6di"), SubResource("Resource_n33w1")])

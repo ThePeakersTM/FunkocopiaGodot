@@ -1,0 +1,25 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://bq38g6usuhr0g"]
+
+[ext_resource type="Texture2D" uid="uid://c0mniyyw808lg" path="res://assets/levels/maps/roomStage-spook/pcOnThing.png" id="1_hmmr5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m82im"]
+atlas = ExtResource("1_hmmr5")
+region = Rect2(0, 0, 120, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dvj17"]
+atlas = ExtResource("1_hmmr5")
+region = Rect2(0, 120, 120, 120)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m82im")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dvj17")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 4.25
+}]

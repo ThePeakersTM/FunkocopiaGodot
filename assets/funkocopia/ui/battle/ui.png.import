@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cy2kqxfxrkneb"
-path="res://.godot/imported/icon_tray.png-4a8a5a4c9231b725f194cd44a83982e9.ctex"
+uid="uid://crx17t4hav5in"
+path="res://.godot/imported/ui.png-c5c87aa0d795366dee8ade19e31e7a9f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/funkocopia/score/icon_tray.png"
-dest_files=["res://.godot/imported/icon_tray.png-4a8a5a4c9231b725f194cd44a83982e9.ctex"]
+source_file="res://assets/funkocopia/ui/battle/ui.png"
+dest_files=["res://.godot/imported/ui.png-c5c87aa0d795366dee8ade19e31e7a9f.ctex"]
 
 [params]
 
