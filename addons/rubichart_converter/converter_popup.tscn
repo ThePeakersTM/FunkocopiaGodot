@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c70p4xn452jks"]
 
-[ext_resource type="Script" uid="uid://do4jy8bu8xwsm" path="res://addons/rubichart_converter/converter_popup.gd" id="1_1264s"]
+[ext_resource type="Script" uid="uid://dq21olq3aymb" path="res://addons/rubichart_converter/converter_popup.gd" id="1_1264s"]
 [ext_resource type="PackedScene" uid="uid://48bht5r24ve5" path="res://addons/rubichart_converter/converter_window.tscn" id="2_voq12"]
 
 [node name="ConverterPopup" type="PopupMenu" unique_id=2109289582]

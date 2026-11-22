@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://48bht5r24ve5"]
 
-[ext_resource type="Script" uid="uid://bjhabsfklm1fk" path="res://addons/rubichart_converter/converter_window.gd" id="1_p1oy5"]
+[ext_resource type="Script" uid="uid://dyqvlnjbkod2e" path="res://addons/rubichart_converter/converter_window.gd" id="1_p1oy5"]
 
 [node name="ConverterWindow" type="Window" node_paths=PackedStringArray("reference_key_list", "reference_bool_value_container", "reference_bool_value_checkbox", "reference_string_value_container", "reference_string_value_edit", "reference_confirm_button")]
 oversampling_override = 1.0
