@@ -36,6 +36,7 @@ extends Room
 @onready var door_interaction := $Door/Control
 
 @onready var clockey_appear := $ClockeyAppear
+@onready var clockey_dialog := $ClockeyAppear/Dialog
 @onready var clockey_stop_collision := $Collision/CollisionShape2D7
 
 @onready var soccer_ball := $SoccerBall
@@ -107,6 +108,16 @@ func _ready() -> void:
 		player.anim_facing_direction = "RR"
 	
 	clockey_appear.visible = false
+	
+	clockey_dialog.finished.connect(func():
+		if clockey_appear.animation == "talk":
+			clockey_appear.play("idle")
+			get_tree().create_timer(1).timeout.connect(func():
+				BaldiTransition.change_scene(
+					"res://songs/times out/times_out.tscn"
+				)
+			)
+	)
 
 var plug_connected := false
 
@@ -151,6 +162,13 @@ func _process(_delta: float) -> void:
 	set_mouse_mode(calendar_interaction,
 		[Cursor.MODE_OBSERVE,                       Cursor.MODE_SPEAK               ])
 	clockey_stop_collision.disabled = not (overlay_exists("computer") and 0 in get_overlay("computer").got_doors)
+	if clockey_appear.frame == 10 and clockey_appear.animation == "appear":
+		clockey_appear.play("idle")
+		get_tree().create_timer(0.5).timeout.connect(func():
+			clockey_appear.play("talk")
+			clockey_dialog.play()
+		)
+	
 	if player.position.x < 750 and player.position.y < 805:
 		if overlay_exists("computer") and 0 in get_overlay("computer").got_doors:
 			player.can_process_data = false

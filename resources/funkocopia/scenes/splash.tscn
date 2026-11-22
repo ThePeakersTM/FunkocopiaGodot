@@ -535,7 +535,7 @@ animations = [{
 }],
 "loop": 0,
 "name": &"default",
-"speed": 40.0
+"speed": 60.0
 }]
 
 [node name="Splash" type="AnimatedSprite2D" unique_id=572740218]

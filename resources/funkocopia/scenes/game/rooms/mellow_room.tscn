@@ -23,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://d0q0yhia18sn1" path="res://assets/funkocopia/rooms/rooms/mellow_room/clockey/talk/sprite001441_32_230x190.png" id="21_nkpmn"]
 [ext_resource type="Texture2D" uid="uid://cywxl2cnfgkj5" path="res://assets/funkocopia/rooms/rooms/mellow_room/clockey/talk/sprite001442_32_230x190.png" id="22_n44w2"]
 [ext_resource type="Texture2D" uid="uid://ck8rc2tb3ldjd" path="res://assets/funkocopia/rooms/rooms/mellow_room/clockey/talk/sprite001443_32_230x190.png" id="23_ffwgs"]
+[ext_resource type="AudioStream" uid="uid://bohwjx7tt1ng" path="res://assets/funkocopia/sounds/room_specific/mellow_room/your_time_is_over.mp3" id="24_oivf5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f6a36"]
 size = Vector2(80, 1240)
@@ -1407,3 +1408,7 @@ scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_f6a36")
 animation = &"idle"
 centered = false
+
+[node name="Dialog" type="AudioStreamPlayer" parent="ClockeyAppear" unique_id=1657024657]
+stream = ExtResource("24_oivf5")
+bus = &"Reverb"

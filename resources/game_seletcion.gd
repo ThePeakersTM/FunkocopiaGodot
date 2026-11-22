@@ -13,14 +13,16 @@ const DURATION := 0.15
 var tweens := {}
 
 func _on_launch(game: Button, after: Callable) -> void:
-	if game.disabled: return
-	var kettei := $Kettei
-	kettei.volume_linear = 1
-	kettei.play()
-	fade.mouse_filter = MOUSE_FILTER_STOP
-	create_tween().tween_property(fade, "modulate", Color.WHITE, 1).finished.connect(func():
-		get_tree().create_timer(0.5).timeout.connect(after)
-	)
+	if game.fake_disabled:
+		game.get_node("Denied").play()
+	else:
+		var kettei := $Kettei
+		kettei.volume_linear = 1
+		kettei.play()
+		fade.mouse_filter = MOUSE_FILTER_STOP
+		create_tween().tween_property(fade, "modulate", Color.WHITE, 1).finished.connect(func():
+			get_tree().create_timer(0.5).timeout.connect(after)
+		)
 
 func _title(title: String = "") -> void:
 	DisplayServer.window_set_title(
@@ -86,10 +88,11 @@ func _ready() -> void:
 	for i in games.size():
 		var game: Button = games[i]
 		var polygon: Polygon2D = game.get_node("Polygon2D")
+		game.disabled = true
 		if i not in available:
 			game.mouse_filter = MOUSE_FILTER_IGNORE
 			game.mouse_default_cursor_shape = CURSOR_FORBIDDEN
-			game.disabled = true
+			game.fake_disabled = true
 			polygon.color = Color(DISABLED_ALPHA, DISABLED_ALPHA, DISABLED_ALPHA)
 		else:
 			game.mouse_filter = MOUSE_FILTER_STOP
@@ -100,7 +103,7 @@ func _ready() -> void:
 		game.mouse_exited.connect(_hover.bind(game, false, base_z))
 		game.pressed.connect(func(): _on_launch(game, game_methods[i]))
 		game.get_node("Polygon2D").offset.y = -675
-		game.disabled = true
+		game.fake_disabled = true
 		get_tree().create_timer((base_z/10.0)+4).timeout.connect(func():
 			game.get_node("Whoosh").play()
 			var tween = create_tween()
@@ -111,10 +114,12 @@ func _ready() -> void:
 				0,
 				0.5
 			).finished.connect(func():
+				game.disabled = false
 				if game.mouse_filter == MOUSE_FILTER_STOP:
-					game.disabled = false
-				if not game.disabled:
-					game.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
+					game.fake_disabled = false
+				if not game.fake_disabled:
+					game.mouse_default_cursor_shape = CURSOR_POINTING_HAND
+				game.mouse_filter = MOUSE_FILTER_STOP
 			)
 		)
 
@@ -143,7 +148,7 @@ func _tween_alpha(node: Polygon2D, target: float) -> void:
 	alpha_tweens[node] = tween
 
 func _hover(game: Button, up: bool, base_z: int) -> void:
-	if game.disabled: return
+	if game.fake_disabled: return
 	if up:
 		var whoosh: AudioStreamPlayer = game.get_node("Whoosh")
 		whoosh.play()
@@ -167,5 +172,5 @@ func _hover(game: Button, up: bool, base_z: int) -> void:
 	for g: Control in $Margin/HBoxMargin/HBoxContainer.get_children():
 		var p: Polygon2D = g.get_node("Polygon2D")
 		_tween_alpha(p, DIM_ALPHA if (up and g != game) else (
-			DISABLED_ALPHA if g.disabled else 1.0
+			DISABLED_ALPHA if g.fake_disabled else 1.0
 		))
